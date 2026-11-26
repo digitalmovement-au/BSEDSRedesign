@@ -2236,3 +2236,8 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
 .bs-hero .hero-actions { align-items: center; }
 .bs-hero .hero-actions .g-rating { margin-top: 0; padding: 8px 16px 8px 10px; }
 @media (max-width: 680px) { .bs-hero .hero-actions .g-rating { justify-self: center; } }
+/* Reviews: stars + G on top, author at the bottom */
+.r2-card.gstyle .gstars { justify-content: space-between; margin: 0 0 14px; }
+.r2-card.gstyle .gstars .g { margin-left: 0; }
+.r2-card.gstyle p { margin-bottom: 22px; }
+.r2-card.gstyle header { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
