@@ -7,7 +7,7 @@ Open `index.html` in a browser to review. Images, the logo and Instagram photos 
 ## Pages
 - `index.html` — homepage: hero with copy on the left and a quote form on the right, yellow services ticker, Google reviews (score panel + quote cards), six service panels that expand on hover, "What we do best" cards that stack as you scroll, recent work strip (Instagram photos, drag to scroll), why choose us, who we are, FAQs, quote form, service areas.
 - `services.html` — services overview.
-- Six service pages: `residential-electrician`, `commercial-electrician`, `electrical-installations`, `maintenance-repairs`, `data-fibre`, `emergency-electrician`. Each has an overview, sub-service cards, a "what's included" list, detail sections, a price guide (where the live page gives one), why choose us, FAQs and a call to action.
+- Six service pages: `residential-electrician`, `commercial-electrician`, `electrical-installations`, `maintenance-repairs`, `data-fibre`, `emergency-electrician`. Each has an overview, sub-service cards, a "what's included" list, detail sections, a price guide (where the live page gives one), why choose us and a call to action. Like the live site, service pages have no FAQ block; the 10 live FAQs (same wording) appear on Home, About and FAQ.
 - `about.html`, `faq.html` (filter by topic), `contact.html` (quote form, service area map).
 
 ## Editing
