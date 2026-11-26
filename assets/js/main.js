@@ -444,3 +444,87 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
   const bg = document.querySelector('.bs-hero-bg');
   if (bg) addEventListener('scroll', () => requestAnimationFrame(() => { if (scrollY < innerHeight * 1.2) bg.style.translate = `0 ${scrollY * 0.25}px`; }), { passive: true });
 })();
+
+// ---------- Motion layer, part 2: everything except banner, reviews, service panels and "What we do best" ----------
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const SKIP = '.bs-hero, .reviews2, .sectors, .stack-sec';
+  const free = el => !el.closest(SKIP);
+  const once = (els, cls = 'in', th = 0.2) => {
+    const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add(cls); o.unobserve(e.target); } }), { threshold: th });
+    els.forEach(el => o.observe(el));
+  };
+
+  // Eyebrows get a yellow line that draws in
+  const ebs = $$('.eyebrow').filter(free);
+  ebs.forEach(el => el.classList.add('eb'));
+  once(ebs);
+
+  // More headlines rise word by word (statements and the footer call-out)
+  const split = el => {
+    let n = 0;
+    const walk = node => [...node.childNodes].forEach(c => {
+      if (c.nodeType === 3) {
+        const f = document.createDocumentFragment();
+        c.textContent.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) return f.appendChild(document.createTextNode(part));
+          const w = document.createElement('span'); w.className = 'w';
+          const i = document.createElement('span'); i.textContent = part; i.style.transitionDelay = (n++ * 0.045) + 's';
+          w.appendChild(i); f.appendChild(w);
+        });
+        c.replaceWith(f);
+      } else if (c.nodeType === 1) walk(c);
+    });
+    walk(el); el.classList.add('split'); el.style.setProperty('--hl-delay', (n * 0.045 + 0.15) + 's');
+  };
+  const more = $$('.statement, footer .foot-cta .h2, .features .h2, .ind-overview .h2, .included .h2, .prices .h2').filter(el => free(el) && !el.classList.contains('split'));
+  more.forEach(split); once(more);
+
+  // Extra staggered groups
+  const groups = $$('.ind-copy .ticks, footer .cols, form.quote, .contact-lines, .info-cards, .chip-links, .stats').filter(free);
+  groups.forEach(g => [...g.children].forEach((c, i) => { c.style.transitionDelay = Math.min(i, 12) * 0.08 + 's'; c.classList.add('st'); }));
+  once(groups, 'st-in', 0.1);
+  $$('.feature-grid').filter(free).forEach(g => g.classList.add('flip'));
+  $$('.strip').forEach(g => g.classList.add('wipe'));
+  $$('.included-list').forEach(g => g.classList.add('slide'));
+  $$('.suburbs').forEach(g => g.classList.add('pop'));
+
+  // Footer wordmark fills with yellow as it scrolls into view
+  const wm = document.querySelector('.wordmark');
+  if (wm) addEventListener('scroll', () => requestAnimationFrame(() => {
+    const r = wm.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight * 0.6)));
+    wm.style.setProperty('--fill', (p * 100).toFixed(1) + '%');
+  }), { passive: true });
+
+  // Parallax on section photos
+  const par = [...$$('.cta > img, .page-hero > img').map(el => [el, 0.18]), ...$$('.ind-imgs img:nth-child(2)').map(el => [el, -0.06]), ...$$('.faq-card img').map(el => [el, 0.08])];
+  const runPar = () => par.forEach(([el, k]) => {
+    const r = el.parentElement.getBoundingClientRect();
+    if (r.bottom < -200 || r.top > innerHeight + 200) return;
+    el.style.translate = `0 ${((r.top + r.height / 2) - innerHeight / 2) * -k}px`;
+  });
+  if (par.length) { runPar(); addEventListener('scroll', () => requestAnimationFrame(runPar), { passive: true }); }
+
+  if (!matchMedia('(hover: hover)').matches) return;
+
+  // 3D tilt on cards
+  $$('.feature, .ind-card, .info-card, .faq-card').filter(free).forEach(c => {
+    c.classList.add('tilt');
+    c.addEventListener('pointermove', e => {
+      const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      c.style.transform = `perspective(900px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-6px)`;
+    });
+    c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+  });
+
+  // Magnetic buttons
+  $$('.btn').filter(b => free(b) && !b.closest('.site-header')).forEach(b => {
+    b.addEventListener('pointermove', e => {
+      const r = b.getBoundingClientRect();
+      b.style.translate = `${(e.clientX - r.left - r.width / 2) * 0.18}px ${(e.clientY - r.top - r.height / 2) * 0.3}px`;
+    });
+    b.addEventListener('pointerleave', () => { b.style.translate = ''; });
+  });
+})();

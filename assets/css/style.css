@@ -2419,3 +2419,60 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
 .split { display: block !important; }
 .split .w { padding-right: .05em; margin-right: -.05em; }
 .t-yellow .sc-n { -webkit-text-stroke-color: var(--ink); }
+
+/* =========================================================
+   Motion layer, part 2
+   ========================================================= */
+/* Eyebrow line */
+.eb::before { content: ""; width: 28px; height: 2px; border-radius: 2px; background: var(--brass); transform: scaleX(0); transform-origin: left; transition: transform .8s cubic-bezier(.7,0,.2,1) .15s; }
+.eb.in::before { transform: none; }
+
+/* Feature cards flip up */
+.js-motion .feature-grid.flip > .st { transform: perspective(900px) rotateX(22deg) translateY(50px); transform-origin: 50% 100%; transition-duration: 1s; }
+.js-motion .feature-grid.flip.st-in > .st { transform: none; }
+.feature .ico, .feature::before { transition: transform .6s cubic-bezier(.3,1.6,.5,1); }
+.js-motion .feature-grid.flip > .st .ico { transform: scale(0) rotate(-40deg); transition: transform .7s cubic-bezier(.3,1.6,.5,1) .35s, background .5s, color .5s; }
+.js-motion .feature-grid.flip.st-in > .st .ico { transform: none; }
+
+/* Recent work photos wipe up */
+.js-motion .strip.wipe > .st { opacity: 1; transform: none; clip-path: inset(100% 0 0 0 round 4px); transition: clip-path 1.2s cubic-bezier(.7,0,.2,1); }
+.js-motion .strip.wipe.st-in > .st { clip-path: inset(0 0 0 0 round 4px); }
+.js-motion .strip.wipe > .st img { transform: scale(1.25); transition: transform 1.6s cubic-bezier(.2,.7,.2,1); transition-delay: inherit; }
+.js-motion .strip.wipe.st-in > .st img { transform: none; }
+.js-motion .strip.wipe.st-in > .st:hover img { transform: scale(1.05); }
+
+/* Included lists slide in from the left */
+.js-motion .included-list.slide > .st { transform: translateX(-50px); }
+.js-motion .included-list.slide.st-in > .st { transform: none; }
+.included-list li .n { transition: transform .5s cubic-bezier(.3,1.6,.5,1); }
+.included-list li:hover .n { transform: scale(1.25) rotate(-6deg); }
+
+/* Suburb chips pop */
+.js-motion .suburbs.pop > .st { transform: scale(.6); transition-timing-function: cubic-bezier(.3,1.6,.5,1); transition-duration: .6s; }
+.js-motion .suburbs.pop.st-in > .st { transform: none; }
+
+/* Tilt cards */
+.tilt { transform-style: preserve-3d; transition: transform .35s var(--ease), box-shadow .4s var(--ease), background-color .5s var(--ease); will-change: transform; }
+
+/* Magnetic buttons settle back smoothly */
+.btn { transition: background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease), translate .35s cubic-bezier(.2,.8,.2,1), box-shadow .3s; }
+
+/* Parallax photos need room to move */
+.cta > img, .page-hero > img { height: 120%; top: -10%; will-change: translate; }
+.faq-card img { height: 120%; top: -10%; }
+.ind-imgs img:nth-child(2) { will-change: translate; }
+.page-hero > img { animation: phZoom 2.4s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes phZoom { from { transform: scale(1.15); filter: brightness(.6); } to { transform: none; filter: none; } }
+
+/* FAQ: smoother open, rotating plus */
+.faq-item .pm svg { transition: transform .5s cubic-bezier(.3,1.6,.5,1); }
+.faq-item .pm { transition: transform .5s cubic-bezier(.3,1.6,.5,1), background .3s, border-color .3s; }
+.faq-item button { transition: color .3s, padding-left .4s var(--ease); }
+.faq-item button:hover { padding-left: 8px; }
+
+/* Footer wordmark that fills with yellow */
+.wordmark { --fill: 0%; margin-top: clamp(40px, 5vw, 70px); font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: -.04em; line-height: .85; white-space: nowrap; text-align: center;
+  font-size: clamp(44px, 10.4vw, 196px); color: transparent; -webkit-text-stroke: 1.5px rgba(255,220,55,.45);
+  background: linear-gradient(90deg, var(--brass) var(--fill), transparent var(--fill)); -webkit-background-clip: text; background-clip: text; user-select: none; overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) { .page-hero > img { animation: none; } .wordmark { --fill: 100%; } }
