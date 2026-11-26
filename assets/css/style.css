@@ -2763,3 +2763,14 @@ img.av { object-fit: cover; background: var(--paper); box-shadow: 0 0 0 2px #fff
 .bs-hero .display { max-width: none; text-wrap: balance; }
 @media (min-width: 1101px) { .bs-hero-copy { padding-right: 0; } .bs-hero .hero-lead { max-width: 60ch; } }
 .bs-hero .display { text-wrap: pretty; }
+
+/* Stacking cards v3: always sticky on desktop, parked just under the sticky header,
+   each card scaled (if needed) so it is fully visible before the next one slides over */
+@media (min-width: 901px) {
+  .stack-card, .stack-card:is(*) { position: sticky; top: calc(var(--hdr, 72px) + 16px + min(var(--i), 4) * 14px); max-height: none; }
+  .stack { gap: 18vh; }
+  .sc-copy { zoom: var(--fit, 1); }
+}
+@media (min-width: 901px) and (max-height: 700px) {
+  .stack-card { position: sticky; top: calc(var(--hdr, 72px) + 12px + min(var(--i), 4) * 10px); }
+}

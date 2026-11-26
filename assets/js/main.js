@@ -644,3 +644,31 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
     });
   });
 })();
+
+// Stacking cards: park under the header, and shrink a card's text if needed so the whole card fits on screen
+(() => {
+  const cards = [...document.querySelectorAll('.stack-card')];
+  if (!cards.length) return;
+  const header = document.querySelector('.site-header');
+  const fit = () => {
+    if (innerWidth <= 900) { cards.forEach(c => c.style.removeProperty('--fit')); return; }
+    // the header is in its compact (scrolled) state whenever the cards are on screen
+    const wasScrolled = header.classList.contains('scrolled');
+    header.classList.add('scrolled');
+    const hdr = Math.ceil(header.getBoundingClientRect().height);
+    if (!wasScrolled) header.classList.remove('scrolled');
+    document.documentElement.style.setProperty('--hdr', hdr + 'px');
+    const small = innerHeight <= 700;
+    cards.forEach((c, i) => {
+      c.style.setProperty('--fit', 1);
+      const top = hdr + (small ? 12 : 16) + Math.min(i, 4) * (small ? 10 : 14);
+      const avail = innerHeight - top - 16;
+      const h = c.getBoundingClientRect().height;
+      if (h > avail) c.style.setProperty('--fit', Math.max(0.62, (avail / h) * 0.98).toFixed(3));
+    });
+  };
+  fit();
+  addEventListener('resize', () => requestAnimationFrame(fit));
+  if (document.fonts) document.fonts.ready.then(fit);
+  addEventListener('load', fit);
+})();
