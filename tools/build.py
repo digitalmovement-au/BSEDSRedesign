@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "43"  # asset version (cache busting)
+V = "44"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -623,7 +623,6 @@ def service_page(d):
   </div>
 </section>
 ''' + blocks + prices + why_section("Why choose <em>Bright Sparks</em>?")
-            + faq_section(d["faqs"], h2=f'{e(d["nav"])} <em>FAQs</em>.', lead="Quick answers to the questions we hear most.")
             + cta_band(h2=d["closing_h2"], p=d["closing"], img=d["banner"])
             + other_services(d["slug"]) + footer() + tail())
     write(f'{d["slug"]}.html', body)
@@ -680,8 +679,7 @@ def services_page():
     </div>
   </div>
 </section>
-''' + faq_section(FAQ["general"] + FAQ["commercial"], h2="Service <em>FAQs</em>.", lead="How we work across homes and businesses.")
-            + cta_band() + footer() + tail())
+''' + cta_band() + footer() + tail())
     write("services.html", body)
 
 
@@ -742,14 +740,14 @@ def about_page():
   </div>
 </section>
 ''' + why_section() + reviews_section("What our customers <em>say</em>.")
-            + faq_section(FAQ["general"], h2="About <em>Bright Sparks</em>.", lead="Who we are and how we work.")
+            + faq_section(FAQ_ALL, h2="Questions, <em>answered</em>.", lead="Everything Sunshine Coast homeowners and business owners usually ask before booking an electrician.")
             + cta_band() + footer() + tail())
     write("about.html", body)
 
 
 # ------------------------------------------------------------------ FAQ
 def faq_page():
-    groups = [("general", "General"), ("residential", "Residential"), ("commercial", "Commercial"), ("data", "Data &amp; fibre"), ("emergency", "Emergency")]
+    groups = [("general", "General"), ("residential", "Residential"), ("commercial", "Commercial"), ("data", "Data &amp; fibre"), ("emergency", "Emergency &amp; quotes")]
     tabs = '<button class="on" data-cat="all">All</button>' + "".join(f'<button data-cat="{k}">{t}</button>' for k, t in groups)
     faqs, cats = [], []
     for k, _ in groups:
@@ -801,7 +799,7 @@ def contact_page():
   </div>
 </section>
 
-''' + areas_section() + faq_section(FAQ["general"] + FAQ["emergency"], h2="Before you <em>call</em>.", lead="Quick answers to the questions we hear most.")
+''' + areas_section()
             + footer() + tail())
     write("contact.html", body)
 

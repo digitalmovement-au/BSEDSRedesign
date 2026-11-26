@@ -14,41 +14,37 @@ LOGO = W + "2026/08/cropped-Logo.png"
 # ---------------------------------------------------------------- FAQs (from the live homepage)
 FAQ = {
   "general": [
-    ("What services does Bright Sparks Electrical & Data Services offer?", [
-      "We’re a trusted Sunshine Coast electrician, serving local homes and businesses for more than two decades. Our work spans six main areas: residential electrical, commercial electrical, general electrical installations, maintenance and repairs, data and fibre cabling, and round-the-clock emergency call-outs.",
-      "Because the same team handles both electrical work and structured data and network cabling, you can use one contractor for a full property fit-out rather than coordinating separate trades."]),
+    ("What services does Bright Sparks Electrical & Data Services offer overall?", [
+      "Bright Sparks is one of the trusted Sunshine Coast electricians, serving local homes and businesses for more than two decades. Our work spans six main areas: residential electrical services, commercial electrical services, general electrical installations, ongoing maintenance and repairs, data and fibre cabling, and round-the-clock emergency call-outs. Because the same team handles both trade electrical work and structured data/network cabling, customers can use one contractor for a full property fit-out rather than coordinating separate trades across multiple businesses."]),
     ("What makes Bright Sparks different from other local electricians?", [
-      "Three things: affordability without cutting corners on safety, a fully licensed and locally based team, and a strong track record of reliable, high-quality workmanship built up over 20+ years. That combination is why so many repeat customers and referrals come our way."]),
-    ("How do I get a quote, and what areas do you service?", [
-      f"Call the team directly on {PHONE} or send a request through the quote form. Quotes are detailed and upfront, with no hidden charges.",
-      "We cover the Sunshine Coast and hinterland, including Maroochydore, Mooloolaba, Caloundra, Noosa, Buderim, Nambour, Kawana, Coolum, Palmwoods and Montville, along with many surrounding suburbs."]),
+      "As the local electricians Sunshine Coast residents have relied on for years, we build everything around three consistent themes: affordability without cutting corners on safety, a fully licensed and locally based team, and a strong track record of reliable, high-quality workmanship built up over 20+ years. This combination of experience and licensing is the reason so many repeat customers and referrals come our way."]),
   ],
   "residential": [
     ("What residential electrical work do you handle for new builds and renovations?", [
-      "Full house wiring and rewiring, switchboard installation, lighting and power design, energy-efficient solutions, and NBN, data and communications wiring. We work in partnership with homeowners, builders and developers, and install smoke alarms to meet current safety compliance requirements."]),
+      "As a residential electrician Sunshine Coast homeowners can call on, we handle full house wiring and rewiring, switchboard installation, lighting and power design, energy-efficient solutions, and NBN/data/communications wiring for new builds and renovations. This work is done in partnership with homeowners, builders, and developers, and includes smoke alarm installation to meet current safety compliance requirements."]),
     ("What about existing homes and investment properties?", [
-      "For existing homes we install ceiling fans, upgrade hot water systems, add power points, fit safety switches (RCDs) and set up security cameras.",
-      "There’s also a dedicated service for landlords and investment properties, covering safety checks, electrical upgrades and fast turnarounds between tenancies."]),
+      "For existing homes, services include ceiling fan installation, hot water system upgrades, additional power points, safety switch (RCD) installation, and security camera setups. There’s also a dedicated stream for landlords and investment properties, covering safety checks, electrical upgrades, and fast turnarounds between tenancies. All of this is delivered by our team of local residential electricians Sunshine Coast property owners already trust, with the same safety-first approach applied across every job."]),
   ],
   "commercial": [
     ("What commercial electrical services are available for business owners?", [
-      "Electrical fit-outs for new or refurbished spaces, general installations, scheduled preventative maintenance, fault-finding and repairs, test and tag, and three-phase power for higher-demand setups.",
-      "We regularly work with resorts, offices, shopping centres, strata complexes, medical facilities, cafés, restaurants and schools, with an emphasis on minimal disruption to daily operations."]),
+      "Bright Sparks offers a fairly comprehensive suite as a commercial electrician Sunshine Coast business owners trust: electrical fit-outs for new or refurbished spaces, general electrical installations, scheduled preventative maintenance, fault-finding and repairs, test-and-tag services, and three-phase power work for higher-demand setups. We regularly work with resorts, offices, shopping centres, strata complexes, medical facilities, cafés, restaurants, and schools, with an emphasis on minimal disruption to daily operations."]),
     ("What compliance standards does commercial work follow?", [
-      "All our work adheres to AS/NZS electrical standards, and we offer RCD testing and energy audits designed to help businesses reduce power costs. Emergency and fault response is available 24/7 for urgent commercial issues."]),
+      "On the compliance side, all our work adheres to AS/NZS electrical standards, and we offer RCD testing and energy audits designed to help businesses reduce power costs. Emergency and fault response is also available 24/7 for urgent commercial issues, so the commercial offering covers both ongoing code compliance and rapid response when something goes wrong."]),
   ],
   "data": [
     ("Do you install data cabling and network points?", [
-      "Yes. Data and fibre is its own dedicated service alongside our electrical work. It covers structured data cabling, network cabling design for offices and homes, data point installation, phone wiring and fibre-optic cabling for residential and commercial properties."]),
+      "Yes, data and fibre installation Sunshine Coast projects are treated as their own dedicated service line alongside general electrical work. This covers structured data cabling, network cabling design for offices and homes, individual data point installation, phone wiring, and fibre-optic cabling for both residential and commercial properties."]),
     ("Are you licensed to install NBN and fibre connections?", [
-      "Yes. Our team is ACMA-approved and registered as an NBN contractor, in addition to holding standard electrical licensing. Cabling and NBN connection work in Australia needs this separate registration, and we also offer testing, certification and fault-finding for existing networks."]),
+      "Yes, our team is ACMA-approved and registered as an NBN contractor for NBN cabling Sunshine Coast projects, in addition to holding standard electrical licensing. This matters because cabling and NBN connection work in Australia requires specific registration separate from a general electrician’s licence, and the team also offers testing, certification, and fault-finding for existing networks."]),
   ],
   "emergency": [
     ("What happens if I have an electrical emergency?", [
-      "We provide a 24-hour, 7-day emergency electrician service for homes and businesses, covering power outages, faulty switchboards, sparking outlets, damaged wiring and overloaded circuits.",
-      "Emergency work is carried out in line with the AS/NZS 3000 wiring standard, with the focus on fast, accurate troubleshooting so the fault is fixed properly the first time."]),
+      "Bright Sparks provides a 24-hour, 7-day-a-week emergency electrician Sunshine Coast service for both residential and commercial situations, covering issues like power outages, faulty switchboards, sparking outlets, damaged wiring, and overloaded circuits. Emergency work is carried out in line with the AS/NZS 3000 wiring standard, with the focus on fast, accurate troubleshooting so the fault is fixed properly the first time."]),
+    ("How do I get a quote, and what areas do you service?", [
+      "For non-emergency work, you can call the team directly on 0433 909 889 or submit a request through the “Get a Quote” option on the website, with quotes provided in detail upfront and no hidden charges. Our listed service area covers a large stretch of the Sunshine Coast and hinterland, including Maroochydore, Mooloolaba, Caloundra, Noosa, Buderim, Nambour, Kawana, Coolum, Palmwoods, and Montville, along with numerous surrounding suburbs."]),
   ],
 }
+# Same 10 questions, in the same order, as the live homepage and About page
 FAQ_ALL = [q for k in ("general", "residential", "commercial", "data", "emergency") for q in FAQ[k]]
 
 # ---------------------------------------------------------------- Google reviews (from the live site)
