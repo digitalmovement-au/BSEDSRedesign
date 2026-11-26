@@ -2759,3 +2759,7 @@ img.av { object-fit: cover; background: var(--paper); box-shadow: 0 0 0 2px #fff
 @media (min-width: 901px) and (max-height: 700px) {
   .stack-card { position: relative; top: auto; max-height: none; }
 }
+/* Banner titles use the full width of the left column (fewer, longer lines) */
+.bs-hero .display { max-width: none; text-wrap: balance; }
+@media (min-width: 1101px) { .bs-hero-copy { padding-right: 0; } .bs-hero .hero-lead { max-width: 60ch; } }
+.bs-hero .display { text-wrap: pretty; }
