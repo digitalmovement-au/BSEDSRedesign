@@ -491,6 +491,8 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
   $$('.included-list').forEach(g => g.classList.add('slide'));
   $$('.suburbs').forEach(g => g.classList.add('pop'));
 
+  // Why choose us: rows light up in turn and the rail charges down
+  $$('.why-list').forEach(l => once([l], 'go', 0.3));
   // Footer wordmark fills with yellow as it scrolls into view
   const wm = document.querySelector('.wordmark');
   if (wm) addEventListener('scroll', () => requestAnimationFrame(() => {

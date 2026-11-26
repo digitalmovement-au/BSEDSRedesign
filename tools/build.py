@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "32"  # asset version (cache busting)
+V = "35"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -234,16 +234,31 @@ def quote_form(cls="quote", btn="btn-primary"):
 
 
 def why_section(head_h2="Why choose <em>Bright Sparks</em>?"):
-    cards = "".join(f'<div class="feature why reveal"><span class="ico">{ICONS[i]}</span><h3>{e(t)}</h3><p>{e(x)}</p></div>' for i, (t, x) in enumerate(WHY))
+    rows = "".join(f'''
+        <li class="why-row">
+          <span class="why-ico">{ICONS[i]}</span>
+          <div><h3>{e(t)}</h3><p>{e(x)}</p></div>
+        </li>''' for i, (t, x) in enumerate(WHY))
     return f'''
-<section class="features">
-  <div class="wrap">
-    <div class="section-head">
-      <div><span class="eyebrow reveal">The Bright Sparks difference</span>
-      <h2 class="h2 reveal">{head_h2}</h2></div>
-      <p class="lead reveal">Local electricians Sunshine Coast home and business owners have trusted for over 20 years.</p>
+<section class="why2">
+  <div class="wrap why2-grid">
+    <div class="why2-media reveal">
+      <img loading="lazy" src="{W}2026/08/Right-image-3.jpg" alt="Bright Sparks electrician with the work ute">
+      <div class="why2-badge"><b data-count="20" data-suffix="+">20+</b><span>Years keeping the<br>Sunshine Coast powered</span></div>
+      <a class="why2-call" href="tel:{TEL}"><span class="live"></span>On call 24/7 · <b>{PHONE}</b></a>
     </div>
-    <div class="feature-grid">{cards}</div>
+    <div class="why2-copy">
+      <span class="eyebrow light reveal">The Bright Sparks difference</span>
+      <h2 class="h2 reveal">{head_h2}</h2>
+      <p class="lead reveal">Local electricians Sunshine Coast home and business owners have trusted for over 20 years.</p>
+      <ul class="why-list">
+        <li class="why-rail" aria-hidden="true"><i></i></li>{rows}
+      </ul>
+      <div class="hero-actions why2-cta reveal">
+        <a class="btn btn-primary" href="contact.html">Get A Free Quote {ARROW}</a>
+        <a class="btn btn-ghost btn-call" href="tel:{TEL}">{PHONE_I} {PHONE}</a>
+      </div>
+    </div>
   </div>
 </section>
 '''
@@ -470,15 +485,15 @@ def index_page():
         <span class="eyebrow reveal">Who we are</span>
         <p class="statement reveal" style="margin-top:20px">For more than 20 years, we’ve provided Sunshine Coast homes and businesses with electrical and data solutions that meet the <em>highest standards</em>.</p>
         <p class="lead reveal" style="margin-top:28px;max-width:62ch">From residential lighting and power upgrades to commercial fit-outs, data cabling, routine maintenance and emergency repairs, we’ve built a strong reputation for precision, reliability and workmanship.</p>
-        <div class="cta-actions reveal" style="justify-content:flex-start;margin-top:34px"><a class="btn btn-dark" href="about.html">About Bright Sparks {ARROW}</a></div>
-      </div>
-    </div>
-    <ul class="r2-proof row reveal">
+        <ul class="r2-proof row inline reveal">
       <li><b data-count="20" data-suffix="+">20+</b><span>Years on the Coast</span></li>
       <li><b>24/7</b><span>Emergency call-outs</span></li>
       <li><b>ACMA</b><span>Registered NBN contractor</span></li>
       <li><b>1 team</b><span>For power &amp; data</span></li>
-    </ul>
+        </ul>
+        <div class="cta-actions reveal" style="justify-content:flex-start;margin-top:34px"><a class="btn btn-dark" href="about.html">About Bright Sparks {ARROW}</a></div>
+      </div>
+    </div>
   </div>
 </section>
 ''' + faq_section(FAQ_ALL, lead="Everything Sunshine Coast homeowners and business owners usually ask before booking an electrician.") + f'''
@@ -493,6 +508,10 @@ def index_page():
       <div class="contact-lines">
         <a href="tel:{TEL}"><small>Call, 24/7</small>{PHONE}</a>
         <a href="mailto:{EMAIL}"><small>Email</small>{EMAIL}</a>
+      </div>
+      <div class="cta-map reveal">
+        <iframe title="Bright Sparks service area, Sunshine Coast, on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Sunshine%20Coast%20QLD&z=10&output=embed"></iframe>
+        <span class="cta-map-tag">{PIN} Servicing Noosa to Caloundra</span>
       </div>
     </div>
     {quote_form()}
