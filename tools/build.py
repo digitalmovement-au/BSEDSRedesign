@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "4"  # asset version (cache busting)
+V = "5"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -358,13 +358,13 @@ def write(name, body):
 
 # ------------------------------------------------------------------ homepage
 def index_page():
-    big = {0: "b-big", 1: "b-wide", 4: "b-wide", 5: "b-wide b-sos"}
-    bento = "".join(f'''
-    <a class="bento {big.get(i, "")} reveal" href="{d["slug"]}.html">
-      <img loading="lazy" src="{d["panel"]}" alt="">
-      <span class="b-go">{ARROW}</span>
-      <div class="b-body"><span class="num">{i+1:02d}</span><h3>{e(d["nav"])}</h3><p>{e(d["card_text"])}</p>{f'<span class="b-call">{PHONE_I} {PHONE}</span>' if d["key"] == "emergency" else ""}</div>
-    </a>''' for i, d in enumerate(SERVICES))
+    panels = "".join(f'''
+    <a class="panel" href="{s["slug"]}.html">
+      <img loading="lazy" src="{s["panel"]}" alt="">
+      <div class="inner"><span class="num">{i+1:02d}</span><h3>{e(s["nav"])}</h3>
+        <p>{e(s["card_text"])}</p>
+        <span class="go">Explore →</span></div>
+    </a>''' for i, s in enumerate(SERVICES))
 
     steps = [
         ("Residential", "New builds &amp; renovations", "Full house wiring, switchboards, lighting and power design, NBN and data, and smoke alarm compliance, delivered with homeowners, builders and developers.", W + "2026/08/Left-image-9.jpg", "residential-electrician.html"),
@@ -418,8 +418,8 @@ def index_page():
       <p class="lead reveal" style="color:rgba(255,255,255,.72)">One licensed local team for electrical and data work, so you never have to juggle trades.</p>
     </div>
   </div>
-  <div class="wrap"><div class="bento-grid">{bento}
-  </div></div>
+  <div class="panels">{panels}
+  </div>
 </section>
 
 <!-- What we do best: split screen -->
