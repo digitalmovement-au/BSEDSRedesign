@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "8"  # asset version (cache busting)
+V = "9"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -360,9 +360,19 @@ def index_page():
         ("Data &amp; Fibre", "Data, NBN &amp; fibre", "Structured cabling, network design and fibre upgrades from ACMA-approved, registered NBN contractors.", W + "2026/08/Data-Fibre-image-1.jpg", "data-fibre.html"),
         ("24/7", "Emergency call-outs", "Power outages, faulty switchboards and urgent repairs, handled promptly by a licensed team any hour of the day or night.", W + "2026/08/emergency-elex-img-1.png", "emergency-electrician.html"),
     ]
-    st = "".join(f'<li data-step="{i}"{" class=\"on\"" if i == 0 else ""}><div class="row"><span class="n">{i+1:02d}</span><h3>{t}</h3></div><p>{p} <a class="text-link" href="{h}">Learn more {ARROW}</a></p></li>' for i, (_, t, p, _, h) in enumerate(steps))
-    figs = "".join(f'<figure data-step="{i}"><img loading="lazy" src="{img}" alt=""><figcaption><span class="num">{i+1:02d}</span><b>{t}</b><span class="sub">{k}</span></figcaption></figure>' for i, (k, t, _, img, _) in enumerate(steps))
-
+    ticks = {0: SERVICES[0]["list"][:4], 1: SERVICES[1]["list"][:3], 2: SERVICES[4]["list"][:4], 3: SERVICES[5]["list"][:4]}
+    tabs = "".join(f'<button role="tab" data-wdb="{i}"{" class=\"on\" aria-selected=\"true\"" if i == 0 else ""}><span class="n">{i+1:02d}</span>{t}</button>' for i, (_, t, _, _, _) in enumerate(steps))
+    panes = "".join(f'''
+      <div class="wdb-pane{' on' if i == 0 else ''}" data-wdb="{i}" role="tabpanel">
+        <div class="wdb-img"><img loading="lazy" src="{img}" alt=""><span class="wdb-tag">{k}</span></div>
+        <div class="wdb-card">
+          <span class="n">{i+1:02d} / 04</span>
+          <h3>{t}</h3>
+          <p>{p}</p>
+          <ul class="ticks">{"".join(f"<li>{CHECK}{e(x)}</li>" for x in ticks[i])}</ul>
+          <a class="btn btn-primary" href="{h}">Learn More {ARROW}</a>
+        </div>
+      </div>''' for i, (k, t, p, img, h) in enumerate(steps))
     ig = "".join(f'<figure><img loading="lazy" src="{IG}{f}" alt="Recent electrical work by Bright Sparks"></figure>' for f in INSTAGRAM_POSTS)
 
     body = (head("Sunshine Coast Electricians, Electrical & Data Services", "Licensed Sunshine Coast electricians for homes and businesses: residential, commercial, installations, maintenance, data and fibre, and 24/7 emergency call-outs.")
@@ -410,22 +420,16 @@ def index_page():
   </div>
 </section>
 
-<!-- What we do best: split screen -->
-<section class="process v2" id="work">
-  <div class="split">
-    <div class="split-sticky max">
-      <div class="proc-head">
-        <span class="step-ghost" aria-hidden="true">01</span>
-        <span class="eyebrow">What we do best</span>
-        <h2 class="h2">Decades of delivering <em>peace of mind</em>.</h2>
-      </div>
-      <ul class="steps">
-        <li class="steps-rail" aria-hidden="true"><i></i></li>
-        {st}
-      </ul>
+<!-- What we do best: tabbed showcase -->
+<section class="wdb" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow reveal">What we do best</span>
+      <h2 class="h2 reveal">Decades of delivering <em>peace of mind</em>.</h2></div>
+      <p class="lead reveal">From new builds to 2am emergencies, one licensed local team handles it all.</p>
     </div>
-    <div class="split-media">
-      {figs}
+    <div class="wdb-tabs reveal" role="tablist">{tabs}</div>
+    <div class="wdb-panels">{panes}
     </div>
   </div>
 </section>

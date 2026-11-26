@@ -74,6 +74,12 @@
   }));
   $$('[data-lg-more]').forEach(b => b.addEventListener('click', () => b.closest('.lg-panel').classList.add('expanded')));
 
+  // What we do best: tabs
+  $$('.wdb-tabs button').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.wdb;
+    $$('.wdb-tabs button').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-selected', x === b); });
+    $$('.wdb-pane').forEach(p => p.classList.toggle('on', p.dataset.wdb === k));
+  }));
   $$('[data-rv2-more]').forEach(b => b.addEventListener('click', () => b.closest('.reviews2').classList.add('all')));
   // Reviews (mobile): reveal the rest on demand
   $$('[data-rv-more]').forEach(b => b.addEventListener('click', () => b.closest('.greviews').classList.add('all-reviews')));

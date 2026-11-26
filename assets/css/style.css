@@ -2141,3 +2141,36 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
   .r2-list { columns: 1; }
   .r2-score.bar { flex-direction: column; text-align: center; border-left: 0; border-top: 6px solid var(--brass); }
 }
+
+/* What we do best: tabbed showcase */
+.wdb { padding: clamp(80px, 9vw, 140px) 0; background: var(--white); }
+.wdb-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: clamp(30px, 4vw, 50px) 0 18px; }
+.wdb-tabs button { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 0; border-radius: 10px; background: var(--paper); color: var(--ink); font-family: var(--display); font-weight: 700; font-size: clamp(15px, 1.2vw, 18px); text-align: left; transition: background .3s, color .3s, transform .3s var(--ease); }
+.wdb-tabs button .n { font-size: 13px; font-weight: 800; padding: 4px 8px; border-radius: 6px; background: var(--ink); color: var(--brass); }
+.wdb-tabs button:hover { transform: translateY(-2px); }
+.wdb-tabs button.on { background: var(--brass); }
+.wdb-pane { display: none; grid-template-columns: 1.45fr 1fr; gap: 18px; }
+.wdb-pane.on { display: grid; animation: wdbIn .6s var(--ease); }
+@keyframes wdbIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.wdb-img { position: relative; border-radius: 16px; overflow: hidden; min-height: 480px; }
+.wdb-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.wdb-tag { position: absolute; left: 20px; bottom: 20px; padding: 8px 14px; border-radius: 8px; background: var(--brass); color: var(--ink); font-weight: 800; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+.wdb-card { border-radius: 16px; padding: clamp(28px, 3vw, 46px); background-color: var(--ink); color: #fff; display: flex; flex-direction: column; justify-content: center;
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 40px 40px; }
+.wdb-card .n { color: var(--brass); font-weight: 800; font-size: 13px; letter-spacing: .14em; }
+.wdb-card h3 { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; font-size: clamp(28px, 2.6vw, 42px); line-height: 1.05; margin: 14px 0 16px; }
+.wdb-card p { margin: 0; color: rgba(255,255,255,.75); }
+.wdb-card .ticks { margin: 24px 0 30px; }
+.wdb-card .ticks li { color: #fff; font-size: 15.5px; }
+.wdb-card .btn { align-self: flex-start; }
+@media (max-width: 1100px) {
+  .wdb-tabs { grid-template-columns: repeat(2, 1fr); }
+  .wdb-pane { grid-template-columns: 1fr; }
+  .wdb-img { min-height: 0; aspect-ratio: 16 / 10; }
+  .wdb-card { text-align: center; } .wdb-card .ticks { justify-content: center; justify-items: center; } .wdb-card .btn { align-self: center; }
+}
+@media (max-width: 680px) {
+  .wdb-tabs button { padding: 14px; font-size: 14px; gap: 10px; }
+  .wdb-card .ticks li { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { .wdb-pane.on { animation: none; } }
