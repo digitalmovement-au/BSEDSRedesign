@@ -74,6 +74,7 @@
   }));
   $$('[data-lg-more]').forEach(b => b.addEventListener('click', () => b.closest('.lg-panel').classList.add('expanded')));
 
+  $$('[data-rv2-more]').forEach(b => b.addEventListener('click', () => b.closest('.reviews2').classList.add('all')));
   // Reviews (mobile): reveal the rest on demand
   $$('[data-rv-more]').forEach(b => b.addEventListener('click', () => b.closest('.greviews').classList.add('all-reviews')));
 

@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "5"  # asset version (cache busting)
+V = "6"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -269,44 +269,36 @@ def areas_section():
 
 
 def reviews_section(title="Trusted by Sunshine Coast homes and businesses, in their <em>own words</em>."):
-    cols = ["#17191c", "#3a3d42", "#8a6d1c", "#2f4a3a", "#5a3b2e"]
-
-    def card(r, i, hidden=False):
-        n, when, txt = r
-        return f'''      <article class="rv"{' aria-hidden="true"' if hidden else ''}>{G}
-        <div class="who"><span class="av" style="background:{cols[i % len(cols)]}">{n[0]}</span><div><b>{e(n)}</b><span>Google · {e(when)}</span></div></div>
-        <div class="stars">★★★★★</div>
+    cols = ["#17191c", "#8a6d1c", "#2f4a3a", "#5a3b2e", "#3a3d42"]
+    cards = []
+    for i, (n, when, txt) in enumerate(REVIEWS):
+        cls = "r2-card" + (" feat" if i == 0 else "") + (" more" if i >= 6 else "")
+        cards.append(f'''      <article class="{cls} reveal">
+        <span class="q" aria-hidden="true">“</span>
         <p>{e(txt)}</p>
-      </article>'''
-    a, b = REVIEWS[:5], REVIEWS[5:]
-    row1 = "\n".join(card(r, i) for i, r in enumerate(a)) + "\n" + "\n".join(card(r, i, True) for i, r in enumerate(a))
-    row2 = "\n".join(card(r, i + 2) for i, r in enumerate(b)) + "\n" + "\n".join(card(r, i + 2, True) for i, r in enumerate(b))
+        <footer><span class="av" style="background:{cols[i % len(cols)]}">{n[0]}</span><span class="who"><b>{e(n)}</b><small>Google review · {e(when)}</small></span><span class="st">★★★★★</span></footer>
+      </article>''')
     return f'''
-<section class="greviews" id="reviews">
-  <div class="wrap greviews-top">
-    <div>
+<section class="reviews2" id="reviews">
+  <div class="wrap r2-grid">
+    <aside class="r2-side">
       <span class="eyebrow reveal">Google reviews</span>
-      <h2 class="h2 reveal" style="margin-top:16px">{title}</h2>
-    </div>
-    <div class="proof reveal">
-      <div class="proof-item"><b data-count="20" data-suffix="+">20+</b><span>Years on the Coast</span></div>
-      <div class="proof-item"><b>5.0</b><span>Google rating</span></div>
-      <div class="proof-item"><b>24/7</b><span>Emergency call-outs</span></div>
-      <div class="proof-item"><b>ACMA</b><span>Registered NBN contractor</span></div>
-    </div>
-  </div>
-  <div class="rv-row">
-{row1}
-  </div>
-  <div class="rv-row rev">
-{row2}
-  </div>
-  <div class="wrap rv-more"><button class="btn btn-dark" type="button" data-rv-more>Display More Reviews</button></div>
-  <div class="wrap greviews-bottom">
-    <div class="gbadge reveal">
-      {G}
-      <div><b>Excellent on Google</b><div class="stars">★★★★★</div></div>
-      <a class="btn btn-dark" href="https://www.google.com/search?q=Bright+Sparks+Electrical+%26+Data+Services+Sunshine+Coast+reviews" target="_blank" rel="noopener">Read On Google</a>
+      <h2 class="h2 reveal">{title}</h2>
+      <div class="r2-score reveal">
+        <div class="r2-top">{G}<div><b>5.0</b><span class="st">★★★★★</span></div></div>
+        <p>Rated <strong>excellent</strong> by Sunshine Coast homeowners, landlords, body corporates and businesses.</p>
+        <a class="btn btn-dark" href="https://www.google.com/search?q=Bright+Sparks+Electrical+%26+Data+Services+Sunshine+Coast+reviews" target="_blank" rel="noopener">Read On Google {ARROW}</a>
+      </div>
+      <ul class="r2-proof reveal">
+        <li><b data-count="20" data-suffix="+">20+</b><span>Years on the Coast</span></li>
+        <li><b>24/7</b><span>Emergency call-outs</span></li>
+        <li><b>ACMA</b><span>Registered NBN contractor</span></li>
+        <li><b>1 team</b><span>For power &amp; data</span></li>
+      </ul>
+    </aside>
+    <div class="r2-list">
+{chr(10).join(cards)}
+      <button class="btn btn-dark r2-more" type="button" data-rv2-more>Show More Reviews {ARROW}</button>
     </div>
   </div>
 </section>
