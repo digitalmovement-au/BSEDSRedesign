@@ -2129,3 +2129,15 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
 .r2-proof.row li { padding: 24px 26px; }
 .r2-proof.row b { font-size: clamp(32px, 3vw, 46px); }
 @media (max-width: 680px) { .r2-proof.row { grid-template-columns: 1fr 1fr; } .r2-proof.row li { padding: 18px; text-align: center; } }
+
+/* Reviews: full-width card grid, Google score as a CTA bar underneath */
+.r2-grid { grid-template-columns: 1fr; }
+.r2-list { columns: 3; }
+.r2-score.bar { display: flex; align-items: center; gap: clamp(20px, 3vw, 44px); margin-top: clamp(30px, 4vw, 50px); padding: clamp(22px, 2.4vw, 32px) clamp(24px, 3vw, 44px); border-top: 0; border-left: 6px solid var(--brass); }
+.r2-score.bar p { margin: 0; flex: 1; font-size: clamp(16px, 1.3vw, 19px); }
+.r2-score.bar .btn { flex: none; }
+@media (max-width: 1100px) { .r2-list { columns: 2; } }
+@media (max-width: 680px) {
+  .r2-list { columns: 1; }
+  .r2-score.bar { flex-direction: column; text-align: center; border-left: 0; border-top: 6px solid var(--brass); }
+}

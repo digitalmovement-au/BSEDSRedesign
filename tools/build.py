@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "7"  # asset version (cache busting)
+V = "8"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -285,17 +285,17 @@ def reviews_section(title="Trusted by Sunshine Coast homes and businesses, in th
     <h2 class="h2 reveal">{title}</h2>
   </div>
   <div class="wrap r2-grid">
-    <aside class="r2-side">
-      <div class="r2-score reveal">
-        <div class="r2-top">{G}<div><b>5.0</b><span class="st">★★★★★</span></div></div>
-        <p>Rated <strong>excellent</strong> by Sunshine Coast homeowners, landlords, body corporates and businesses.</p>
-        <a class="btn btn-dark" href="https://www.google.com/search?q=Bright+Sparks+Electrical+%26+Data+Services+Sunshine+Coast+reviews" target="_blank" rel="noopener">Read On Google {ARROW}</a>
-      </div>
-    </aside>
     <div class="r2-list">
 {chr(10).join(cards)}
       <button class="btn btn-dark r2-more" type="button" data-rv2-more>Show More Reviews {ARROW}</button>
     </div>
+  </div>
+  <div class="wrap">
+      <div class="r2-score bar reveal">
+        <div class="r2-top">{G}<div><b>5.0</b><span class="st">★★★★★</span></div></div>
+        <p>Rated <strong>excellent</strong> by Sunshine Coast homeowners, landlords, body corporates and businesses.</p>
+        <a class="btn btn-dark" href="https://www.google.com/search?q=Bright+Sparks+Electrical+%26+Data+Services+Sunshine+Coast+reviews" target="_blank" rel="noopener">Read On Google {ARROW}</a>
+      </div>
   </div>
 </section>
 '''
