@@ -40,7 +40,8 @@ button { font: inherit; cursor: pointer; }
 
 .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--pad); }
 /* Large screens: widen content to 1880px */
-@media (min-width: 1920px) { :root { --wrap: calc(1880px + 2 * var(--pad)); } }
+/* Content width: 1440px on laptops and desktops, 1880px on large screens (1800px+ viewports, so 1920 screens with a scrollbar qualify) */
+@media (min-width: 1800px) { :root { --wrap: calc(1880px + 2 * var(--pad)); } }
 
 .eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
@@ -2705,3 +2706,15 @@ img.av { object-fit: cover; background: var(--paper); box-shadow: 0 0 0 2px #fff
 .pt-foot { position: relative; }
 .pt-foot::before, .pt-foot::after { content: ""; position: absolute; top: -12px; width: 22px; height: 22px; border-radius: 50%; background: var(--paper); }
 .pt-foot::before { left: -11px; } .pt-foot::after { right: -11px; }
+/* Header with the full live-site menu (9 items) */
+@media (min-width: 1101px) {
+  .site-header nav { gap: clamp(14px, 1.5vw, 26px); }
+  .site-header nav a { font-size: clamp(14px, 1vw, 16px); white-space: nowrap; }
+  .site-header > .wrap { gap: clamp(16px, 2vw, 32px); }
+  .dd-menu { min-width: 240px; }
+}
+@media (min-width: 1101px) and (max-width: 1340px) {
+  .header-cta .phone { display: none; }
+  .site-header .logo img { height: 44px; }
+}
+.site-header .logo { flex: none; } .site-header .logo img { width: auto; max-width: none; }

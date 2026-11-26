@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "48"  # asset version (cache busting)
+V = "50"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -52,22 +52,34 @@ def head(title, desc=""):
 '''
 
 
+MENU = [  # mirrors the live site menu; sub-pages point at the matching service page for now
+    ("Home", "index.html", "home", []),
+    ("About", "about.html", "about", []),
+    ("Residential", "residential-electrician.html", "residential", ["Electrical Fit Outs", "Local Electrician", "Security Cameras", "Lighting", "Switchboard Installation", "Switchboard Upgrades", "Smoke Alarm Installation", "Ceiling Fan Installation", "Hot Water Systems"]),
+    ("Commercial", "commercial-electrician.html", "commercial", ["Electrical Fit Outs", "Electrical Installations", "Electrical Maintenance", "Electrical Repairs", "Test &amp; Tagging", "3 Phase Power Electrician"]),
+    ("Installation", "electrical-installations.html", "installation", []),
+    ("Maintenance", "maintenance-repairs.html", "maintenance", ["Electrical Repairs"]),
+    ("Data &amp; Fibre", "data-fibre.html", "data", ["Data Cable Installation", "Network Cabling", "Data Points", "Phone Wiring", "Fibre Optic Cabling"]),
+    ("Emergency", "emergency-electrician.html", "emergency", []),
+    ("Contact", "contact.html", "contact", []),
+]
+
+
 def nav(active=""):
-    a = lambda k: ' class="active"' if active == k else ""
-    svc = "\n".join(f'          <a href="{s["slug"]}.html">{e(s["nav"])}</a>' for s in SERVICES)
-    return f'''<nav aria-label="Main">
-      <a href="index.html"{a("home")}>Home</a>
-      <a href="about.html"{a("about")}>About</a>
-      <div class="dd">
-        <a href="services.html"{a("services")}>Services {CHEV}</a>
+    out = []
+    for label, href, key, subs in MENU:
+        cls = ' class="active"' if active == key else ""
+        if subs:
+            items = "\n".join(f'          <a href="{href}#services">{t}</a>' for t in subs)
+            out.append(f'''      <div class="dd">
+        <a href="{href}"{cls}>{label} {CHEV}</a>
         <div class="dd-menu">
-{svc}
+{items}
         </div>
-      </div>
-      <a href="emergency-electrician.html"{a("emergency")}>Emergency</a>
-      <a href="faq.html"{a("faq")}>FAQ</a>
-      <a href="contact.html"{a("contact")}>Contact</a>
-    </nav>'''
+      </div>''')
+        else:
+            out.append(f'      <a href="{href}"{cls}>{label}</a>')
+    return '<nav aria-label="Main">\n' + "\n".join(out) + '\n    </nav>'
 
 
 def header(active="", solid=False):
@@ -575,7 +587,7 @@ def service_page(d):
         <div class="body"><span class="num">{i+1:02d}</span><h3>{e(t)}</h3></div>
       </div>''' for i, (t, img) in enumerate(d["subs"]))
         subs = f'''
-<section class="ind-overview">
+<section class="ind-overview" id="services">
   <div class="wrap">
     <div class="section-head">
       <div><span class="eyebrow reveal">Services</span>
@@ -637,7 +649,7 @@ def service_page(d):
   </div>
 </section>
 '''
-    body = (head(d["title"], d["lead"]) + header("emergency" if d["key"] == "emergency" else "services")
+    body = (head(d["title"], d["lead"]) + header(d["key"])
             + hero_section(d["banner"], e(d["eyebrow"]), d["h1"], e(d["lead"]), crumbs=(("Home", "index.html"), ("Services", "services.html"), (d["nav"], "")), svc=SERVICES.index(d))
             + f'''
 <section class="ind-intro">
