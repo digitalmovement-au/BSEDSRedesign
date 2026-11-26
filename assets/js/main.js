@@ -530,3 +530,123 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
     b.addEventListener('pointerleave', () => { b.style.translate = ''; });
   });
 })();
+
+// ---------- Hanging light bulb: swings with scroll speed and glows brighter the further you scroll ----------
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const el = document.createElement('button');
+  el.className = 'bulb';
+  el.type = 'button';
+  el.setAttribute('aria-label', 'Back to top');
+  el.innerHTML = `
+    <span class="bulb-cord"></span>
+    <span class="bulb-swing">
+      <span class="bulb-glow"></span>
+      <svg viewBox="0 0 64 96" aria-hidden="true">
+        <defs>
+          <radialGradient id="bgl" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#fffbe0"/><stop offset=".55" stop-color="#ffe35c"/><stop offset="1" stop-color="#ffc800"/></radialGradient>
+        </defs>
+        <rect x="23" y="0" width="18" height="6" rx="2" fill="#3a3d42"/>
+        <rect x="21" y="5" width="22" height="18" rx="3" fill="#8d9098"/>
+        <path d="M21 10h22M21 15h22M21 20h22" stroke="#5c6068" stroke-width="1.6"/>
+        <path class="glass" d="M22 23c0 6-14 14-14 33a24 24 0 0048 0c0-19-14-27-14-33z" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+        <path class="glass-lit" d="M22 23c0 6-14 14-14 33a24 24 0 0048 0c0-19-14-27-14-33z" fill="url(#bgl)"/>
+        <path class="fil" d="M27 24v14l-4 10 4 4 5-6 5 6 4-4-4-10V24" fill="none" stroke-width="1.8" stroke-linejoin="round"/>
+        <ellipse cx="22" cy="52" rx="4" ry="9" fill="rgba(255,255,255,.55)" transform="rotate(18 22 52)"/>
+      </svg>
+    </span>`;
+  document.body.appendChild(el);
+  el.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+
+  let lastY = scrollY, angle = 0, vel = 0, last = performance.now(), lastSection = -1;
+  const sections = [...document.querySelectorAll('main section, body > section')];
+  const update = () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    const p = h > 0 ? scrollY / h : 0;
+    el.style.setProperty('--lit', (0.25 + p * 0.75).toFixed(3));
+    el.classList.toggle('show', scrollY > innerHeight * 0.5);
+    // flicker when a new section reaches the middle of the screen
+    let idx = -1;
+    sections.forEach((s, i) => { if (s.getBoundingClientRect().top < innerHeight / 2) idx = i; });
+    if (idx !== lastSection && lastSection !== -1 && !reduce) { el.classList.remove('flick'); void el.offsetWidth; el.classList.add('flick'); }
+    lastSection = idx;
+  };
+  // pendulum: scroll speed pushes the bulb, a spring pulls it back
+  const tick = t => {
+    const dt = Math.min(48, t - last) / 16; last = t;
+    const dy = scrollY - lastY; lastY = scrollY;
+    if (!reduce) {
+      vel += (-angle * 0.06 - vel * 0.12) * dt + Math.max(-4, Math.min(4, dy * 0.08));
+      angle += vel * dt;
+      angle = Math.max(-28, Math.min(28, angle));
+      el.style.setProperty('--sw', angle.toFixed(2) + 'deg');
+    }
+    requestAnimationFrame(tick);
+  };
+  update(); addEventListener('scroll', update, { passive: true }); addEventListener('resize', update);
+  requestAnimationFrame(tick);
+})();
+
+// ---------- Interactive service-area map (Leaflet + CARTO tiles, loaded only where needed) ----------
+(() => {
+  const box = document.querySelector('.area-map');
+  if (!box) return;
+  const subs = JSON.parse(box.dataset.suburbs);
+  const form = document.querySelector('.area-check'), input = form && form.querySelector('input'), out = document.querySelector('.area-result');
+  let map, markers = {};
+  const norm = s => s.toLowerCase().replace(/[^a-z]/g, '');
+  const find = q => subs.find(s => norm(s[0]) === norm(q)) || subs.find(s => norm(s[0]).startsWith(norm(q)) && norm(q).length > 2);
+  const popup = n => `<b>${n}</b><span class="ok">✓ We service this area</span><a href="tel:0433909889">Call 0433 909 889</a>`;
+
+  // convex hull for the shaded service area
+  const hull = pts => {
+    pts = pts.slice().sort((a, b) => a[1] - b[1] || a[0] - b[0]);
+    const cross = (o, a, b) => (a[1] - o[1]) * (b[0] - o[0]) - (a[0] - o[0]) * (b[1] - o[1]);
+    const lo = [], up = [];
+    for (const p of pts) { while (lo.length > 1 && cross(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+    for (const p of pts.slice().reverse()) { while (up.length > 1 && cross(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+    return lo.slice(0, -1).concat(up.slice(0, -1));
+  };
+
+  const init = () => {
+    const L = window.L;
+    map = L.map(box, { scrollWheelZoom: false, zoomControl: true, attributionControl: true });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      maxZoom: 18, subdomains: 'abcd',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+    }).addTo(map);
+    const pts = subs.map(s => [s[1], s[2]]);
+    const h = hull(pts);
+    L.polygon(h, { color: '#e6b800', weight: 2, dashArray: '6 6', fillColor: '#ffdc37', fillOpacity: .18, interactive: false }).addTo(map);
+    const icon = L.divIcon({ className: 'pin', html: '<span></span>', iconSize: [18, 18], iconAnchor: [9, 9] });
+    subs.forEach(([n, la, lo], i) => {
+      const m = L.marker([la, lo], { icon, title: n, riseOnHover: true }).addTo(map);
+      m.bindTooltip(n, { direction: 'top', offset: [0, -8], className: 'pin-tip' });
+      m.bindPopup(popup(n), { className: 'pin-pop', closeButton: false });
+      setTimeout(() => m.getElement() && m.getElement().classList.add('in'), 300 + i * 35);
+      markers[norm(n)] = m;
+    });
+    map.fitBounds(L.latLngBounds(pts).pad(0.08));
+    map.once('click', () => map.scrollWheelZoom.enable());
+  };
+
+  const load = () => {
+    if (window.L) return init();
+    const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'; document.head.appendChild(css);
+    const js = document.createElement('script'); js.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'; js.onload = init; document.head.appendChild(js);
+  };
+  new IntersectionObserver((es, o) => { if (es.some(e => e.isIntersecting)) { o.disconnect(); load(); } }, { rootMargin: '300px' }).observe(box);
+
+  if (form) form.addEventListener('submit', e => {
+    e.preventDefault();
+    const q = input.value.trim(); if (!q) return;
+    const hit = find(q);
+    out.className = 'area-result ' + (hit ? 'yes' : 'no');
+    if (hit) {
+      out.innerHTML = `<b>Good news!</b> We service ${hit[0]}. <a href="contact.html">Get a free quote →</a>`;
+      if (map) { map.flyTo([hit[1], hit[2]], 13, { duration: 1.2 }); const m = markers[norm(hit[0])]; setTimeout(() => m && m.openPopup(), 1250); }
+    } else {
+      out.innerHTML = `We may still be able to help in ${q.replace(/[<>&"]/g, '')}. Call <a href="tel:0433909889">0433 909 889</a> to check.`;
+    }
+  });
+})();

@@ -312,3 +312,18 @@ SERVICES = [
     closing="A licensed electrician will head to you as quickly as possible, day or night.",
   ),
 ]
+
+# Approximate suburb centres for the interactive service-area map
+SUBURB_COORDS = {
+  "Beerwah": (-26.857, 152.957), "Buddina": (-26.693, 153.133), "Buderim": (-26.684, 153.057), "Caloundra": (-26.803, 153.122),
+  "Coolum": (-26.528, 153.088), "Cooroy": (-26.418, 152.911), "Currimundi": (-26.765, 153.123), "Diamond Valley": (-26.758, 152.924),
+  "Doonan": (-26.443, 153.006), "Dulong": (-26.632, 152.906), "Eumundi": (-26.477, 152.951), "Flaxton": (-26.660, 152.876),
+  "Glass House Mountains": (-26.902, 152.957), "Glenview": (-26.770, 153.017), "Golden Beach": (-26.821, 153.118), "Hunchy": (-26.687, 152.912),
+  "Ilkley": (-26.737, 152.997), "Kawana": (-26.736, 153.132), "Kawana Islands": (-26.714, 153.119), "Kenilworth": (-26.598, 152.728),
+  "Lake Macdonald": (-26.385, 152.928), "Landsborough": (-26.808, 152.966), "Little Mountain": (-26.783, 153.093), "Maleny": (-26.759, 152.851),
+  "Maroochydore": (-26.656, 153.090), "Minyama": (-26.698, 153.124), "Moffat Beach": (-26.791, 153.140), "Montville": (-26.690, 152.892),
+  "Mooloolaba": (-26.682, 153.119), "Mooloolah Valley": (-26.765, 152.962), "Mountain Creek": (-26.700, 153.103), "Nambour": (-26.627, 152.959),
+  "Noosa": (-26.399, 153.081), "Noosa Heads": (-26.394, 153.091), "Noosaville": (-26.400, 153.063), "Palmview": (-26.744, 153.060),
+  "Palmwoods": (-26.686, 152.961), "Pelican Waters": (-26.832, 153.100), "Peregian Beach": (-26.481, 153.096), "Sippy Downs": (-26.719, 153.056),
+  "Tewantin": (-26.391, 153.034), "Woombye": (-26.661, 152.969), "Wurtulla": (-26.756, 153.128), "Yandina": (-26.562, 152.956),
+}

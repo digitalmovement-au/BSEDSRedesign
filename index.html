@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;100,600;100,700;100,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=35">
+  <link rel="stylesheet" href="assets/css/style.css?v=36">
 </head>
 <body>
 
@@ -415,17 +415,24 @@
   </div>
 </section>
 
-<section class="areas">
+<section class="areas" id="areas">
   <div class="wrap areas-grid">
-    <div>
+    <div class="areas-copy">
       <span class="eyebrow reveal">Service areas</span>
       <h2 class="h2 reveal">From Noosa to <em>Caloundra</em>, and the Hinterland.</h2>
-      <p class="lead reveal">Local electricians based on the Sunshine Coast, so help is never far away.</p>
-      <div class="cta-actions reveal" style="justify-content:flex-start">
-        <a class="btn btn-dark" href="contact.html">Book An Electrician <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
+      <p class="lead reveal">Local electricians based on the Sunshine Coast, so help is never far away. Check your suburb or tap a pin on the map.</p>
+      <form class="area-check reveal" autocomplete="off">
+        <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><input type="text" list="suburb-list" placeholder="Type your suburb, e.g. Buderim" aria-label="Your suburb"></label>
+        <button class="btn btn-dark" type="submit">Check <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <datalist id="suburb-list"><option value="Beerwah"><option value="Buddina"><option value="Buderim"><option value="Caloundra"><option value="Coolum"><option value="Cooroy"><option value="Currimundi"><option value="Diamond Valley"><option value="Doonan"><option value="Dulong"><option value="Eumundi"><option value="Flaxton"><option value="Glass House Mountains"><option value="Glenview"><option value="Golden Beach"><option value="Hunchy"><option value="Ilkley"><option value="Kawana"><option value="Kawana Islands"><option value="Kenilworth"><option value="Lake Macdonald"><option value="Landsborough"><option value="Little Mountain"><option value="Maleny"><option value="Maroochydore"><option value="Minyama"><option value="Moffat Beach"><option value="Montville"><option value="Mooloolaba"><option value="Mooloolah Valley"><option value="Mountain Creek"><option value="Nambour"><option value="Noosa"><option value="Noosa Heads"><option value="Noosaville"><option value="Palmview"><option value="Palmwoods"><option value="Pelican Waters"><option value="Peregian Beach"><option value="Sippy Downs"><option value="Tewantin"><option value="Woombye"><option value="Wurtulla"><option value="Yandina"></datalist>
+      </form>
+      <p class="area-result" aria-live="polite"></p>
+      <div class="area-stats reveal"><span><b>44</b> suburbs covered</span><span><b>24/7</b> emergency call-outs</span></div>
     </div>
-    <ul class="suburbs reveal"><li>Beerwah</li><li>Buddina</li><li>Buderim</li><li>Caloundra</li><li>Coolum</li><li>Cooroy</li><li>Currimundi</li><li>Diamond Valley</li><li>Doonan</li><li>Dulong</li><li>Eumundi</li><li>Flaxton</li><li>Glass House Mountains</li><li>Glenview</li><li>Golden Beach</li><li>Hunchy</li><li>Ilkley</li><li>Kawana</li><li>Kawana Islands</li><li>Kenilworth</li><li>Lake Macdonald</li><li>Landsborough</li><li>Little Mountain</li><li>Maleny</li><li>Maroochydore</li><li>Minyama</li><li>Moffat Beach</li><li>Montville</li><li>Mooloolaba</li><li>Mooloolah Valley</li><li>Mountain Creek</li><li>Nambour</li><li>Noosa</li><li>Noosa Heads</li><li>Noosaville</li><li>Palmview</li><li>Palmwoods</li><li>Pelican Waters</li><li>Peregian Beach</li><li>Sippy Downs</li><li>Tewantin</li><li>Woombye</li><li>Wurtulla</li><li>Yandina</li></ul>
+    <div class="area-map-wrap reveal">
+      <div class="area-map" data-suburbs="[[&quot;Beerwah&quot;, -26.857, 152.957], [&quot;Buddina&quot;, -26.693, 153.133], [&quot;Buderim&quot;, -26.684, 153.057], [&quot;Caloundra&quot;, -26.803, 153.122], [&quot;Coolum&quot;, -26.528, 153.088], [&quot;Cooroy&quot;, -26.418, 152.911], [&quot;Currimundi&quot;, -26.765, 153.123], [&quot;Diamond Valley&quot;, -26.758, 152.924], [&quot;Doonan&quot;, -26.443, 153.006], [&quot;Dulong&quot;, -26.632, 152.906], [&quot;Eumundi&quot;, -26.477, 152.951], [&quot;Flaxton&quot;, -26.66, 152.876], [&quot;Glass House Mountains&quot;, -26.902, 152.957], [&quot;Glenview&quot;, -26.77, 153.017], [&quot;Golden Beach&quot;, -26.821, 153.118], [&quot;Hunchy&quot;, -26.687, 152.912], [&quot;Ilkley&quot;, -26.737, 152.997], [&quot;Kawana&quot;, -26.736, 153.132], [&quot;Kawana Islands&quot;, -26.714, 153.119], [&quot;Kenilworth&quot;, -26.598, 152.728], [&quot;Lake Macdonald&quot;, -26.385, 152.928], [&quot;Landsborough&quot;, -26.808, 152.966], [&quot;Little Mountain&quot;, -26.783, 153.093], [&quot;Maleny&quot;, -26.759, 152.851], [&quot;Maroochydore&quot;, -26.656, 153.09], [&quot;Minyama&quot;, -26.698, 153.124], [&quot;Moffat Beach&quot;, -26.791, 153.14], [&quot;Montville&quot;, -26.69, 152.892], [&quot;Mooloolaba&quot;, -26.682, 153.119], [&quot;Mooloolah Valley&quot;, -26.765, 152.962], [&quot;Mountain Creek&quot;, -26.7, 153.103], [&quot;Nambour&quot;, -26.627, 152.959], [&quot;Noosa&quot;, -26.399, 153.081], [&quot;Noosa Heads&quot;, -26.394, 153.091], [&quot;Noosaville&quot;, -26.4, 153.063], [&quot;Palmview&quot;, -26.744, 153.06], [&quot;Palmwoods&quot;, -26.686, 152.961], [&quot;Pelican Waters&quot;, -26.832, 153.1], [&quot;Peregian Beach&quot;, -26.481, 153.096], [&quot;Sippy Downs&quot;, -26.719, 153.056], [&quot;Tewantin&quot;, -26.391, 153.034], [&quot;Woombye&quot;, -26.661, 152.969], [&quot;Wurtulla&quot;, -26.756, 153.128], [&quot;Yandina&quot;, -26.562, 152.956]]" role="application" aria-label="Map of Bright Sparks service areas"></div>
+      <span class="area-map-hint">Scroll the page freely. Click the map to zoom.</span>
+    </div>
   </div>
 </section>
 <footer>
@@ -458,6 +465,6 @@
   </div>
 </footer>
 <a class="float-call" href="tel:0433909889" aria-label="Call Bright Sparks on 0433 909 889"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>Call Us Now</a>
-<script src="assets/js/main.js?v=35"></script>
+<script src="assets/js/main.js?v=36"></script>
 </body>
 </html>

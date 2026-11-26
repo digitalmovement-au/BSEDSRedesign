@@ -8,10 +8,10 @@ import re
 from pathlib import Path
 
 from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, FAQ_ALL,
-                     REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
+                     REVIEWS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "35"  # asset version (cache busting)
+V = "36"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -265,19 +265,28 @@ def why_section(head_h2="Why choose <em>Bright Sparks</em>?"):
 
 
 def areas_section():
-    sub = "".join(f"<li>{e(s)}</li>" for s in SUBURBS)
+    import json
+    data = html.escape(json.dumps([[n, SUBURB_COORDS[n][0], SUBURB_COORDS[n][1]] for n in SUBURBS if n in SUBURB_COORDS]), quote=True)
+    opts = "".join(f'<option value="{e(n)}">' for n in SUBURBS)
     return f'''
-<section class="areas">
+<section class="areas" id="areas">
   <div class="wrap areas-grid">
-    <div>
+    <div class="areas-copy">
       <span class="eyebrow reveal">Service areas</span>
       <h2 class="h2 reveal">From Noosa to <em>Caloundra</em>, and the hinterland.</h2>
-      <p class="lead reveal">Local electricians based on the Sunshine Coast, so help is never far away.</p>
-      <div class="cta-actions reveal" style="justify-content:flex-start">
-        <a class="btn btn-dark" href="contact.html">Book An Electrician {ARROW}</a>
-      </div>
+      <p class="lead reveal">Local electricians based on the Sunshine Coast, so help is never far away. Check your suburb or tap a pin on the map.</p>
+      <form class="area-check reveal" autocomplete="off">
+        <label class="qf-f"><i>{PIN}</i><input type="text" list="suburb-list" placeholder="Type your suburb, e.g. Buderim" aria-label="Your suburb"></label>
+        <button class="btn btn-dark" type="submit">Check {ARROW}</button>
+        <datalist id="suburb-list">{opts}</datalist>
+      </form>
+      <p class="area-result" aria-live="polite"></p>
+      <div class="area-stats reveal"><span><b>{len(SUBURBS)}</b> suburbs covered</span><span><b>24/7</b> emergency call-outs</span></div>
     </div>
-    <ul class="suburbs reveal">{sub}</ul>
+    <div class="area-map-wrap reveal">
+      <div class="area-map" data-suburbs="{data}" role="application" aria-label="Map of Bright Sparks service areas"></div>
+      <span class="area-map-hint">Scroll the page freely. Click the map to zoom.</span>
+    </div>
   </div>
 </section>
 '''
@@ -788,19 +797,6 @@ def contact_page():
   </div>
 </section>
 
-<section class="visit" id="visit">
-  <iframe title="Sunshine Coast service area on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-    src="https://maps.google.com/maps?q=Sunshine%20Coast%20QLD&z=10&output=embed"></iframe>
-  <div class="wrap">
-    <div class="visit-card reveal">
-      <span class="eyebrow">Where we work</span>
-      <h3>Sunshine Coast wide</h3>
-      <address>Noosa to Caloundra,<br>and the hinterland</address>
-      <div class="lines"><a href="tel:{TEL}">{PHONE}</a><a href="mailto:{EMAIL}">{EMAIL}</a></div>
-      <a class="btn btn-dark" href="tel:{TEL}">{PHONE_I} Call Now</a>
-    </div>
-  </div>
-</section>
 ''' + areas_section() + faq_section(FAQ["general"] + FAQ["emergency"], h2="Before you <em>call</em>.", lead="Quick answers to the questions we hear most.")
             + footer() + tail())
     write("contact.html", body)
