@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "46"  # asset version (cache busting)
+V = "48"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -608,7 +608,23 @@ def service_page(d):
 '''
     prices = ""
     if d["prices"]:
-        cards = "".join(f'<div class="feature price reveal"><b>{e(a)}</b><small>{e(b)}</small><p>{e(c)}</p></div>' for a, b, c in d["prices"])
+        picons = [
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>',
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>',
+            BOLT,
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+        ]
+        def pcard(i, a, b, c):
+            urgent = "24/7" in a
+            link = f'<a class="pt-link" href="tel:{TEL}">{PHONE_I} Call {PHONE}</a>' if urgent else f'<a class="pt-link" href="contact.html">Get an exact quote {ARROW}</a>'
+            return f'''<div class="ptick{' hot' if i == 0 else ''}{' sos' if urgent else ''} reveal">
+          <div class="pt-top"><span class="pt-ico">{BOLT if urgent else picons[i % len(picons)]}</span><span class="pt-tag">{'Any time' if urgent else 'Guide price'}</span></div>
+          <b class="pt-price">{e(a)}</b>
+          <span class="pt-unit">{e(b)}</span>
+          <p>{e(c)}</p>
+          <div class="pt-foot"><span class="pt-ok">{CHECK} Quoted upfront</span>{link}</div>
+        </div>'''
+        cards = "".join(pcard(i, a, b, c) for i, (a, b, c) in enumerate(d["prices"]))
         prices = f'''
 <section class="features prices">
   <div class="wrap">
@@ -617,7 +633,7 @@ def service_page(d):
       <h2 class="h2 reveal">Upfront about <em>cost</em>.</h2></div>
       <p class="lead reveal">Typical Sunshine Coast prices, as a guide only. Every job is quoted in detail before work starts, with no hidden charges.</p>
     </div>
-    <div class="feature-grid n{len(d["prices"])}">{cards}</div>
+    <div class="ptick-grid n{len(d["prices"])}">{cards}</div>
   </div>
 </section>
 '''
