@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "18"  # asset version (cache busting)
+V = "19"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -31,7 +31,7 @@ ICONS = {  # simple line icons for "why choose us"
     2: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>',
 }
 
-TRUST = ["Fully licensed &amp; insured", "24/7 emergency call-outs", "5.0 rating on Google", "ACMA-approved NBN contractor"]
+TRUST = ["Fully licensed &amp; insured", "24/7 emergency call-outs", "ACMA-approved NBN contractor"]
 
 
 # ------------------------------------------------------------------ shared parts
