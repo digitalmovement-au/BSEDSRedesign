@@ -2218,3 +2218,17 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
 .r2-rating .r { display: flex; align-items: baseline; gap: 10px; }
 .r2-rating small { width: auto; min-width: 0; margin: 0; white-space: nowrap; }
 @media (max-width: 680px) { .r2-rating { padding: 12px 22px 12px 14px; } }
+
+/* Reviews styled like Google review cards, with the key phrase highlighted */
+.r2-card.gstyle { padding: 24px 24px 26px; border-radius: 14px; }
+.r2-card.gstyle header { display: flex; align-items: center; gap: 12px; }
+.r2-card.gstyle .av { width: 44px; height: 44px; font-size: 18px; }
+.r2-card.gstyle .who b { font-family: var(--sans); font-size: 15.5px; }
+.r2-card.gstyle .who small { color: var(--muted); font-size: 13px; }
+.r2-card.gstyle .g { width: 24px; height: 24px; margin-left: auto; flex: none; }
+.gstars { display: flex; align-items: center; gap: 10px; margin: 16px 0 12px; }
+.gstars span { color: #fbbc04; font-size: 19px; letter-spacing: 2px; line-height: 1; }
+.gstars em { font-style: normal; font-size: 12px; font-weight: 600; color: var(--muted); padding: 3px 8px; border-radius: 999px; background: var(--paper); }
+.r2-card.gstyle p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--ink-2); }
+.r2-card.gstyle mark { background: linear-gradient(transparent 55%, rgba(255,220,55,.85) 55%); color: var(--ink); font-weight: 700; padding: 0 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.r2-card.gstyle:hover { border-color: rgba(255,220,55,.9); }

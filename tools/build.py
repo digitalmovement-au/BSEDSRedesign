@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "15"  # asset version (cache busting)
+V = "16"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -270,13 +270,20 @@ def areas_section():
 
 def reviews_section(title="Trusted by Sunshine Coast homes and businesses, in their <em>own words</em>."):
     cols = ["#17191c", "#8a6d1c", "#2f4a3a", "#5a3b2e", "#3a3d42"]
+    keys = ["nothing but good things to say", "always quick to respond", "can highly recommend them", "professionalism is above and beyond",
+            "there to help in a heartbeat", "up and running in minimal time", "the best on the sunny coast", "work is always excellent",
+            "did an excellent job", "Clean, neat and tidy"]
     cards = []
     for i, (n, when, txt) in enumerate(REVIEWS):
-        cls = "r2-card" + (" more" if i >= 6 else "")
+        body = e(txt)
+        k = e(keys[i])
+        if k in body:
+            body = body.replace(k, f"<mark>{k}</mark>", 1)
+        cls = "r2-card gstyle" + (" more" if i >= 6 else "")
         cards.append(f'''      <article class="{cls} reveal">
-        <span class="q" aria-hidden="true">“</span>
-        <p>{e(txt)}</p>
-        <footer><span class="av" style="background:{cols[i % len(cols)]}">{n[0]}</span><span class="who"><b>{e(n)}</b><small>Google review · {e(when)}</small></span><span class="st">★★★★★</span></footer>
+        <header><span class="av" style="background:{cols[i % len(cols)]}">{n[0]}</span><span class="who"><b>{e(n)}</b><small>{e(when)}</small></span>{G}</header>
+        <div class="gstars"><span>★★★★★</span><em>Google review</em></div>
+        <p>{body}</p>
       </article>''')
     return f'''
 <section class="reviews2" id="reviews">
