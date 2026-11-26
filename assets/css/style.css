@@ -2175,24 +2175,12 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
 }
 @media (prefers-reduced-motion: reduce) { .wdb-pane.on { animation: none; } }
 
-/* Reviews: rating summary under the title */
-.r2-rating { display: inline-flex; align-items: center; gap: 20px; margin-top: 26px; padding: 14px 26px 14px 16px; border-radius: 14px; background: #fff; box-shadow: 0 12px 30px rgba(17,20,24,.06); text-align: left; }
-.r2-rating .r2-top { gap: 12px; }
-.r2-rating .r2-top .g { width: 44px; height: 44px; padding: 8px; border-radius: 10px; background: var(--paper); }
-.r2-rating .r2-top b { display: block; font-family: var(--display); font-weight: 800; font-size: 40px; letter-spacing: -.03em; line-height: .9; }
-.r2-rating .st { color: #f4b400; letter-spacing: 2px; font-size: 15px; }
-.r2-rating p { margin: 0; max-width: 46ch; color: var(--ink-2); font-size: 15.5px; padding-left: 20px; border-left: 1px solid var(--line); }
-@media (max-width: 680px) {
-  .r2-rating { flex-direction: column; gap: 12px; text-align: center; padding: 18px; }
-  .r2-rating p { padding-left: 0; border-left: 0; }
-}
-.r2-rating .r2-top b { color: var(--ink); }
-
-/* Rating summary: the 5.0 and stars stand out */
-.r2-rating { padding: 10px 28px 10px 10px; gap: 24px; border: 2px solid var(--brass); }
-.r2-rating .r2-top { background: var(--ink); border-radius: 10px; padding: 14px 22px 14px 14px; gap: 14px; }
-.r2-rating .r2-top .g { background: #fff; width: 48px; height: 48px; }
-.r2-rating .r2-top b { color: var(--brass); font-size: 52px; }
-.r2-rating .r2-top .st { display: block; margin-top: 6px; color: var(--brass); font-size: 20px; letter-spacing: 3px; text-shadow: 0 0 14px rgba(255,220,55,.55); }
-.r2-rating p { font-size: 16.5px; }
-@media (max-width: 680px) { .r2-rating { padding: 10px 10px 18px; } }
+/* Reviews: rating badge under the title (same style as the banner badge) */
+.r2-rating { display: inline-flex; align-items: center; gap: 14px; margin-top: 26px; padding: 14px 24px 14px 16px; border-radius: 12px; background: #fff; box-shadow: 0 14px 30px rgba(17,20,24,.08); text-align: left; }
+.r2-rating .g { width: 38px; height: 38px; flex: none; }
+.r2-rating span { display: grid; grid-template-columns: auto auto; justify-content: start; align-items: center; column-gap: 10px; line-height: 1.25; }
+.r2-rating b { font-family: var(--display); font-weight: 800; font-size: 26px; letter-spacing: -.02em; }
+.r2-rating i { font-style: normal; color: #f4b400; letter-spacing: 2px; font-size: 17px; }
+.r2-rating small { grid-column: 1 / -1; margin-top: 2px; font-size: 13.5px; color: var(--muted); max-width: 44ch; }
+.r2-rating span { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px; } .r2-rating small { flex-basis: 100%; }
+.r2-rating span { max-width: 340px; } .r2-rating small { width: 100%; max-width: none; }
