@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "57"  # asset version (cache busting)
+V = "58"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -580,21 +580,32 @@ def service_page(d):
     lst = "".join(f'<li class="reveal"><span class="n">{i+1:02d}</span>{e(x)}</li>' for i, x in enumerate(d["list"]))
     subs = ""
     if d["subs"]:
-        cards = "".join(f'''
-      <div class="ind-card svc reveal">
-        <div class="ph"><img loading="lazy" src="{img}" alt=""></div>
-        <div class="body"><span class="num">{i+1:02d}</span><h3>{e(t)}</h3></div>
-      </div>''' for i, (t, img) in enumerate(d["subs"]))
+        items = d["subs"]
+        n = len(items)
+        rows = [items] if n <= 5 else [items[:(n + 1) // 2], items[(n + 1) // 2:]]
+        k = 0
+        rows_html = ""
+        for row in rows:
+            ps = ""
+            for t, img in row:
+                k += 1
+                ps += f'''
+    <a class="panel" href="contact.html">
+      <img loading="lazy" src="{img}" alt="">
+      <div class="inner"><span class="num">{k:02d}</span><h3>{e(t)}</h3>
+        <p>Licensed, quoted upfront and tested before handover.</p>
+        <span class="go">Get a quote →</span></div>
+    </a>'''
+            rows_html += f'\n  <div class="panels sub">{ps}\n  </div>'
         subs = f'''
-<section class="ind-overview" id="services">
+<section class="sectors v2 subs" id="services">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="eyebrow reveal">Services</span>
+      <div><span class="eyebrow light reveal">What we can do for you</span>
       <h2 class="h2 reveal">{e(d["subs_h2"])}</h2></div>
+      <p class="lead reveal" style="color:rgba(255,255,255,.72)">{e(d["card_text"])}</p>
     </div>
-    <div class="ind-cards n{len(d["subs"])}">{cards}
-    </div>
-  </div>
+  </div>{rows_html}
 </section>
 '''
     blocks = ""

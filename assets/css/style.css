@@ -2737,3 +2737,9 @@ img.av { object-fit: cover; background: var(--paper); box-shadow: 0 0 0 2px #fff
 }
 .about-ctas { display: flex; flex-wrap: wrap; gap: 12px; } @media (max-width: 1100px) { .about-ctas { justify-content: center; } }
 .copy-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+/* Service pages: sub-services as expanding panels (homepage "What we can do for you" design) */
+.sectors.v2.subs { padding-bottom: 4px; }
+.panels.sub { height: 64vh; min-height: 440px; }
+.panels.sub + .panels.sub { margin-top: 0; }
+.panels.sub .panel h3 { font-size: clamp(22px, 1.7vw, 30px); }
+@media (max-width: 1100px) { .panels.sub { height: auto; } .panels.sub + .panels.sub { margin-top: 4px; } }

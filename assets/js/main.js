@@ -421,8 +421,7 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
   });
 
   // Service panels rise up one after another
-  const panels = document.querySelector('.panels');
-  if (panels) new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { panels.classList.add('in'); o.disconnect(); } }), { threshold: 0.15 }).observe(panels);
+  document.querySelectorAll('.panels').forEach(panels => new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { panels.classList.add('in'); o.disconnect(); } }), { threshold: 0.15 }).observe(panels));
 
   // Spotlight that follows the cursor on cards
   $$('.r2-card, .feature, .ind-card, .stack-card, .qf-card').forEach(c => c.addEventListener('pointermove', e => {
