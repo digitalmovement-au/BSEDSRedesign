@@ -2617,3 +2617,4 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
   .bulb-cord { height: 128px; } .bulb-swing { width: 44px; height: 200px; }
   .bulb-swing svg { top: 124px; width: 44px; height: 66px; } .bulb-glow { top: 162px; }
 }
+.why2-media img { object-position: 88% 50%; }
