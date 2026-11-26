@@ -24,3 +24,7 @@ All pages are generated. Edit copy in `tools/content.py` or layout in `tools/bui
 
 ## Motion
 `assets/js/main.js` ends with a motion layer: headline words rise into place, highlighter strokes draw in, cards and lists arrive in a stagger, images wipe open, service panels rise in sequence, the banner photo drifts (parallax), cards get a soft cursor spotlight, primary buttons get a light sweep, a yellow scroll-progress bar runs along the top, eyebrows draw a yellow line, feature cards flip up, job photos wipe open, lists slide and pop in, cards tilt in 3D, buttons are magnetic, section photos have parallax. All of it switches off for visitors who prefer reduced motion.
+
+## Menu and layout
+- The menu mirrors the live site: Home, About, Residential, Commercial, Installation, Maintenance, Data & Fibre, Emergency, Contact. Sub-menu items link to the matching service page's services section until those sub-pages are built in WordPress. FAQ and Services overview are linked from the footer.
+- Content width is 1440px on laptops and desktops and 1880px on large screens (1800px+ viewports).
