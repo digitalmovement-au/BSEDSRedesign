@@ -2611,3 +2611,9 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
 .bulb .glass-lit, .bulb-glow, .bulb-swing svg { transition: opacity 1.2s ease, filter 1.2s ease; }
 .bulb-glow { opacity: calc(.3 + var(--lit) * .7); }
 .bulb.flick .bulb-swing svg, .bulb.flick .bulb-glow { animation: none; }
+/* Bulb: slimmer and tucked into the page margin so it never sits over text */
+@media (min-width: 1101px) {
+  .bulb { right: 4px; width: 44px; height: 200px; }
+  .bulb-cord { height: 128px; } .bulb-swing { width: 44px; height: 200px; }
+  .bulb-swing svg { top: 124px; width: 44px; height: 66px; } .bulb-glow { top: 162px; }
+}
