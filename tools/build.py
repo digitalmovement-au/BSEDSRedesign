@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "24"  # asset version (cache busting)
+V = "25"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -394,14 +394,25 @@ def index_page():
       </div>
       {chips("hero-chips")}
     </div>
-    <div class="bs-hero-form" id="quote">
-      <div class="hf-head">
-        <span class="hf-badge">{BOLT} Free quote</span>
-        <h2>Get in touch with Bright Sparks</h2>
-        <p>Detailed, transparent quotes. No hidden charges.</p>
+    <div class="qf-card" id="quote">
+      <div class="qf-head">
+        <span class="qf-ico">{BOLT}</span>
+        <div><h2>Get a free quote</h2><p>Detailed, transparent quotes. No hidden charges.</p></div>
       </div>
-      {quote_form("quote", "btn-primary")}
-      <a class="hf-sos" href="tel:{TEL}"><span class="live"></span>Emergency? Call 24/7 <b>{PHONE}</b></a>
+      <form class="qf">
+        <fieldset class="qf-svc"><legend>What do you need help with?</legend>
+          {"".join(f'<label><input type="radio" name="svc"{" checked" if i == 0 else ""}><span>{e(x["nav"])}</span></label>' for i, x in enumerate(SERVICES))}
+        </fieldset>
+        <div class="qf-grid">
+          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></i><input type="text" placeholder="Full name" required></label>
+          <label class="qf-f"><i>{PHONE_I}</i><input type="tel" placeholder="Phone" required></label>
+          <label class="qf-f"><i>{MAIL}</i><input type="email" placeholder="Email" required></label>
+          <label class="qf-f"><i>{PIN}</i><input type="text" placeholder="Suburb of works"></label>
+          <label class="qf-f full"><textarea placeholder="Tell us a little about the job…" rows="3"></textarea></label>
+        </div>
+        <button class="btn btn-primary qf-btn" type="submit">Request My Free Quote {ARROW}</button>
+      </form>
+      <a class="qf-sos" href="tel:{TEL}"><span class="live"></span>Electrical emergency? Call 24/7 <b>{PHONE}</b></a>
     </div>
   </div>
 </section>

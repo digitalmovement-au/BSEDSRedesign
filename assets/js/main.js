@@ -156,6 +156,10 @@
     });
   }
 
+  $$('form.qf').forEach(f => f.addEventListener('submit', e => {
+    e.preventDefault();
+    const b = $('.qf-btn', f); b.textContent = 'Thanks! Prototype only'; b.disabled = true;
+  }));
   // Prototype form: don't actually submit
   $$('form.quote').forEach(f => f.addEventListener('submit', e => {
     e.preventDefault();

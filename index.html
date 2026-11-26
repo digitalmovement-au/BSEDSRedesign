@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;100,600;100,700;100,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=24">
+  <link rel="stylesheet" href="assets/css/style.css?v=25">
 </head>
 <body>
 
@@ -63,24 +63,25 @@
       </div>
       <ul class="hero-chips"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Fully licensed &amp; insured</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>24/7 emergency call-outs</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ACMA-approved NBN contractor</li></ul>
     </div>
-    <div class="bs-hero-form" id="quote">
-      <div class="hf-head">
-        <span class="hf-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg> Free quote</span>
-        <h2>Get in Touch with Bright Sparks</h2>
-        <p>Detailed, transparent quotes. No hidden charges.</p>
+    <div class="qf-card" id="quote">
+      <div class="qf-head">
+        <span class="qf-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></span>
+        <div><h2>Get a Free Quote</h2><p>Detailed, transparent quotes. No hidden charges.</p></div>
       </div>
-      <form class="quote">
-        <label>Name<input type="text" placeholder="Your full name" required></label>
-        <label>Phone<input type="tel" placeholder="0400 000 000" required></label>
-        <label>Email<input type="email" placeholder="you@example.com" required></label>
-        <label>Suburb of works<input type="text" placeholder="Maroochydore"></label>
-        <div class="field full"><span class="flabel">Service</span>
-          <select><option>Residential</option><option>Commercial</option><option>Installation</option><option>Maintenance &amp; Repairs</option><option>Data &amp; Fibre</option><option>24/7 Emergency</option><option>Something else</option></select>
+      <form class="qf">
+        <fieldset class="qf-svc"><legend>What do you need help with?</legend>
+          <label><input type="radio" name="svc" checked><span>Residential</span></label><label><input type="radio" name="svc"><span>Commercial</span></label><label><input type="radio" name="svc"><span>Installation</span></label><label><input type="radio" name="svc"><span>Maintenance &amp; Repairs</span></label><label><input type="radio" name="svc"><span>Data &amp; Fibre</span></label><label><input type="radio" name="svc"><span>24/7 Emergency</span></label>
+        </fieldset>
+        <div class="qf-grid">
+          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></i><input type="text" placeholder="Full name" required></label>
+          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></i><input type="tel" placeholder="Phone" required></label>
+          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg></i><input type="email" placeholder="Email" required></label>
+          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><input type="text" placeholder="Suburb of works"></label>
+          <label class="qf-f full"><textarea placeholder="Tell us a little about the job…" rows="3"></textarea></label>
         </div>
-        <label class="full">Tell us what you need<textarea placeholder="A few details about the job…"></textarea></label>
-        <button class="btn btn-primary" type="submit">Request A Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="btn btn-primary qf-btn" type="submit">Request My Free Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </form>
-      <a class="hf-sos" href="tel:0433909889"><span class="live"></span>Emergency? Call 24/7 <b>0433 909 889</b></a>
+      <a class="qf-sos" href="tel:0433909889"><span class="live"></span>Electrical emergency? Call 24/7 <b>0433 909 889</b></a>
     </div>
   </div>
 </section>
@@ -431,6 +432,6 @@
   </div>
 </footer>
 <a class="float-call" href="tel:0433909889" aria-label="Call Bright Sparks on 0433 909 889"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>Call Us Now</a>
-<script src="assets/js/main.js?v=24"></script>
+<script src="assets/js/main.js?v=25"></script>
 </body>
 </html>
