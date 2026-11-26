@@ -7,11 +7,12 @@ import html
 import re
 from pathlib import Path
 
+from subpages import SUBPAGES
 from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, FAQ_ALL,
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "58"  # asset version (cache busting)
+V = "60"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -65,12 +66,19 @@ MENU = [  # mirrors the live site menu; sub-pages point at the matching service 
 ]
 
 
+def sub_href(parent, label):
+    for sp in SUBPAGES:
+        if sp["parent"] == parent and sp["nav"] == label:
+            return sp["slug"] + ".html"
+    return "#"
+
+
 def nav(active=""):
     out = []
     for label, href, key, subs in MENU:
         cls = ' class="active"' if active == key else ""
         if subs:
-            items = "\n".join(f'          <a href="{href}#services">{t}</a>' for t in subs)
+            items = "\n".join(f'          <a href="{sub_href(key, t)}">{t}</a>' for t in subs)
             out.append(f'''      <div class="dd">
         <a href="{href}"{cls}>{label} {CHEV}</a>
         <div class="dd-menu">
@@ -426,14 +434,14 @@ def hero_section(img, eyebrow, h1, lead, crumbs=(), svc=0):
 ''' + ticker()
 
 
-def panels_section():
+def panels_section(exclude=None):
     panels = "".join(f'''
     <a class="panel" href="{s["slug"]}.html">
       <img loading="lazy" src="{s["panel"]}" alt="">
       <div class="inner"><span class="num">{i+1:02d}</span><h3>{e(s["nav"])}</h3>
         <p>{e(s["card_text"])}</p>
         <span class="go">Explore →</span></div>
-    </a>''' for i, s in enumerate(SERVICES))
+    </a>''' for i, s in enumerate([x for x in SERVICES if x["slug"] != exclude]))
 
     return f'''
 <!-- Services: image panels -->
@@ -574,38 +582,130 @@ def index_page():
     write("index.html", body)
 
 
+SUB_SETS = {
+    "residential": [sp["slug"] for sp in SUBPAGES if sp["parent"] == "residential"],
+    "commercial": [sp["slug"] for sp in SUBPAGES if sp["parent"] == "commercial"],
+    "data": [sp["slug"] for sp in SUBPAGES if sp["parent"] == "data"],
+    "maintenance": ["commercial-electrical-maintenance", "electrical-repairs", "commercial-electrical-test-tagging"],
+    "installation": ["electrical-fit-outs", "residential-lighting-electrician", "residential-security-camera-installations", "residential-switchboard-installation",
+                     "residential-switchboard-upgrades", "residential-hot-water-systems", "residential-smoke-alarm-installation", "residential-ceiling-fan-installations", "commercial-electrical-installations"],
+}
+SP = {sp["slug"]: sp for sp in SUBPAGES}
+
+
+def sub_cards_for(key):
+    return [SP[x] for x in SUB_SETS.get(key, [])]
+
+
+def stack_cards(cards, tones=("t-light", "t-dark")):
+    out = ""
+    for i, sp in enumerate(cards):
+        tone = tones[i % len(tones)]
+        ticks = [sec[1] for sec in sp["sections"]][:4]
+        out += f'''
+      <article class="stack-card {tone}" style="--i:{i}">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">{i+1:02d}</span><span class="sc-tag">{sp["nav"]}</span></div>
+          <h3>{e(sp["intro"][1])}</h3>
+          <p>{e(sp["desc"])}</p>
+          <ul class="ticks">{"".join(f"<li>{CHECK}{e(t)}</li>" for t in ticks)}</ul>
+          <a class="btn btn-primary" href="{sp["slug"]}.html">Learn More {ARROW}</a>
+        </div>
+        <div class="sc-img"><img loading="lazy" src="{sp["intro"][3][0]}" alt=""></div>
+      </article>'''
+    return out
+
+
+def tick_list(items):
+    li = ""
+    for x in items:
+        if ": " in x:
+            k, v = x.split(": ", 1)
+            li += f"<li>{CHECK}<span><b>{e(k)}:</b> {e(v)}</span></li>"
+        else:
+            li += f"<li>{CHECK}<span>{e(x)}</span></li>"
+    return f'<ul class="ticks reveal">{li}</ul>'
+
+
+def sub_page(sp):
+    parent = next(x for x in SERVICES if x["key"] == sp["parent"])
+    pool = list(sp["intro"][3]) + [im for sec in sp["sections"] for im in sec[4]]
+    eb, h2, paras, imgs = sp["intro"]
+    cta = f'<div class="hero-actions copy-ctas reveal"><a class="btn btn-primary" href="contact.html">Get A Free Quote {ARROW}</a><a class="btn btn-dark btn-call" href="tel:{TEL}">{PHONE_I} {PHONE}</a></div>'
+    body = f'''
+<section class="ind-intro">
+  <div class="wrap ind-intro-grid">
+    <div class="ind-copy">
+      <span class="eyebrow reveal">{e(eb)}</span>
+      <h2 class="h2 reveal">{e(h2)}</h2>
+      {"".join(f'<p class="reveal">{e(x)}</p>' for x in paras)}
+      {cta}
+    </div>
+    <div class="ind-imgs reveal"><img loading="lazy" src="{imgs[0]}" alt=""><img loading="lazy" src="{imgs[1] if len(imgs) > 1 else pool[-1]}" alt=""></div>
+  </div>
+</section>
+'''
+    k = 2
+    for i, (seb, sh, sps, sbl, simgs) in enumerate(sp["sections"]):
+        two = list(simgs)
+        tries = 0
+        while len(two) < 2 and tries < len(pool) * 2:
+            cand = pool[k % len(pool)]; k += 1; tries += 1
+            if cand not in two:
+                two.append(cand)
+        while len(two) < 2:
+            two.append(pool[0])
+        body += f'''
+<section class="ind-intro{' alt' if i % 2 == 0 else ''}">
+  <div class="wrap ind-intro-grid{' rev' if i % 2 == 0 else ''}">
+    <div class="ind-copy">
+      <span class="eyebrow reveal">{e(seb)}</span>
+      <h2 class="h2 reveal">{e(sh)}</h2>
+      {"".join(f'<p class="reveal">{e(x)}</p>' for x in sps)}
+      {tick_list(sbl) if sbl else ""}
+      {cta}
+    </div>
+    <div class="ind-imgs reveal"><img loading="lazy" src="{two[0]}" alt=""><img loading="lazy" src="{two[1]}" alt=""></div>
+  </div>
+</section>
+'''
+    sibs = [x for x in SUBPAGES if x["parent"] == sp["parent"] and x["slug"] != sp["slug"]]
+    chips = "".join(f'<a class="chip-link" href="{x["slug"]}.html">{x["nav"]} {ARROW}</a>' for x in sibs) + f'<a class="chip-link" href="{parent["slug"]}.html">All {e(parent["nav"].lower())} services {ARROW}</a>'
+    faq = faq_section(sp["faqs"], h2="Frequently asked <em>questions</em>.", lead="Quick answers before you book.", more=False) if sp.get("faqs") else ""
+    html_ = (head(sp["title"], sp["desc"]) + header(sp["parent"])
+             + hero_section(sp["banner"], f'{e(parent["nav"])} · {sp["nav"]}', sp["h1"], e(sp["lead"]),
+                            crumbs=(("Home", "index.html"), (parent["nav"], parent["slug"] + ".html"), (sp["nav"].replace("&amp;", "&"), "")),
+                            svc=SERVICES.index(parent))
+             + body + faq + why_section() + reviews_section() + quote_section() + areas_section()
+             + f'''
+<section class="other-inds">
+  <div class="wrap">
+    <span class="eyebrow">More {e(parent["nav"].lower())} services</span>
+    <div class="chip-links">{chips}</div>
+  </div>
+</section>
+''' + footer() + tail())
+    write(sp["slug"] + ".html", html_)
+
+
 # ------------------------------------------------------------------ service page
 def service_page(d):
     paras = "".join(f'<p class="reveal">{e(p)}</p>' for p in d["intro"])
     lst = "".join(f'<li class="reveal"><span class="n">{i+1:02d}</span>{e(x)}</li>' for i, x in enumerate(d["list"]))
     subs = ""
-    if d["subs"]:
-        items = d["subs"]
-        n = len(items)
-        rows = [items] if n <= 5 else [items[:(n + 1) // 2], items[(n + 1) // 2:]]
-        k = 0
-        rows_html = ""
-        for row in rows:
-            ps = ""
-            for t, img in row:
-                k += 1
-                ps += f'''
-    <a class="panel" href="contact.html">
-      <img loading="lazy" src="{img}" alt="">
-      <div class="inner"><span class="num">{k:02d}</span><h3>{e(t)}</h3>
-        <p>Licensed, quoted upfront and tested before handover.</p>
-        <span class="go">Get a quote →</span></div>
-    </a>'''
-            rows_html += f'\n  <div class="panels sub">{ps}\n  </div>'
+    cards = sub_cards_for(d["key"])
+    if cards:
         subs = f'''
-<section class="sectors v2 subs" id="services">
+<section class="stack-sec" id="services">
   <div class="wrap">
     <div class="section-head">
       <div><span class="eyebrow light reveal">What we can do for you</span>
       <h2 class="h2 reveal">{e(d["subs_h2"])}</h2></div>
-      <p class="lead reveal" style="color:rgba(255,255,255,.72)">{e(d["card_text"])}</p>
+      <p class="lead reveal">{e(d["card_text"])}</p>
     </div>
-  </div>{rows_html}
+    <div class="stack">{stack_cards(cards)}
+    </div>
+  </div>
 </section>
 '''
     blocks = ""
@@ -692,7 +792,7 @@ def service_page(d):
 </section>
 ''' + blocks + prices + why_section("Why choose <em>Bright Sparks</em>?")
             + recent_section() + reviews_section() + quote_section() + areas_section()
-            + other_services(d["slug"]) + footer() + tail())
+            + panels_section(exclude=d["slug"]) + footer() + tail())
     write(f'{d["slug"]}.html', body)
 
 
@@ -893,6 +993,8 @@ def contact_page():
 
 
 if __name__ == "__main__":
+    for sp in SUBPAGES:
+        sub_page(sp)
     index_page()
     for d in SERVICES:
         service_page(d)

@@ -28,3 +28,6 @@ All pages are generated. Edit copy in `tools/content.py` or layout in `tools/bui
 ## Menu and layout
 - The menu mirrors the live site: Home, About, Residential, Commercial, Installation, Maintenance, Data & Fibre, Emergency, Contact. Sub-menu items link to the matching service page's services section until those sub-pages are built in WordPress. FAQ and Services overview are linked from the footer.
 - Content width is 1440px on laptops and desktops and 1880px on large screens (1800px+ viewports).
+
+## Sub-pages (from the menu dropdowns)
+21 sub-pages recreated from the live site's content: 9 Residential, 6 Commercial, Electrical Repairs (Maintenance) and 5 Data & Fibre. Copy lives in `tools/subpages.py`. Each uses the homepage banner with the quote card, an overview, one section per topic from the live page (with its photos), FAQs where the live page has them, then why choose us, reviews, the quote section, the service-area map and links to sibling services. Service pages list their sub-pages as stacking cards; the menu dropdowns link straight to them.
