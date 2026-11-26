@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "31"  # asset version (cache busting)
+V = "32"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -121,7 +121,6 @@ def footer():
         <li><a href="tel:{TEL}"><i>{PHONE_I}</i><span>{PHONE}</span></a></li>
         <li><a href="mailto:{EMAIL}"><i>{MAIL}</i><span>{EMAIL}</span></a></li></ul></div>
     </div>
-    <div class="wordmark" aria-hidden="true">Bright Sparks</div>
     <div class="base"><span>Copyright © 2026 Bright Sparks Electrical &amp; Data Services. All rights reserved.</span><span>Designed By <a href="https://www.digitalmovement.com.au/" target="_blank" rel="noopener">Digital Movement</a></span></div>
   </div>
 </footer>
