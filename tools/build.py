@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "41"  # asset version (cache busting)
+V = "42"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -489,16 +489,20 @@ def index_page():
 <section class="about-intro home-about">
   <div class="wrap">
     <div class="about-grid">
-      <div class="about-photo reveal"><img loading="lazy" src="{W}2026/08/Right-image-8-1.jpg" alt=""></div>
+      <div class="who-media">
+        <div class="about-photo reveal"><img loading="lazy" src="{W}2026/08/Right-image-8-1.jpg" alt=""></div>
+        <div class="who-inset reveal"><img loading="lazy" src="{IG}{INSTAGRAM_POSTS[3]}" alt="Recent job by Bright Sparks"></div>
+        <span class="who-chip">{CHECK} Fully licensed &amp; insured</span>
+      </div>
       <div>
         <span class="eyebrow reveal">Who we are</span>
         <p class="statement reveal" style="margin-top:20px">For more than 20 years, we’ve provided Sunshine Coast homes and businesses with electrical and data solutions that meet the <em>highest standards</em>.</p>
         <p class="lead reveal" style="margin-top:28px;max-width:62ch">From residential lighting and power upgrades to commercial fit-outs, data cabling, routine maintenance and emergency repairs, we’ve built a strong reputation for precision, reliability and workmanship.</p>
-        <ul class="r2-proof row inline reveal">
-      <li><b data-count="20" data-suffix="+">20+</b><span>Years on the Coast</span></li>
-      <li><b>24/7</b><span>Emergency call-outs</span></li>
-      <li><b>ACMA</b><span>Registered NBN contractor</span></li>
-      <li><b>1 team</b><span>For power &amp; data</span></li>
+        <ul class="who-stats reveal">
+          <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></i><b data-count="20" data-suffix="+">20+</b><span>Years on the Coast</span></li>
+          <li><i>{BOLT}</i><b>24/7</b><span>Emergency call-outs</span></li>
+          <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-2h12v2"/></svg></i><b>ACMA</b><span>Registered NBN contractor</span></li>
+          <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.6c3 .1 6 1.7 6 5.4"/></svg></i><b>1 team</b><span>For power &amp; data</span></li>
         </ul>
         <div class="cta-actions reveal" style="justify-content:flex-start;margin-top:34px"><a class="btn btn-dark" href="about.html">About Bright Sparks {ARROW}</a></div>
       </div>
