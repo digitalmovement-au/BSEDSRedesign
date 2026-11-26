@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "45"  # asset version (cache busting)
+V = "46"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -659,6 +659,18 @@ def service_page(d):
 
 # ------------------------------------------------------------------ services overview
 def services_page():
+    tones = ["t-light", "t-dark", "t-light", "t-dark", "t-light", "t-yellow"]
+    svc_stack = "".join(f'''
+      <article class="stack-card {tones[i]}" style="--i:{i}">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">{i+1:02d}</span><span class="sc-tag">{e(d["nav"])}</span></div>
+          <h3>{e(d["intro_h2"])}</h3>
+          <p>{e(d["card_text"])}</p>
+          <ul class="ticks">{"".join(f"<li>{CHECK}{e(x)}</li>" for x in d["list"][:4])}</ul>
+          <a class="btn {"btn-dark" if tones[i] == "t-yellow" else "btn-primary"}" href="{d["slug"]}.html">Explore {e(d["nav"])} {ARROW}</a>
+        </div>
+        <div class="sc-img"><img loading="lazy" src="{d["panel"]}" alt=""></div>
+      </article>''' for i, d in enumerate(SERVICES))
     cards = "".join(f'''
       <a class="ind-card reveal" href="{d["slug"]}.html">
         <div class="ph"><img loading="lazy" src="{d["card_img"]}" alt=""></div>
@@ -668,14 +680,14 @@ def services_page():
             + hero_section(W + "2026/08/homepage-banner-img-3a-1.webp", "Services", "Electrical services for homes <em>and businesses</em>", "Reliable and affordable electrician services Sunshine Coast homes and businesses know they can trust.", crumbs=(("Home", "index.html"), ("Services", "")))
             + panels_section()
             + f'''
-<section class="ind-overview">
+<section class="stack-sec" id="all-services">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="eyebrow reveal">Six specialisms, one team</span>
+      <div><span class="eyebrow light reveal">Six specialisms, one team</span>
       <h2 class="h2 reveal">Find the right <em>service</em>.</h2></div>
       <p class="lead reveal">Because the same licensed team handles electrical and data work, you can use one contractor for the whole job.</p>
     </div>
-    <div class="ind-cards">{cards}
+    <div class="stack">{svc_stack}
     </div>
   </div>
 </section>
@@ -709,7 +721,7 @@ def services_page():
     </div>
   </div>
 </section>
-''' + stack_section() + reviews_section() + quote_section() + areas_section() + footer() + tail())
+''' + reviews_section() + quote_section() + areas_section() + footer() + tail())
     write("services.html", body)
 
 
