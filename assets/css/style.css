@@ -2241,3 +2241,6 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
 .r2-card.gstyle .gstars .g { margin-left: 0; }
 .r2-card.gstyle p { margin-bottom: 22px; }
 .r2-card.gstyle header { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+/* Banner trust pills on one line; no divider under the form button */
+@media (min-width: 681px) { .bs-hero .hero-chips { flex-wrap: nowrap; max-width: none; } .bs-hero .hero-chips li { font-size: 13px; } }
+.hf-sos { border-top: 0; padding-top: 0; margin-top: 16px; }
