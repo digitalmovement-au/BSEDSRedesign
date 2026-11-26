@@ -2593,3 +2593,15 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
 }
 @media (max-width: 680px) { .area-check { flex-direction: column; } .area-map { height: 360px; } }
 @media (prefers-reduced-motion: reduce) { .pin.in span { animation: none; } }
+.osm-tiles { filter: saturate(.55) contrast(.95) brightness(1.04); }
+
+/* Quote section: equal-height columns, one field per line */
+.cta:not(.center) .wrap { align-items: stretch; }
+.cta:not(.center) .wrap > div:first-child { display: flex; flex-direction: column; }
+.cta:not(.center) .cta-map { flex: 1; min-height: 260px; height: auto; }
+.cta:not(.center) form.quote { grid-template-columns: 1fr; align-content: stretch; grid-auto-rows: auto; }
+.cta:not(.center) form.quote > * { grid-column: 1 / -1; }
+.cta:not(.center) form.quote label:has(textarea) { display: flex; flex-direction: column; }
+.cta:not(.center) form.quote textarea { flex: 1; min-height: 110px; }
+.cta:not(.center) form.quote .btn { justify-self: stretch; justify-content: center; }
+@media (max-width: 1100px) { .cta:not(.center) .cta-map { flex: none; height: 280px; } }
