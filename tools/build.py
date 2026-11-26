@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "56"  # asset version (cache busting)
+V = "57"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -657,6 +657,7 @@ def service_page(d):
       <span class="eyebrow reveal">Overview</span>
       <h2 class="h2 reveal">{e(d["intro_h2"])}</h2>
       {paras}
+      <div class="hero-actions copy-ctas reveal"><a class="btn btn-primary" href="contact.html">Get A Free Quote {ARROW}</a><a class="btn btn-dark btn-call" href="tel:{TEL}">{PHONE_I} {PHONE}</a></div>
     </div>
     <div class="ind-imgs reveal">
       <img loading="lazy" src="{d["intro_imgs"][0]}" alt="">
