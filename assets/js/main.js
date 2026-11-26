@@ -74,6 +74,24 @@
   }));
   $$('[data-lg-more]').forEach(b => b.addEventListener('click', () => b.closest('.lg-panel').classList.add('expanded')));
 
+  // What we do best: earlier cards shrink and dim as the next one slides over them
+  const stackCards = $$('.stack-card');
+  if (stackCards.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const runStack = () => {
+      const on = innerWidth > 900;
+      stackCards.forEach((c, i) => {
+        const nx = stackCards[i + 1];
+        if (!on || !nx) { c.style.transform = ''; c.style.filter = ''; return; }
+        const r = c.getBoundingClientRect(), n = nx.getBoundingClientRect();
+        const o = Math.min(1, Math.max(0, 1 - (n.top - r.top) / r.height));
+        c.style.transform = `scale(${1 - o * 0.06})`;
+        c.style.filter = `brightness(${1 - o * 0.35})`;
+      });
+    };
+    runStack();
+    addEventListener('scroll', () => requestAnimationFrame(runStack), { passive: true });
+    addEventListener('resize', runStack);
+  }
   // What we do best: tabs
   $$('.wdb-tabs button').forEach(b => b.addEventListener('click', () => {
     const k = b.dataset.wdb;
@@ -352,4 +370,77 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
     const c = t.dataset.cat;
     document.querySelectorAll('.faq-page .faq-item').forEach(i => i.classList.toggle('hide', c !== 'all' && i.dataset.cat !== c));
   }));
+})();
+
+// ---------- Motion layer (Bright Sparks) ----------
+(() => {
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js-motion');
+
+  // Scroll progress bar
+  const bar = document.createElement('div');
+  bar.className = 'scroll-bar';
+  document.body.appendChild(bar);
+  const setBar = () => { const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`; };
+  setBar(); addEventListener('scroll', () => requestAnimationFrame(setBar), { passive: true });
+
+  if (reduce) return;
+
+  // Headlines: words rise into place one after another
+  const split = el => {
+    let n = 0;
+    const walk = node => {
+      [...node.childNodes].forEach(c => {
+        if (c.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const i = document.createElement('span'); i.textContent = part; i.style.transitionDelay = (n++ * 0.06) + 's';
+            w.appendChild(i); frag.appendChild(w);
+          });
+          c.replaceWith(frag);
+        } else if (c.nodeType === 1) walk(c);
+      });
+    };
+    walk(el); el.classList.add('split');
+    el.style.setProperty('--hl-delay', (n * 0.06 + 0.15) + 's');
+  };
+  $$('.bs-hero h1, .page-hero h1, .section-head .h2, .r2-head .h2, .faq-side .h2, .stack-sec .h2, .showcase-head .h2, .areas .h2, .cta .h2, .ind-copy .h2, .contact-info .h2').forEach(split);
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.2 });
+  $$('.split').forEach(el => io.observe(el));
+  requestAnimationFrame(() => $$('.bs-hero .split, .page-hero .split').forEach(el => el.classList.add('in')));
+
+  // Cards and list items arrive in a stagger
+  $$('.r2-list, .feature-grid, .ind-cards, .included-list, .suburbs, .r2-proof, .hero-chips, .ph-chips, .faq-list, .strip').forEach(g => {
+    [...g.children].forEach((c, i) => { c.style.transitionDelay = Math.min(i, 12) * 0.07 + 's'; c.classList.add('st'); });
+    const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { g.classList.add('st-in'); o.disconnect(); } }), { threshold: 0.1 });
+    o.observe(g);
+  });
+
+  // Service panels rise up one after another
+  const panels = document.querySelector('.panels');
+  if (panels) new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { panels.classList.add('in'); o.disconnect(); } }), { threshold: 0.15 }).observe(panels);
+
+  // Spotlight that follows the cursor on cards
+  $$('.r2-card, .feature, .ind-card, .stack-card, .qf-card').forEach(c => c.addEventListener('pointermove', e => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }));
+
+  // Gentle 3D tilt on the banner quote card
+  const qf = document.querySelector('.qf-card');
+  if (qf && matchMedia('(hover: hover)').matches) {
+    qf.addEventListener('pointermove', e => {
+      const r = qf.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      qf.style.transform = `perspective(1200px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`;
+    });
+    qf.addEventListener('pointerleave', () => { qf.style.transform = ''; });
+  }
+
+  // Banner photo drifts slower than the page
+  const bg = document.querySelector('.bs-hero-bg');
+  if (bg) addEventListener('scroll', () => requestAnimationFrame(() => { if (scrollY < innerHeight * 1.2) bg.style.translate = `0 ${scrollY * 0.25}px`; }), { passive: true });
 })();

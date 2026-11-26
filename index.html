@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;100,600;100,700;100,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=25">
+  <link rel="stylesheet" href="assets/css/style.css?v=27">
 </head>
 <body>
 
@@ -204,56 +204,55 @@
   </div>
 </section>
 
-<!-- What we do best: tabbed showcase -->
-<section class="wdb" id="work">
+<!-- What we do best: cards that stack as you scroll -->
+<section class="stack-sec" id="work">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="eyebrow reveal">What we do best</span>
+      <div><span class="eyebrow light reveal">What we do best</span>
       <h2 class="h2 reveal">Decades of Delivering <em>Peace of Mind</em>.</h2></div>
       <p class="lead reveal">From new builds to 2am emergencies, one licensed local team handles it all.</p>
     </div>
-    <div class="wdb-tabs reveal" role="tablist"><button role="tab" data-wdb="0" class="on" aria-selected="true"><span class="n">01</span>New builds &amp; renovations</button><button role="tab" data-wdb="1"><span class="n">02</span>Commercial fit-outs</button><button role="tab" data-wdb="2"><span class="n">03</span>Data, NBN &amp; fibre</button><button role="tab" data-wdb="3"><span class="n">04</span>Emergency call-outs</button></div>
-    <div class="wdb-panels">
-      <div class="wdb-pane on" data-wdb="0" role="tabpanel">
-        <div class="wdb-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Left-image-9.jpg" alt=""><span class="wdb-tag">Residential</span></div>
-        <div class="wdb-card">
-          <span class="n">01 / 04</span>
+    <div class="stack">
+      <article class="stack-card t-light" style="--i:0">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">01</span><span class="sc-tag">Residential</span></div>
           <h3>New Builds &amp; Renovations</h3>
           <p>Full house wiring, switchboards, lighting and power design, NBN and data, and smoke alarm compliance, delivered with homeowners, builders and developers.</p>
           <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Full house wiring and rewiring</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Switchboard installations</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Lighting and power design</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Energy-efficient solutions</li></ul>
           <a class="btn btn-primary" href="residential-electrician.html">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-      </div>
-      <div class="wdb-pane" data-wdb="1" role="tabpanel">
-        <div class="wdb-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Commercial-Electrical-Fit-Outs-image.jpg" alt=""><span class="wdb-tag">Commercial</span></div>
-        <div class="wdb-card">
-          <span class="n">02 / 04</span>
+        <div class="sc-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Left-image-9.jpg" alt=""></div>
+      </article>
+      <article class="stack-card t-dark" style="--i:1">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">02</span><span class="sc-tag">Commercial</span></div>
           <h3>Commercial Fit-outs</h3>
           <p>Offices, shops, cafés, restaurants and schools. Safe, compliant electrical solutions that slot into your overall fit-out plan.</p>
           <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Power, lighting, data and switchboards for new or refurbished tenancies</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Efficient LED lighting that can significantly cut power bills</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Test and tag, with records for workplace safety obligations</li></ul>
           <a class="btn btn-primary" href="commercial-electrician.html">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-      </div>
-      <div class="wdb-pane" data-wdb="2" role="tabpanel">
-        <div class="wdb-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Data-Fibre-image-1.jpg" alt=""><span class="wdb-tag">Data &amp; Fibre</span></div>
-        <div class="wdb-card">
-          <span class="n">03 / 04</span>
+        <div class="sc-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Commercial-Electrical-Fit-Outs-image.jpg" alt=""></div>
+      </article>
+      <article class="stack-card t-light" style="--i:2">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">03</span><span class="sc-tag">Data &amp; Fibre</span></div>
           <h3>Data, NBN &amp; Fibre</h3>
           <p>Structured cabling, network design and fibre upgrades from ACMA-approved, registered NBN contractors.</p>
           <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Structured data cabling</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Office and commercial network design</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Fibre optic cabling and upgrades (FTTP, NBN)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>NBN cabling, registered and ACMA-approved</li></ul>
           <a class="btn btn-primary" href="data-fibre.html">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-      </div>
-      <div class="wdb-pane" data-wdb="3" role="tabpanel">
-        <div class="wdb-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/emergency-elex-img-1.png" alt=""><span class="wdb-tag">24/7</span></div>
-        <div class="wdb-card">
-          <span class="n">04 / 04</span>
+        <div class="sc-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Data-Fibre-image-1.jpg" alt=""></div>
+      </article>
+      <article class="stack-card t-yellow" style="--i:3">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">04</span><span class="sc-tag">24/7</span></div>
           <h3>Emergency Call-outs</h3>
           <p>Power outages, faulty switchboards and urgent repairs, handled promptly by a licensed team any hour of the day or night.</p>
           <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Total or partial power loss</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Safety switches that won’t reset</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sparking, smoke or burning smells</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Storm and water damage</li></ul>
-          <a class="btn btn-primary" href="emergency-electrician.html">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-dark" href="emergency-electrician.html">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-      </div>
+        <div class="sc-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/emergency-elex-img-1.png" alt=""></div>
+      </article>
     </div>
   </div>
 </section>
@@ -432,6 +431,6 @@
   </div>
 </footer>
 <a class="float-call" href="tel:0433909889" aria-label="Call Bright Sparks on 0433 909 889"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>Call Us Now</a>
-<script src="assets/js/main.js?v=25"></script>
+<script src="assets/js/main.js?v=27"></script>
 </body>
 </html>

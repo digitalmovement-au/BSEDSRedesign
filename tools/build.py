@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "25"  # asset version (cache busting)
+V = "27"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -363,18 +363,18 @@ def index_page():
         ("24/7", "Emergency call-outs", "Power outages, faulty switchboards and urgent repairs, handled promptly by a licensed team any hour of the day or night.", W + "2026/08/emergency-elex-img-1.png", "emergency-electrician.html"),
     ]
     ticks = {0: SERVICES[0]["list"][:4], 1: SERVICES[1]["list"][:3], 2: SERVICES[4]["list"][:4], 3: SERVICES[5]["list"][:4]}
-    tabs = "".join(f'<button role="tab" data-wdb="{i}"{" class=\"on\" aria-selected=\"true\"" if i == 0 else ""}><span class="n">{i+1:02d}</span>{t}</button>' for i, (_, t, _, _, _) in enumerate(steps))
-    panes = "".join(f'''
-      <div class="wdb-pane{' on' if i == 0 else ''}" data-wdb="{i}" role="tabpanel">
-        <div class="wdb-img"><img loading="lazy" src="{img}" alt=""><span class="wdb-tag">{k}</span></div>
-        <div class="wdb-card">
-          <span class="n">{i+1:02d} / 04</span>
+    tones = ["t-light", "t-dark", "t-light", "t-yellow"]
+    stack = "".join(f'''
+      <article class="stack-card {tones[i]}" style="--i:{i}">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">{i+1:02d}</span><span class="sc-tag">{k}</span></div>
           <h3>{t}</h3>
           <p>{p}</p>
           <ul class="ticks">{"".join(f"<li>{CHECK}{e(x)}</li>" for x in ticks[i])}</ul>
-          <a class="btn btn-primary" href="{h}">Learn More {ARROW}</a>
+          <a class="btn {"btn-primary" if i != 3 else "btn-dark"}" href="{h}">Learn More {ARROW}</a>
         </div>
-      </div>''' for i, (k, t, p, img, h) in enumerate(steps))
+        <div class="sc-img"><img loading="lazy" src="{img}" alt=""></div>
+      </article>''' for i, (k, t, p, img, h) in enumerate(steps))
     ig = "".join(f'<figure><img loading="lazy" src="{IG}{f}" alt="Recent electrical work by Bright Sparks"></figure>' for f in INSTAGRAM_POSTS)
 
     body = (head("Sunshine Coast Electricians, Electrical & Data Services", "Licensed Sunshine Coast electricians for homes and businesses: residential, commercial, installations, maintenance, data and fibre, and 24/7 emergency call-outs.")
@@ -433,16 +433,15 @@ def index_page():
   </div>
 </section>
 
-<!-- What we do best: tabbed showcase -->
-<section class="wdb" id="work">
+<!-- What we do best: cards that stack as you scroll -->
+<section class="stack-sec" id="work">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="eyebrow reveal">What we do best</span>
+      <div><span class="eyebrow light reveal">What we do best</span>
       <h2 class="h2 reveal">Decades of delivering <em>peace of mind</em>.</h2></div>
       <p class="lead reveal">From new builds to 2am emergencies, one licensed local team handles it all.</p>
     </div>
-    <div class="wdb-tabs reveal" role="tablist">{tabs}</div>
-    <div class="wdb-panels">{panes}
+    <div class="stack">{stack}
     </div>
   </div>
 </section>
