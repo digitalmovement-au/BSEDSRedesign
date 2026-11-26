@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "6"  # asset version (cache busting)
+V = "7"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -280,21 +280,17 @@ def reviews_section(title="Trusted by Sunshine Coast homes and businesses, in th
       </article>''')
     return f'''
 <section class="reviews2" id="reviews">
+  <div class="wrap r2-head">
+    <span class="eyebrow reveal">Google reviews</span>
+    <h2 class="h2 reveal">{title}</h2>
+  </div>
   <div class="wrap r2-grid">
     <aside class="r2-side">
-      <span class="eyebrow reveal">Google reviews</span>
-      <h2 class="h2 reveal">{title}</h2>
       <div class="r2-score reveal">
         <div class="r2-top">{G}<div><b>5.0</b><span class="st">★★★★★</span></div></div>
         <p>Rated <strong>excellent</strong> by Sunshine Coast homeowners, landlords, body corporates and businesses.</p>
         <a class="btn btn-dark" href="https://www.google.com/search?q=Bright+Sparks+Electrical+%26+Data+Services+Sunshine+Coast+reviews" target="_blank" rel="noopener">Read On Google {ARROW}</a>
       </div>
-      <ul class="r2-proof reveal">
-        <li><b data-count="20" data-suffix="+">20+</b><span>Years on the Coast</span></li>
-        <li><b>24/7</b><span>Emergency call-outs</span></li>
-        <li><b>ACMA</b><span>Registered NBN contractor</span></li>
-        <li><b>1 team</b><span>For power &amp; data</span></li>
-      </ul>
     </aside>
     <div class="r2-list">
 {chr(10).join(cards)}
@@ -461,6 +457,12 @@ def index_page():
         <div class="cta-actions reveal" style="justify-content:flex-start;margin-top:34px"><a class="btn btn-dark" href="about.html">About Bright Sparks {ARROW}</a></div>
       </div>
     </div>
+    <ul class="r2-proof row reveal">
+      <li><b data-count="20" data-suffix="+">20+</b><span>Years on the Coast</span></li>
+      <li><b>24/7</b><span>Emergency call-outs</span></li>
+      <li><b>ACMA</b><span>Registered NBN contractor</span></li>
+      <li><b>1 team</b><span>For power &amp; data</span></li>
+    </ul>
   </div>
 </section>
 ''' + faq_section(FAQ_ALL, lead="Everything Sunshine Coast homeowners and business owners usually ask before booking an electrician.") + f'''

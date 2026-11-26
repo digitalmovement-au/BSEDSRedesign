@@ -2116,3 +2116,16 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
   .r2-card { padding: 22px 20px 18px; }
 }
 .r2-card .who b { color: var(--ink); font-size: 15px; font-weight: 700; display: block; }
+
+/* Reviews: centred title on its own row */
+.r2-head { text-align: center; margin-bottom: clamp(36px, 4vw, 60px); }
+.r2-head .eyebrow { justify-content: center; }
+.r2-head .h2 { margin: 16px auto 0; max-width: none; text-wrap: balance; }
+@media (min-width: 1101px) { .r2-head .h2 { white-space: nowrap; font-size: clamp(30px, 2.9vw, 52px); } }
+.r2-side { top: 130px; }
+
+/* Stats: one row of four (homepage "Who we are") */
+.r2-proof.row { grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: clamp(50px, 6vw, 80px); }
+.r2-proof.row li { padding: 24px 26px; }
+.r2-proof.row b { font-size: clamp(32px, 3vw, 46px); }
+@media (max-width: 680px) { .r2-proof.row { grid-template-columns: 1fr 1fr; } .r2-proof.row li { padding: 18px; text-align: center; } }
