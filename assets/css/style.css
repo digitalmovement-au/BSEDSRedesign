@@ -2735,3 +2735,4 @@ img.av { object-fit: cover; background: var(--paper); box-shadow: 0 0 0 2px #fff
   .panel .inner p { color: rgba(255,255,255,.92); }
   .panel .num { color: var(--brass); }
 }
+.about-ctas { display: flex; flex-wrap: wrap; gap: 12px; } @media (max-width: 1100px) { .about-ctas { justify-content: center; } }

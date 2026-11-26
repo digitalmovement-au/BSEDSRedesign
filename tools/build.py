@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "54"  # asset version (cache busting)
+V = "56"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -759,20 +759,25 @@ def about_page():
     body = (head("About Bright Sparks, Sunshine Coast Electricians", "Local electricians Sunshine Coast home and business owners have trusted for over 20 years.") + header("about")
             + hero_section(W + "2025/10/About-banner.jpg", "About us", "Local electricians the Sunshine Coast has trusted for <em>20+ years</em>", "Electrical and data installation, repair and maintenance for homes and businesses.", crumbs=(("Home", "index.html"), ("About", "")))
             + f'''
-<section class="about-intro">
+<section class="about-intro home-about">
   <div class="wrap">
     <div class="about-grid">
-      <div class="about-photo reveal"><img loading="lazy" src="{W}2025/11/abt-us-content-img-1.webp" alt="Bright Sparks electrician at work"></div>
+      <div class="who-media">
+        <div class="about-photo reveal"><img loading="lazy" src="{W}2025/11/abt-us-content-img-1.webp" alt="Bright Sparks electrician at work"></div>
+        <div class="who-inset reveal"><img loading="lazy" src="{W}2026/08/Right-image-3.jpg" alt="Bright Sparks electrician with the work ute"></div>
+        <span class="who-chip">{CHECK} Fully licensed &amp; insured</span>
+      </div>
       <div>
         <span class="eyebrow reveal">Who we are</span>
         <p class="statement reveal" style="margin-top:20px">We take pride in being the local electricians Sunshine Coast home and business owners trust for all their <em>electrical and data</em> needs.</p>
         <p class="lead reveal" style="margin-top:28px;max-width:62ch">Because of our service excellence, our team has gained the trust of countless home and business owners. Ensuring safety and quality for your peace of mind is what we do best. Let us show you what we can do for you.</p>
-        <div class="stats reveal">
-          <div class="stat"><b data-count="20" data-suffix="+">20+</b><span>Years’ experience</span></div>
-          <div class="stat"><b>5.0</b><span>Google rating</span></div>
-          <div class="stat"><b>24/7</b><span>Emergency call-outs</span></div>
-          <div class="stat"><b>1</b><span>Team for power &amp; data</span></div>
-        </div>
+        <ul class="who-stats reveal">
+          <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></i><b data-count="20" data-suffix="+">20+</b><span>Years' experience</span></li>
+          <li><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z"/></svg></i><b>5.0</b><span>Google rating</span></li>
+          <li><i>{BOLT}</i><b>24/7</b><span>Emergency call-outs</span></li>
+          <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.6c3 .1 6 1.7 6 5.4"/></svg></i><b>1 team</b><span>For power &amp; data</span></li>
+        </ul>
+        <div class="hero-actions about-ctas reveal"><a class="btn btn-primary" href="contact.html">Get A Free Quote {ARROW}</a><a class="btn btn-dark btn-call" href="tel:{TEL}">{PHONE_I} {PHONE}</a></div>
       </div>
     </div>
   </div>

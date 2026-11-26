@@ -631,3 +631,17 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
     }
   });
 })();
+
+// Split headlines: keep trailing punctuation (". , ! ?") glued to the word before it, so it never wraps alone
+(() => {
+  document.querySelectorAll('.split').forEach(h => {
+    const ws = [...h.querySelectorAll('.w')];
+    ws.forEach((w, i) => {
+      if (i && /^[.,!?;:’”)]+$/.test(w.textContent)) {
+        const prev = ws[i - 1].firstElementChild || ws[i - 1];
+        prev.textContent += w.textContent;
+        w.remove();
+      }
+    });
+  });
+})();
