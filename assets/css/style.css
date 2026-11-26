@@ -2726,3 +2726,5 @@ img.av { object-fit: cover; background: var(--paper); box-shadow: 0 0 0 2px #fff
   .site-header .logo img { height: 46px; }
 }
 @media (min-width: 1101px) and (max-width: 1240px) { .site-header nav a .chev { display: none; } .site-header nav { gap: 12px; } }
+/* Big screens: let the side padding shrink so content really reaches 1880px on a 1920 screen (even with a scrollbar) */
+@media (min-width: 1800px) { :root { --pad: clamp(12px, calc((100vw - 1880px) / 2), 56px); } }
