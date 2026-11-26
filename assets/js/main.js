@@ -685,3 +685,15 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
     if (bgOf(prev) === bgOf(s) && !getComputedStyle(s).backgroundImage.includes('url')) s.classList.add('same-bg');
   });
 })();
+
+// Mobile menu: sub-menus collapse behind a +/- toggle so the menu stays short
+(() => {
+  document.querySelectorAll('.site-header nav .dd').forEach(dd => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'dd-toggle'; b.setAttribute('aria-expanded', 'false');
+    b.setAttribute('aria-label', 'Show ' + dd.querySelector('a').textContent.trim() + ' services');
+    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>';
+    dd.insertBefore(b, dd.querySelector('.dd-menu'));
+    b.addEventListener('click', e => { e.stopPropagation(); const o = dd.classList.toggle('sub-open'); b.setAttribute('aria-expanded', o); });
+  });
+})();

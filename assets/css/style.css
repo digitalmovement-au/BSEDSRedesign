@@ -2785,3 +2785,47 @@ footer { padding-top: var(--sec) !important; }
 /* two neighbouring sections on the same background share one gap instead of two */
 section.same-bg { padding-top: 0 !important; }
 .ind-intro .ind-copy > .copy-ctas, .about-ctas { margin-bottom: 0; }
+
+/* ---------- Mobile fixes ---------- */
+/* stacking cards: no sticky offset on phones/tablets (it was shifting each card down over the next) */
+@media (max-width: 900px) {
+  .stack-card { position: relative !important; top: auto !important; max-height: none; }
+  .stack { gap: 18px; }
+  .stack-card .btn { white-space: normal; text-align: center; justify-content: center; max-width: 100%; }
+  .sc-copy { min-width: 0; }
+}
+/* service areas: single column on tablets and phones */
+@media (max-width: 1100px) {
+  .areas-grid { grid-template-columns: 1fr !important; }
+  .area-map { height: 380px; }
+  .area-check { max-width: 520px; width: 100%; }
+}
+@media (max-width: 680px) {
+  .area-check { flex-direction: row; }
+  .area-check .qf-f input { font-size: 16px; }
+  .area-stats { justify-content: center; }
+}
+/* the hanging bulb would sit over text and forms on phones, so it is desktop/tablet only */
+@media (max-width: 680px) { .bulb { display: none; } }
+/* inputs at 16px so iOS doesn't zoom in when a field is tapped */
+@media (max-width: 680px) { input, select, textarea, .qf-f input, .qf-f textarea { font-size: 16px !important; } }
+/* Mobile menu: collapsible groups, scrollable panel */
+.dd-toggle { display: none; }
+@media (max-width: 1100px) {
+  .site-header nav.open { overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 40px; }
+  .site-header nav.open .dd { position: relative; }
+  .site-header nav.open .dd > a { padding-right: 60px; }
+  .site-header nav.open .dd > a .chev { display: none; }
+  .site-header nav.open .dd-toggle { display: grid; place-items: center; position: absolute; right: 0; top: 6px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: none; color: #fff; }
+  .site-header nav.open .dd-toggle svg { width: 18px; height: 18px; transition: transform .3s var(--ease); }
+  .site-header nav.open .dd.sub-open .dd-toggle { background: var(--brass); border-color: var(--brass); color: var(--ink); }
+  .site-header nav.open .dd.sub-open .dd-toggle svg { transform: rotate(45deg); }
+  .site-header nav.open .dd .dd-menu { display: none !important; }
+  .site-header nav.open .dd.sub-open .dd-menu { display: block !important; }
+}
+@media (max-width: 1100px) {
+  .site-header nav.open .dd { display: block; align-self: stretch; width: 100%; }
+  .site-header nav.open .dd > a { display: inline-block; }
+  .site-header nav.open .dd.sub-open .dd-menu { display: flex !important; flex-direction: column; gap: 2px; padding: 4px 0 14px 4px; }
+  .site-header nav.open .dd-menu a { display: block; }
+}
