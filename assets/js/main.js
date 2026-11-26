@@ -531,7 +531,7 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
   });
 })();
 
-// ---------- Hanging light bulb: swings with scroll speed and glows brighter the further you scroll ----------
+// ---------- Hanging light bulb: stays still and glows brighter the further you scroll ----------
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const el = document.createElement('button');
@@ -558,33 +558,14 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
   document.body.appendChild(el);
   el.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
 
-  let lastY = scrollY, angle = 0, vel = 0, last = performance.now(), lastSection = -1;
-  const sections = [...document.querySelectorAll('main section, body > section')];
+  // Static bulb: it just warms up gradually the further down the page you go
   const update = () => {
     const h = document.documentElement.scrollHeight - innerHeight;
-    const p = h > 0 ? scrollY / h : 0;
-    el.style.setProperty('--lit', (0.25 + p * 0.75).toFixed(3));
+    const p = h > 0 ? Math.min(1, scrollY / h) : 0;
+    el.style.setProperty('--lit', (0.08 + Math.pow(p, 0.8) * 0.92).toFixed(3));
     el.classList.toggle('show', scrollY > innerHeight * 0.5);
-    // flicker when a new section reaches the middle of the screen
-    let idx = -1;
-    sections.forEach((s, i) => { if (s.getBoundingClientRect().top < innerHeight / 2) idx = i; });
-    if (idx !== lastSection && lastSection !== -1 && !reduce) { el.classList.remove('flick'); void el.offsetWidth; el.classList.add('flick'); }
-    lastSection = idx;
   };
-  // pendulum: scroll speed pushes the bulb, a spring pulls it back
-  const tick = t => {
-    const dt = Math.min(48, t - last) / 16; last = t;
-    const dy = scrollY - lastY; lastY = scrollY;
-    if (!reduce) {
-      vel += (-angle * 0.06 - vel * 0.12) * dt + Math.max(-4, Math.min(4, dy * 0.08));
-      angle += vel * dt;
-      angle = Math.max(-28, Math.min(28, angle));
-      el.style.setProperty('--sw', angle.toFixed(2) + 'deg');
-    }
-    requestAnimationFrame(tick);
-  };
-  update(); addEventListener('scroll', update, { passive: true }); addEventListener('resize', update);
-  requestAnimationFrame(tick);
+  update(); addEventListener('scroll', () => requestAnimationFrame(update), { passive: true }); addEventListener('resize', update);
 })();
 
 // ---------- Interactive service-area map (Leaflet + CARTO tiles, loaded only where needed) ----------
