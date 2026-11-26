@@ -727,6 +727,7 @@ def services_page():
       <h2 class="h2 reveal">New builds and renovations, <em>wired right</em>.</h2>
       <p class="reveal">We specialise in residential electrical work for new builds and renovations, partnering with homeowners, builders and developers to deliver reliable, high-quality electrical systems that meet today’s standards and tomorrow’s needs.</p>
       <ul class="ticks reveal">{"".join(f"<li>{CHECK}{x}</li>" for x in SERVICES[0]["list"])}</ul>
+      <div class="hero-actions copy-ctas reveal"><a class="btn btn-primary" href="contact.html">Get A Free Quote {ARROW}</a><a class="btn btn-dark btn-call" href="tel:{TEL}">{PHONE_I} {PHONE}</a></div>
     </div>
     <div class="ind-imgs reveal">
       <img loading="lazy" src="{W}2026/08/Left-image-9.jpg" alt="">
@@ -742,6 +743,7 @@ def services_page():
       <h2 class="h2 reveal">Need a commercial electrician on the <em>Sunshine Coast</em>?</h2>
       <p class="reveal">We provide commercial electrical fit-outs for offices, shops, cafés, restaurants, schools and other commercial establishments. Whether you’re setting up a new space or upgrading an existing one, we deliver safe and compliant solutions tailored to your needs.</p>
       <p class="reveal">Our team works closely with business owners, project managers and contractors to ensure seamless integration with your overall fit-out plan.</p>
+      <div class="hero-actions copy-ctas reveal"><a class="btn btn-primary" href="contact.html">Get A Free Quote {ARROW}</a><a class="btn btn-dark btn-call" href="tel:{TEL}">{PHONE_I} {PHONE}</a></div>
     </div>
     <div class="ind-imgs reveal">
       <img loading="lazy" src="{W}2026/08/Commercial-Electrical-Fit-Outs-image.jpg" alt="">
