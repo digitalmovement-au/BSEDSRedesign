@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "51"  # asset version (cache busting)
+V = "52"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -95,7 +95,6 @@ def header(active="", solid=False):
     </a>
     {nav(active)}
     <div class="header-cta">
-      <a class="phone" href="tel:{TEL}"><small><i class="live"></i>24/7 Emergency</small>{PHONE}</a>
       <a class="btn btn-primary" href="contact.html">Get A Quote</a>
       <a class="hdr-call" href="tel:{TEL}" aria-label="Call {PHONE}">{PHONE_I}</a>
     </div>
