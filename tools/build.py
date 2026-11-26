@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "12"  # asset version (cache busting)
+V = "13"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -272,7 +272,7 @@ def reviews_section(title="Trusted by Sunshine Coast homes and businesses, in th
     cols = ["#17191c", "#8a6d1c", "#2f4a3a", "#5a3b2e", "#3a3d42"]
     cards = []
     for i, (n, when, txt) in enumerate(REVIEWS):
-        cls = "r2-card" + (" feat" if i == 0 else "") + (" more" if i >= 6 else "")
+        cls = "r2-card" + (" feat" if i == 0 else "") + (" more" if i >= 5 else "")
         cards.append(f'''      <article class="{cls} reveal">
         <span class="q" aria-hidden="true">“</span>
         <p>{e(txt)}</p>
