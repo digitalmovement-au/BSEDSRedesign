@@ -283,7 +283,7 @@ def reviews_section(title="Trusted by Sunshine Coast homes and businesses, in th
   <div class="wrap r2-head">
     <span class="eyebrow reveal">Google reviews</span>
     <h2 class="h2 reveal">{title}</h2>
-    <div class="r2-rating reveal">{G}<span><b>5.0</b> <i>★★★★★</i><small>Rated excellent by Sunshine Coast homeowners, landlords, body corporates and businesses.</small></span></div>
+    <div class="r2-rating reveal">{G}<span><b>5.0</b> <i>★★★★★</i><small>Rated excellent on Google</small></span></div>
   </div>
   <div class="wrap r2-grid">
     <div class="r2-list">
