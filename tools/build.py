@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "13"  # asset version (cache busting)
+V = "14"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -283,7 +283,7 @@ def reviews_section(title="Trusted by Sunshine Coast homes and businesses, in th
   <div class="wrap r2-head">
     <span class="eyebrow reveal">Google reviews</span>
     <h2 class="h2 reveal">{title}</h2>
-    <div class="r2-rating reveal">{G}<span><b>5.0</b> <i>★★★★★</i><small>Rated excellent on Google</small></span></div>
+    <div class="r2-rating reveal">{G}<span><span class="r"><b>5.0</b><i>★★★★★</i></span><small>Rated excellent on Google</small></span></div>
   </div>
   <div class="wrap r2-grid">
     <div class="r2-list">
