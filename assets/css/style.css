@@ -2650,3 +2650,4 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
   .who-stats li:nth-child(n+3) { border-top: 1px solid var(--line); }
   .who-media { padding: 0 24px 34px 0; } .who-chip { left: -6px; font-size: 12px; }
 }
+img.av { object-fit: cover; background: var(--paper); box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgba(255,220,55,.8); }

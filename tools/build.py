@@ -8,10 +8,10 @@ import re
 from pathlib import Path
 
 from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, FAQ_ALL,
-                     REVIEWS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
+                     REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "42"  # asset version (cache busting)
+V = "43"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -307,7 +307,7 @@ def reviews_section(title="Trusted by Sunshine Coast homes and businesses, in th
         cards.append(f'''      <article class="{cls} reveal">
         <div class="gstars"><span>★★★★★</span>{G}</div>
         <p>{body}</p>
-        <header><span class="av" style="background:{cols[i % len(cols)]}">{n[0]}</span><span class="who"><b>{e(n)}</b><small>{e(when)}</small></span></header>
+        <header>{f'<img class="av" src="{AVATARS[n]}" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44">' if n in AVATARS else f'<span class="av" style="background:{cols[i % len(cols)]}">{n[0]}</span>'}<span class="who"><b>{e(n)}</b><small>{e(when)}</small></span></header>
       </article>''')
     return f'''
 <section class="reviews2" id="reviews">

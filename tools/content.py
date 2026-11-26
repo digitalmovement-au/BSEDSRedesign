@@ -327,3 +327,18 @@ SUBURB_COORDS = {
   "Palmwoods": (-26.686, 152.961), "Pelican Waters": (-26.832, 153.100), "Peregian Beach": (-26.481, 153.096), "Sippy Downs": (-26.719, 153.056),
   "Tewantin": (-26.391, 153.034), "Woombye": (-26.661, 152.969), "Wurtulla": (-26.756, 153.128), "Yandina": (-26.562, 152.956),
 }
+
+# Reviewer profile photos, as shown by the Google reviews widget on the live site
+_G = "https://lh3.googleusercontent.com/"
+AVATARS = {
+  "Teagan Gardiner": _G + "a/ACg8ocLSQz7JXK6pssl-LAoi6Au1PC-WPO5aG9QxAOyHKxvQqa79qQ=w96-h96-c-rp-mo-br100",
+  "Nicole Allan": _G + "a/ACg8ocIz2T_ROFC5kyyAF4QQ0hpDzXDEaFDc6B5ZVJHO9FtWZmbymg=w96-h96-c-rp-mo-br100",
+  "Julian Tebay": _G + "a-/ALV-UjUdarwZCBtOBQC9gkrDsy_TR0Wb2QD0ULwT_P-r5oukLNP1pzaT=w96-h96-c-rp-mo-ba12-br100",
+  "Cassandra Loh": _G + "a-/ALV-UjXncjkyERdAyMkZTr8LNbrJgPkdJzf739fITuQOxiaAKN-hqduASw=w96-h96-c-rp-mo-br100",
+  "Sylvia Wightman": _G + "a/ACg8ocJh7BlYCfMPdteMq7o2WzoJ9X-taMs5Xc4TnTzzTYiGS0MFZQ=w96-h96-c-rp-mo-br100",
+  "Caz Brackett": _G + "a-/ALV-UjWShBm1Yo72AC_XnZ57cKsiuiDf0-AoIupnJ5w1TJaXBQ8Ig6U=w96-h96-c-rp-mo-br100",
+  "Chris Moore": _G + "a/ACg8ocLhNqdNtq38ffwwE2X9b2c-96qe-GZdhJ8e8wigJNj8EfGg5A=w96-h96-c-rp-mo-br100",
+  "Mitchell Edwards": _G + "a-/ALV-UjU4WcrTQPKkjNX0u7YK40qLIxqi13jZ_DAYAP0hh5sXukR5PL5y=w96-h96-c-rp-mo-ba12-br100",
+  "Errol Ross": _G + "a-/ALV-UjUCHeaHUNkAXXJLjYnwCD18HeDxHWq8BTvCO60BQ2_Q0fes5Zok=w96-h96-c-rp-mo-ba12-br100",
+  "Fab50s Coffee Group": _G + "a-/ALV-UjXrYmGH6sYPn2W2tDB-7U0InUW2hq6poapW1sXRtwufF3mCEHzy=w96-h96-c-rp-mo-br100",
+}
