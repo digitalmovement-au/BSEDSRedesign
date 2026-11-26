@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "50"  # asset version (cache busting)
+V = "51"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'

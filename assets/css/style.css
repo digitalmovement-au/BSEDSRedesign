@@ -2718,3 +2718,11 @@ img.av { object-fit: cover; background: var(--paper); box-shadow: 0 0 0 2px #fff
   .site-header .logo img { height: 44px; }
 }
 .site-header .logo { flex: none; } .site-header .logo img { width: auto; max-width: none; }
+/* Header fits on one line from 1101px up: drop the phone block (it's in the top bar) until there's room */
+@media (min-width: 1101px) and (max-width: 1520px) {
+  .header-cta .phone { display: none; }
+  .site-header nav { gap: clamp(12px, 1.3vw, 20px); }
+  .site-header nav a { font-size: clamp(14px, 1.05vw, 15.5px); }
+  .site-header .logo img { height: 46px; }
+}
+@media (min-width: 1101px) and (max-width: 1240px) { .site-header nav a .chev { display: none; } .site-header nav { gap: 12px; } }
