@@ -5,7 +5,7 @@ Static prototype of the redesigned **bseds.com.au**, built on the same design sy
 Open `index.html` in a browser to review. Images, the logo and Instagram photos load directly from the live site's media library.
 
 ## Pages
-- `index.html` — homepage: hero with copy on the left and a quote form on the right, yellow services ticker, Google reviews (score panel + quote cards), six service panels that expand on hover, "What we do best" tabbed showcase, recent work strip (Instagram photos, drag to scroll), why choose us, who we are, FAQs, quote form, service areas.
+- `index.html` — homepage: hero with copy on the left and a quote form on the right, yellow services ticker, Google reviews (score panel + quote cards), six service panels that expand on hover, "What we do best" cards that stack as you scroll, recent work strip (Instagram photos, drag to scroll), why choose us, who we are, FAQs, quote form, service areas.
 - `services.html` — services overview.
 - Six service pages: `residential-electrician`, `commercial-electrician`, `electrical-installations`, `maintenance-repairs`, `data-fibre`, `emergency-electrician`. Each has an overview, sub-service cards, a "what's included" list, detail sections, a price guide (where the live page gives one), why choose us, FAQs and a call to action.
 - `about.html`, `faq.html` (filter by topic), `contact.html` (quote form, service area map).
@@ -21,3 +21,6 @@ All pages are generated. Edit copy in `tools/content.py` or layout in `tools/bui
 - Review dates are as shown on the live site in November 2026; in WordPress these should come from the reviews plugin.
 - Most photos on the live site are stock or pre-darkened banners. Real job photos (like the Instagram ones) would lift the hero, service panels and gallery a lot.
 - The quote form is visual only; in WordPress it would connect to the existing form plugin.
+
+## Motion
+`assets/js/main.js` ends with a motion layer: headline words rise into place, highlighter strokes draw in, cards and lists arrive in a stagger, images wipe open, service panels rise in sequence, the banner photo drifts (parallax), cards get a soft cursor spotlight, primary buttons get a light sweep, and a yellow scroll-progress bar runs along the top. All of it switches off for visitors who prefer reduced motion.

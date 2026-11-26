@@ -2418,3 +2418,4 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
 /* Split headlines must flow as text, whatever layout the heading had before */
 .split { display: block !important; }
 .split .w { padding-right: .05em; margin-right: -.05em; }
+.t-yellow .sc-n { -webkit-text-stroke-color: var(--ink); }
