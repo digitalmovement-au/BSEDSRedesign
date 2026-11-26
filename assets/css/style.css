@@ -2232,3 +2232,7 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
 .r2-card.gstyle p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--ink-2); }
 .r2-card.gstyle mark { background: linear-gradient(transparent 55%, rgba(255,220,55,.85) 55%); color: var(--ink); font-weight: 700; padding: 0 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .r2-card.gstyle:hover { border-color: rgba(255,220,55,.9); }
+/* Banner: Google badge sits beside the buttons */
+.bs-hero .hero-actions { align-items: center; }
+.bs-hero .hero-actions .g-rating { margin-top: 0; padding: 8px 16px 8px 10px; }
+@media (max-width: 680px) { .bs-hero .hero-actions .g-rating { justify-self: center; } }

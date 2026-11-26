@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "16"  # asset version (cache busting)
+V = "17"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -390,9 +390,9 @@ def index_page():
       <div class="hero-actions">
         <a class="btn btn-primary" href="tel:{TEL}">{PHONE_I} Call {PHONE}</a>
         <a class="btn btn-ghost" href="services.html">Our Services {ARROW}</a>
+        <a class="g-rating" href="#reviews">{G}<span><b>5.0</b> <i>★★★★★</i><small>Rated excellent on Google</small></span></a>
       </div>
       {chips("hero-chips")}
-      <a class="g-rating" href="#reviews">{G}<span><b>5.0</b> <i>★★★★★</i><small>Rated excellent on Google</small></span></a>
     </div>
     <div class="bs-hero-form" id="quote">
       <div class="hf-head">
