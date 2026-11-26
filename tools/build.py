@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, SUBURBS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "22"  # asset version (cache busting)
+V = "23"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -400,7 +400,7 @@ def index_page():
         <h2>Get in touch with Bright Sparks</h2>
         <p>Detailed, transparent quotes. No hidden charges.</p>
       </div>
-      {quote_form("quote light", "btn-primary")}
+      {quote_form("quote", "btn-primary")}
       <a class="hf-sos" href="tel:{TEL}"><span class="live"></span>Emergency? Call 24/7 <b>{PHONE}</b></a>
     </div>
   </div>
