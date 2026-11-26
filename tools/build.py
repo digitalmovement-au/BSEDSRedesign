@@ -12,7 +12,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "60"  # asset version (cache busting)
+V = "61"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -670,21 +670,41 @@ def sub_page(sp):
 </section>
 '''
     sibs = [x for x in SUBPAGES if x["parent"] == sp["parent"] and x["slug"] != sp["slug"]]
-    chips = "".join(f'<a class="chip-link" href="{x["slug"]}.html">{x["nav"]} {ARROW}</a>' for x in sibs) + f'<a class="chip-link" href="{parent["slug"]}.html">All {e(parent["nav"].lower())} services {ARROW}</a>'
+    items = [(x["slug"] + ".html", x["intro"][3][0], x["nav"], x["desc"]) for x in sibs]
+    items.append((parent["slug"] + ".html", parent["panel"], f'All {parent["nav"]}', parent["card_text"]))
+    n = len(items)
+    rows = [items] if n <= 5 else [items[:(n + 1) // 2], items[(n + 1) // 2:]]
+    rows_html, k = "", 0
+    for row in rows:
+        ps = ""
+        for href, img, label, text in row:
+            k += 1
+            ps += f'''
+    <a class="panel" href="{href}">
+      <img loading="lazy" src="{img}" alt="">
+      <div class="inner"><span class="num">{k:02d}</span><h3>{label}</h3>
+        <p>{e(text)}</p>
+        <span class="go">Explore →</span></div>
+    </a>'''
+        rows_html += f'\n  <div class="panels sub">{ps}\n  </div>'
+    more = f'''
+<section class="sectors v2 subs">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow light reveal">What we can do for you</span>
+      <h2 class="h2 reveal">More {e(parent["nav"].lower())} <em>services</em>.</h2></div>
+      <p class="lead reveal" style="color:rgba(255,255,255,.72)">{e(parent["card_text"])}</p>
+    </div>
+  </div>{rows_html}
+</section>
+'''
     faq = faq_section(sp["faqs"], h2="Frequently asked <em>questions</em>.", lead="Quick answers before you book.", more=False) if sp.get("faqs") else ""
     html_ = (head(sp["title"], sp["desc"]) + header(sp["parent"])
              + hero_section(sp["banner"], f'{e(parent["nav"])} · {sp["nav"]}', sp["h1"], e(sp["lead"]),
                             crumbs=(("Home", "index.html"), (parent["nav"], parent["slug"] + ".html"), (sp["nav"].replace("&amp;", "&"), "")),
                             svc=SERVICES.index(parent))
              + body + faq + why_section() + reviews_section() + quote_section() + areas_section()
-             + f'''
-<section class="other-inds">
-  <div class="wrap">
-    <span class="eyebrow">More {e(parent["nav"].lower())} services</span>
-    <div class="chip-links">{chips}</div>
-  </div>
-</section>
-''' + footer() + tail())
+             + more + footer() + tail())
     write(sp["slug"] + ".html", html_)
 
 
