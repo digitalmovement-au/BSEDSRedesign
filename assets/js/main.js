@@ -672,3 +672,16 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
   if (document.fonts) document.fonts.ready.then(fit);
   addEventListener('load', fit);
 })();
+
+// Neighbouring sections with the same background: drop the second one's top padding so the gap isn't doubled
+(() => {
+  const bodyBg = getComputedStyle(document.body).backgroundColor;
+  const bgOf = el => { const c = getComputedStyle(el).backgroundColor; return (c === 'rgba(0, 0, 0, 0)' || c === 'transparent') ? bodyBg : c; };
+  const secs = [...document.body.children].filter(el => el.tagName === 'SECTION');
+  secs.forEach((s, i) => {
+    const prev = s.previousElementSibling;
+    if (!prev || prev.tagName !== 'SECTION') return;
+    if (s.classList.contains('cta') || prev.classList.contains('cta') || prev.classList.contains('sectors') || s.classList.contains('bs-hero')) return;
+    if (bgOf(prev) === bgOf(s) && !getComputedStyle(s).backgroundImage.includes('url')) s.classList.add('same-bg');
+  });
+})();
