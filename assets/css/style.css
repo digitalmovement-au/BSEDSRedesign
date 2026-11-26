@@ -2651,3 +2651,11 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
   .who-media { padding: 0 24px 34px 0; } .who-chip { left: -6px; font-size: 12px; }
 }
 img.av { object-fit: cover; background: var(--paper); box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgba(255,220,55,.8); }
+/* Inner pages reuse the homepage banner: breadcrumbs above the eyebrow */
+.bs-hero .crumbs { font-size: 14px; color: rgba(255,255,255,.75); margin: 0 0 16px; }
+.bs-hero .crumbs a:hover { color: var(--brass); }
+@media (max-width: 1100px) { .bs-hero .crumbs { text-align: center; } }
+/* Inner pages reuse the homepage banner: breadcrumbs above the eyebrow */
+.bs-hero .crumbs { font-size: 14px; color: rgba(255,255,255,.75); margin: 0 0 16px; }
+.bs-hero .crumbs a:hover { color: var(--brass); }
+@media (max-width: 1100px) { .bs-hero .crumbs { text-align: center; } }

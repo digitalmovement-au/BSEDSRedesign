@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;100,600;100,700;100,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=44">
+  <link rel="stylesheet" href="assets/css/style.css?v=45">
 </head>
 <body>
 
@@ -48,22 +48,97 @@
   </div>
 </header>
 
-<section class="page-hero">
-  <img src="https://www.bseds.com.au/wp-content/uploads/2026/08/homepage-banner-img-3a-1.webp" alt="">
-  <div class="wrap">
-    <div class="crumbs"><a href="index.html">Home</a> / Services</div>
-    <span class="eyebrow light">Services</span>
-    <h1 class="page-title">Electrical Services for Homes <em>and Businesses</em></h1>
-    <p class="page-lead">Reliable and affordable electrician services Sunshine Coast homes and businesses know they can trust.</p>
-      <div class="hero-actions" style="margin-top:30px">
-        <a class="btn btn-primary" href="contact.html">Get A Free Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost btn-call" href="tel:0433909889"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg> 0433 909 889</a>
+<!-- Hero: copy left, quote form right -->
+<section class="bs-hero">
+  <img class="bs-hero-bg" src="https://www.bseds.com.au/wp-content/uploads/2026/08/homepage-banner-img-3a-1.webp" alt="">
+  <div class="wrap bs-hero-grid">
+    <div class="bs-hero-copy">
+      <div class="crumbs"><a href="index.html">Home</a> / Services</div><span class="eyebrow light">Services</span>
+      <h1 class="display">Electrical Services for Homes <em>and Businesses</em></h1>
+      <p class="hero-lead">Reliable and affordable electrician services Sunshine Coast homes and businesses know they can trust.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:0433909889"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg> Call 0433 909 889</a>
+        <a class="btn btn-ghost" href="services.html">Our Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="g-rating" href="#reviews"><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg><span><b>5.0</b> <i>★★★★★</i><small>Rated excellent on Google</small></span></a>
       </div>
-      <ul class="ph-chips"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Fully licensed &amp; insured</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>24/7 emergency call-outs</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ACMA-approved NBN contractor</li></ul>
+      <ul class="hero-chips"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Fully licensed &amp; insured</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>24/7 emergency call-outs</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ACMA-approved NBN contractor</li></ul>
+    </div>
+    <div class="qf-card" id="quote">
+      <div class="qf-head">
+        <span class="qf-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></span>
+        <div><h2>Get a Free Quote</h2><p>Detailed, transparent quotes. No hidden charges.</p></div>
+      </div>
+      <form class="qf">
+        <fieldset class="qf-svc"><legend>What do you need help with?</legend>
+          <label><input type="radio" name="svc" checked><span>Residential</span></label><label><input type="radio" name="svc"><span>Commercial</span></label><label><input type="radio" name="svc"><span>Installation</span></label><label><input type="radio" name="svc"><span>Maintenance &amp; Repairs</span></label><label><input type="radio" name="svc"><span>Data &amp; Fibre</span></label><label><input type="radio" name="svc"><span>24/7 Emergency</span></label>
+        </fieldset>
+        <div class="qf-grid">
+          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></i><input type="text" placeholder="Full name" required></label>
+          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></i><input type="tel" placeholder="Phone" required></label>
+          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg></i><input type="email" placeholder="Email" required></label>
+          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><input type="text" placeholder="Suburb of works"></label>
+          <label class="qf-f full"><textarea placeholder="Tell us a little about the job…" rows="3"></textarea></label>
+        </div>
+        <button class="btn btn-primary qf-btn" type="submit">Request My Free Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+      <a class="qf-sos" href="tel:0433909889"><span class="live"></span>Electrical emergency? Call 24/7 <b>0433 909 889</b></a>
+    </div>
   </div>
 </section>
 
 <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Residential</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Commercial</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Electrical Installations</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Maintenance &amp; Repairs</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Data &amp; Fibre</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>24/7 Emergency</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Licensed &amp; Insured</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>ACMA-Approved NBN Contractor</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Noosa to Caloundra</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Residential</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Commercial</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Electrical Installations</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Maintenance &amp; Repairs</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Data &amp; Fibre</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>24/7 Emergency</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Licensed &amp; Insured</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>ACMA-Approved NBN Contractor</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Noosa to Caloundra</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i></div></div>
+
+<!-- Services: image panels -->
+<section class="sectors v2" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow reveal">What we can do for you</span>
+        <h2 class="h2 reveal">Reliable, Affordable Electrical Services for <em>Homes and Businesses</em>.</h2>
+      </div>
+      <p class="lead reveal" style="color:rgba(255,255,255,.72)">One licensed local team for electrical and data work, so you never have to juggle trades.</p>
+    </div>
+  </div>
+  <div class="panels">
+    <a class="panel" href="residential-electrician.html">
+      <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/homepage-banner-img-2a.webp" alt="">
+      <div class="inner"><span class="num">01</span><h3>Residential</h3>
+        <p>Lighting, smoke alarms, security cameras, switchboard and hot water upgrades, through to complete fit-outs.</p>
+        <span class="go">Explore →</span></div>
+    </a>
+    <a class="panel" href="commercial-electrician.html">
+      <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/homepage-banner-img-3a-1.webp" alt="">
+      <div class="inner"><span class="num">02</span><h3>Commercial</h3>
+        <p>Installations, troubleshooting, repairs, maintenance, test and tag and full commercial fit-outs.</p>
+        <span class="go">Explore →</span></div>
+    </a>
+    <a class="panel" href="electrical-installations.html">
+      <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Electrical-Fit-Outs-image.jpg" alt="">
+      <div class="inner"><span class="num">03</span><h3>Installation</h3>
+        <p>All types, makes and models of electrical components and systems, for homes and businesses.</p>
+        <span class="go">Explore →</span></div>
+    </a>
+    <a class="panel" href="maintenance-repairs.html">
+      <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Electrical-Repairs-image.jpg" alt="">
+      <div class="inner"><span class="num">04</span><h3>Maintenance &amp; Repairs</h3>
+        <p>Accurate troubleshooting, timely repairs and cost-effective maintenance of all electrical systems.</p>
+        <span class="go">Explore →</span></div>
+    </a>
+    <a class="panel" href="data-fibre.html">
+      <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Data-Fibre-image-1.jpg" alt="">
+      <div class="inner"><span class="num">05</span><h3>Data &amp; Fibre</h3>
+        <p>Data points, network and fibre-optic cabling, and phone wiring for homes and businesses.</p>
+        <span class="go">Explore →</span></div>
+    </a>
+    <a class="panel" href="emergency-electrician.html">
+      <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/emergency-elex-img-1.png" alt="">
+      <div class="inner"><span class="num">06</span><h3>24/7 Emergency</h3>
+        <p>On call 24 hours a day, 7 days a week, with fast and effective fixes for homes and businesses.</p>
+        <span class="go">Explore →</span></div>
+    </a>
+  </div>
+</section>
+
 
 <section class="ind-overview">
   <div class="wrap">
@@ -131,15 +206,172 @@
   </div>
 </section>
 
-<section class="cta center">
-  <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/homepage-banner-img-2a.webp" alt="">
+<!-- What we do best: cards that stack as you scroll -->
+<section class="stack-sec" id="work">
   <div class="wrap">
-    <span class="eyebrow light">Get a quote</span>
-    <h2 class="h2">Need an Electrician? <em>Let’s Talk.</em></h2>
-    <p class="lead">Tell us what you need. We’ll come back with a detailed, transparent quote with no hidden charges.</p>
-    <div class="cta-actions">
-      <a class="btn btn-primary" href="contact.html">Get A Free Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-ghost btn-call" href="tel:0433909889"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg> 0433 909 889</a>
+    <div class="section-head">
+      <div><span class="eyebrow light reveal">What we do best</span>
+      <h2 class="h2 reveal">Decades of Delivering <em>Peace of Mind</em>.</h2></div>
+      <p class="lead reveal">From new builds to 2am emergencies, one licensed local team handles it all.</p>
+    </div>
+    <div class="stack">
+      <article class="stack-card t-light" style="--i:0">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">01</span><span class="sc-tag">Residential</span></div>
+          <h3>New Builds &amp; Renovations</h3>
+          <p>Full house wiring, switchboards, lighting and power design, NBN and data, and smoke alarm compliance, delivered with homeowners, builders and developers.</p>
+          <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Full house wiring and rewiring</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Switchboard installations</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Lighting and power design</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Energy-efficient solutions</li></ul>
+          <a class="btn btn-primary" href="residential-electrician.html">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="sc-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Left-image-9.jpg" alt=""></div>
+      </article>
+      <article class="stack-card t-dark" style="--i:1">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">02</span><span class="sc-tag">Commercial</span></div>
+          <h3>Commercial Fit-outs</h3>
+          <p>Offices, shops, cafés, restaurants and schools. Safe, compliant electrical solutions that slot into your overall fit-out plan.</p>
+          <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Power, lighting, data and switchboards for new or refurbished tenancies</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Efficient LED lighting that can significantly cut power bills</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Test and tag, with records for workplace safety obligations</li></ul>
+          <a class="btn btn-primary" href="commercial-electrician.html">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="sc-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Commercial-Electrical-Fit-Outs-image.jpg" alt=""></div>
+      </article>
+      <article class="stack-card t-light" style="--i:2">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">03</span><span class="sc-tag">Data &amp; Fibre</span></div>
+          <h3>Data, NBN &amp; Fibre</h3>
+          <p>Structured cabling, network design and fibre upgrades from ACMA-approved, registered NBN contractors.</p>
+          <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Structured data cabling</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Office and commercial network design</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Fibre optic cabling and upgrades (FTTP, NBN)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>NBN cabling, registered and ACMA-approved</li></ul>
+          <a class="btn btn-primary" href="data-fibre.html">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="sc-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Data-Fibre-image-1.jpg" alt=""></div>
+      </article>
+      <article class="stack-card t-yellow" style="--i:3">
+        <div class="sc-copy">
+          <div class="sc-top"><span class="sc-n">04</span><span class="sc-tag">24/7</span></div>
+          <h3>Emergency Call-outs</h3>
+          <p>Power outages, faulty switchboards and urgent repairs, handled promptly by a licensed team any hour of the day or night.</p>
+          <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Total or partial power loss</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Safety switches that won’t reset</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sparking, smoke or burning smells</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Storm and water damage</li></ul>
+          <a class="btn btn-dark" href="emergency-electrician.html">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="sc-img"><img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/emergency-elex-img-1.png" alt=""></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="reviews2" id="reviews">
+  <div class="wrap r2-head">
+    <span class="eyebrow reveal">Google reviews</span>
+    <h2 class="h2 reveal">Trusted by Sunshine Coast Homes and Businesses, in Their <em>Own Words</em>.</h2>
+    <div class="r2-rating reveal"><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg><span><span class="r"><b>5.0</b><i>★★★★★</i></span><small>Rated excellent on Google</small></span></div>
+  </div>
+  <div class="wrap r2-grid">
+    <div class="r2-list">
+      <article class="r2-card gstyle reveal">
+        <div class="gstars"><span>★★★★★</span><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg></div>
+        <p>We have had Josh and his team do work for our business and our home and we have <mark>nothing but good things to say</mark>. Communication is fantastic, as is the efficiency. These guys will always be our go to.</p>
+        <header><img class="av" src="https://lh3.googleusercontent.com/a/ACg8ocLSQz7JXK6pssl-LAoi6Au1PC-WPO5aG9QxAOyHKxvQqa79qQ=w96-h96-c-rp-mo-br100" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44"><span class="who"><b>Teagan Gardiner</b><small>3 weeks ago</small></span></header>
+      </article>
+      <article class="r2-card gstyle reveal">
+        <div class="gstars"><span>★★★★★</span><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg></div>
+        <p>Josh is fantastic, <mark>always quick to respond</mark> and great at communicating exactly what needs to be done. He came out promptly to fix our light and had it sorted in no time. Highly recommend!</p>
+        <header><img class="av" src="https://lh3.googleusercontent.com/a-/ALV-UjXncjkyERdAyMkZTr8LNbrJgPkdJzf739fITuQOxiaAKN-hqduASw=w96-h96-c-rp-mo-br100" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44"><span class="who"><b>Cassandra Loh</b><small>3 weeks ago</small></span></header>
+      </article>
+      <article class="r2-card gstyle reveal">
+        <div class="gstars"><span>★★★★★</span><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg></div>
+        <p>Josh, Hudson and his team have been great to work with and have assisted me in renovating my house… they have done so much and <mark>can highly recommend them</mark>.</p>
+        <header><img class="av" src="https://lh3.googleusercontent.com/a-/ALV-UjUdarwZCBtOBQC9gkrDsy_TR0Wb2QD0ULwT_P-r5oukLNP1pzaT=w96-h96-c-rp-mo-ba12-br100" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44"><span class="who"><b>Julian Tebay</b><small>3 weeks ago</small></span></header>
+      </article>
+      <article class="r2-card gstyle reveal">
+        <div class="gstars"><span>★★★★★</span><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg></div>
+        <p>Josh and the team are amazing! They helped my son achieve his 80 hours of work experience for his cert 2 in electrotechnology. They took the time to teach him and train him. Their <mark>professionalism is above and beyond</mark>.</p>
+        <header><img class="av" src="https://lh3.googleusercontent.com/a/ACg8ocIz2T_ROFC5kyyAF4QQ0hpDzXDEaFDc6B5ZVJHO9FtWZmbymg=w96-h96-c-rp-mo-br100" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44"><span class="who"><b>Nicole Allan</b><small>3 weeks ago</small></span></header>
+      </article>
+      <article class="r2-card gstyle reveal">
+        <div class="gstars"><span>★★★★★</span><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg></div>
+        <p>After finding our meter was not safe late at night, he was <mark>there to help in a heartbeat</mark>. He was friendly, professional and such a nice person to deal with. For all your electrical needs I would highly recommend Bright Sparks.</p>
+        <header><img class="av" src="https://lh3.googleusercontent.com/a-/ALV-UjWShBm1Yo72AC_XnZ57cKsiuiDf0-AoIupnJ5w1TJaXBQ8Ig6U=w96-h96-c-rp-mo-br100" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44"><span class="who"><b>Caz Brackett</b><small>4 months ago</small></span></header>
+      </article>
+      <article class="r2-card gstyle reveal">
+        <div class="gstars"><span>★★★★★</span><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg></div>
+        <p>Josh attended our units on behalf of our body corporate to deal with an emergency pump system failure. Very professional, courteous and informative. We were <mark>up and running in minimal time</mark>. Highly recommended!</p>
+        <header><img class="av" src="https://lh3.googleusercontent.com/a-/ALV-UjUCHeaHUNkAXXJLjYnwCD18HeDxHWq8BTvCO60BQ2_Q0fes5Zok=w96-h96-c-rp-mo-ba12-br100" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44"><span class="who"><b>Errol Ross</b><small>10 months ago</small></span></header>
+      </article>
+      <article class="r2-card gstyle more reveal">
+        <div class="gstars"><span>★★★★★</span><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg></div>
+        <p>Josh and his team are <mark>the best on the sunny coast</mark> for their work and prices. Highly recommend using them and will only use them in the future. Thanks guys.</p>
+        <header><img class="av" src="https://lh3.googleusercontent.com/a/ACg8ocLhNqdNtq38ffwwE2X9b2c-96qe-GZdhJ8e8wigJNj8EfGg5A=w96-h96-c-rp-mo-br100" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44"><span class="who"><b>Chris Moore</b><small>4 months ago</small></span></header>
+      </article>
+      <article class="r2-card gstyle more reveal">
+        <div class="gstars"><span>★★★★★</span><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg></div>
+        <p>Josh has done a number of jobs for us since we moved to the Sunshine Coast. His <mark>work is always excellent</mark> and the rates are very reasonable. I would highly recommend him.</p>
+        <header><img class="av" src="https://lh3.googleusercontent.com/a-/ALV-UjU4WcrTQPKkjNX0u7YK40qLIxqi13jZ_DAYAP0hh5sXukR5PL5y=w96-h96-c-rp-mo-ba12-br100" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44"><span class="who"><b>Mitchell Edwards</b><small>7 months ago</small></span></header>
+      </article>
+      <article class="r2-card gstyle more reveal">
+        <div class="gstars"><span>★★★★★</span><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg></div>
+        <p>Arrived on time, worked efficiently, were very pleasant and <mark>did an excellent job</mark>. Would thoroughly recommend.</p>
+        <header><img class="av" src="https://lh3.googleusercontent.com/a-/ALV-UjXrYmGH6sYPn2W2tDB-7U0InUW2hq6poapW1sXRtwufF3mCEHzy=w96-h96-c-rp-mo-br100" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44"><span class="who"><b>Fab50s Coffee Group</b><small>11 months ago</small></span></header>
+      </article>
+      <article class="r2-card gstyle more reveal">
+        <div class="gstars"><span>★★★★★</span><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg></div>
+        <p>On time. <mark>Clean, neat and tidy</mark>, thank you.</p>
+        <header><img class="av" src="https://lh3.googleusercontent.com/a/ACg8ocJh7BlYCfMPdteMq7o2WzoJ9X-taMs5Xc4TnTzzTYiGS0MFZQ=w96-h96-c-rp-mo-br100" alt="" loading="lazy" referrerpolicy="no-referrer" width="44" height="44"><span class="who"><b>Sylvia Wightman</b><small>3 months ago</small></span></header>
+      </article>
+      <button class="btn btn-dark r2-more" type="button" data-rv2-more>Show More Reviews <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- CTA / quote -->
+<section class="cta" id="contact">
+  <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Hero-Banner.jpg" alt="">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow light">Get in touch</span>
+      <h2 class="h2">Detailed, Transparent Quotes. <em>No Hidden Charges.</em></h2>
+      <p class="lead" style="color:rgba(255,255,255,.75)">Tell us what you need and we’ll come back to you promptly.</p>
+      <div class="contact-lines">
+        <a href="tel:0433909889"><small>Call, 24/7</small>0433 909 889</a>
+        <a href="mailto:josh@bseds.com.au"><small>Email</small>josh@bseds.com.au</a>
+      </div>
+      <div class="cta-map reveal">
+        <iframe title="Bright Sparks service area, Sunshine Coast, on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Sunshine%20Coast%20QLD&z=10&output=embed"></iframe>
+        <span class="cta-map-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg> Servicing Noosa to Caloundra</span>
+      </div>
+    </div>
+    <form class="quote">
+        <label>Name<input type="text" placeholder="Your full name" required></label>
+        <label>Phone<input type="tel" placeholder="0400 000 000" required></label>
+        <label>Email<input type="email" placeholder="you@example.com" required></label>
+        <label>Suburb of works<input type="text" placeholder="Maroochydore"></label>
+        <div class="field full"><span class="flabel">Service</span>
+          <select><option>Residential</option><option>Commercial</option><option>Installation</option><option>Maintenance &amp; Repairs</option><option>Data &amp; Fibre</option><option>24/7 Emergency</option><option>Something else</option></select>
+        </div>
+        <label class="full">Tell us what you need<textarea placeholder="A few details about the job…"></textarea></label>
+        <button class="btn btn-primary" type="submit">Request A Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="wrap areas-grid">
+    <div class="areas-copy">
+      <span class="eyebrow reveal">Service areas</span>
+      <h2 class="h2 reveal">From Noosa to <em>Caloundra</em>, and the Hinterland.</h2>
+      <p class="lead reveal">Local electricians based on the Sunshine Coast, so help is never far away. Check your suburb or tap a pin on the map.</p>
+      <form class="area-check reveal" autocomplete="off">
+        <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><input type="text" list="suburb-list" placeholder="Type your suburb, e.g. Buderim" aria-label="Your suburb"></label>
+        <button class="btn btn-dark" type="submit">Check <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <datalist id="suburb-list"><option value="Beerwah"><option value="Buddina"><option value="Buderim"><option value="Caloundra"><option value="Coolum"><option value="Cooroy"><option value="Currimundi"><option value="Diamond Valley"><option value="Doonan"><option value="Dulong"><option value="Eumundi"><option value="Flaxton"><option value="Glass House Mountains"><option value="Glenview"><option value="Golden Beach"><option value="Hunchy"><option value="Ilkley"><option value="Kawana"><option value="Kawana Islands"><option value="Kenilworth"><option value="Lake Macdonald"><option value="Landsborough"><option value="Little Mountain"><option value="Maleny"><option value="Maroochydore"><option value="Minyama"><option value="Moffat Beach"><option value="Montville"><option value="Mooloolaba"><option value="Mooloolah Valley"><option value="Mountain Creek"><option value="Nambour"><option value="Noosa"><option value="Noosa Heads"><option value="Noosaville"><option value="Palmview"><option value="Palmwoods"><option value="Pelican Waters"><option value="Peregian Beach"><option value="Sippy Downs"><option value="Tewantin"><option value="Woombye"><option value="Wurtulla"><option value="Yandina"></datalist>
+      </form>
+      <p class="area-result" aria-live="polite"></p>
+      <div class="area-stats reveal"><span><b>44</b> suburbs covered</span><span><b>24/7</b> emergency call-outs</span></div>
+    </div>
+    <div class="area-map-wrap reveal">
+      <div class="area-map" data-suburbs="[[&quot;Beerwah&quot;, -26.857, 152.957], [&quot;Buddina&quot;, -26.693, 153.133], [&quot;Buderim&quot;, -26.684, 153.057], [&quot;Caloundra&quot;, -26.803, 153.122], [&quot;Coolum&quot;, -26.528, 153.088], [&quot;Cooroy&quot;, -26.418, 152.911], [&quot;Currimundi&quot;, -26.765, 153.123], [&quot;Diamond Valley&quot;, -26.758, 152.924], [&quot;Doonan&quot;, -26.443, 153.006], [&quot;Dulong&quot;, -26.632, 152.906], [&quot;Eumundi&quot;, -26.477, 152.951], [&quot;Flaxton&quot;, -26.66, 152.876], [&quot;Glass House Mountains&quot;, -26.902, 152.957], [&quot;Glenview&quot;, -26.77, 153.017], [&quot;Golden Beach&quot;, -26.821, 153.118], [&quot;Hunchy&quot;, -26.687, 152.912], [&quot;Ilkley&quot;, -26.737, 152.997], [&quot;Kawana&quot;, -26.736, 153.132], [&quot;Kawana Islands&quot;, -26.714, 153.119], [&quot;Kenilworth&quot;, -26.598, 152.728], [&quot;Lake Macdonald&quot;, -26.385, 152.928], [&quot;Landsborough&quot;, -26.808, 152.966], [&quot;Little Mountain&quot;, -26.783, 153.093], [&quot;Maleny&quot;, -26.759, 152.851], [&quot;Maroochydore&quot;, -26.656, 153.09], [&quot;Minyama&quot;, -26.698, 153.124], [&quot;Moffat Beach&quot;, -26.791, 153.14], [&quot;Montville&quot;, -26.69, 152.892], [&quot;Mooloolaba&quot;, -26.682, 153.119], [&quot;Mooloolah Valley&quot;, -26.765, 152.962], [&quot;Mountain Creek&quot;, -26.7, 153.103], [&quot;Nambour&quot;, -26.627, 152.959], [&quot;Noosa&quot;, -26.399, 153.081], [&quot;Noosa Heads&quot;, -26.394, 153.091], [&quot;Noosaville&quot;, -26.4, 153.063], [&quot;Palmview&quot;, -26.744, 153.06], [&quot;Palmwoods&quot;, -26.686, 152.961], [&quot;Pelican Waters&quot;, -26.832, 153.1], [&quot;Peregian Beach&quot;, -26.481, 153.096], [&quot;Sippy Downs&quot;, -26.719, 153.056], [&quot;Tewantin&quot;, -26.391, 153.034], [&quot;Woombye&quot;, -26.661, 152.969], [&quot;Wurtulla&quot;, -26.756, 153.128], [&quot;Yandina&quot;, -26.562, 152.956]]" role="application" aria-label="Map of Bright Sparks service areas"></div>
+      <span class="area-map-hint">Scroll the page freely. Click the map to zoom.</span>
     </div>
   </div>
 </section>
@@ -173,6 +405,6 @@
   </div>
 </footer>
 <a class="float-call" href="tel:0433909889" aria-label="Call Bright Sparks on 0433 909 889"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>Call Us Now</a>
-<script src="assets/js/main.js?v=44"></script>
+<script src="assets/js/main.js?v=45"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;100,600;100,700;100,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=44">
+  <link rel="stylesheet" href="assets/css/style.css?v=45">
 </head>
 <body>
 
@@ -116,16 +116,34 @@
   </div>
 </section>
 
-<section class="cta center">
-  <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/homepage-banner-img-2a.webp" alt="">
+<!-- CTA / quote -->
+<section class="cta" id="contact">
+  <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Hero-Banner.jpg" alt="">
   <div class="wrap">
-    <span class="eyebrow light">Get a quote</span>
-    <h2 class="h2">Need an Electrician? <em>Let’s Talk.</em></h2>
-    <p class="lead">Tell us what you need. We’ll come back with a detailed, transparent quote with no hidden charges.</p>
-    <div class="cta-actions">
-      <a class="btn btn-primary" href="contact.html">Get A Free Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-ghost btn-call" href="tel:0433909889"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg> 0433 909 889</a>
+    <div>
+      <span class="eyebrow light">Get in touch</span>
+      <h2 class="h2">Detailed, Transparent Quotes. <em>No Hidden Charges.</em></h2>
+      <p class="lead" style="color:rgba(255,255,255,.75)">Tell us what you need and we’ll come back to you promptly.</p>
+      <div class="contact-lines">
+        <a href="tel:0433909889"><small>Call, 24/7</small>0433 909 889</a>
+        <a href="mailto:josh@bseds.com.au"><small>Email</small>josh@bseds.com.au</a>
+      </div>
+      <div class="cta-map reveal">
+        <iframe title="Bright Sparks service area, Sunshine Coast, on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Sunshine%20Coast%20QLD&z=10&output=embed"></iframe>
+        <span class="cta-map-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg> Servicing Noosa to Caloundra</span>
+      </div>
     </div>
+    <form class="quote">
+        <label>Name<input type="text" placeholder="Your full name" required></label>
+        <label>Phone<input type="tel" placeholder="0400 000 000" required></label>
+        <label>Email<input type="email" placeholder="you@example.com" required></label>
+        <label>Suburb of works<input type="text" placeholder="Maroochydore"></label>
+        <div class="field full"><span class="flabel">Service</span>
+          <select><option>Residential</option><option>Commercial</option><option>Installation</option><option>Maintenance &amp; Repairs</option><option>Data &amp; Fibre</option><option>24/7 Emergency</option><option>Something else</option></select>
+        </div>
+        <label class="full">Tell us what you need<textarea placeholder="A few details about the job…"></textarea></label>
+        <button class="btn btn-primary" type="submit">Request A Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
   </div>
 </section>
 <footer>
@@ -158,6 +176,6 @@
   </div>
 </footer>
 <a class="float-call" href="tel:0433909889" aria-label="Call Bright Sparks on 0433 909 889"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>Call Us Now</a>
-<script src="assets/js/main.js?v=44"></script>
+<script src="assets/js/main.js?v=45"></script>
 </body>
 </html>

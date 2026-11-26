@@ -11,7 +11,7 @@ from content import (W, IG, PHONE, TEL, EMAIL, FACEBOOK, INSTAGRAM, LOGO, FAQ, F
                      REVIEWS, AVATARS, SUBURBS, SUBURB_COORDS, INSTAGRAM_POSTS, WHY, SERVICES)
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "44"  # asset version (cache busting)
+V = "45"  # asset version (cache busting)
 e = html.escape
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
@@ -371,7 +371,51 @@ def write(name, body):
 
 
 # ------------------------------------------------------------------ homepage
-def index_page():
+def hero_section(img, eyebrow, h1, lead, crumbs=(), svc=0):
+    """The homepage banner (copy left, quote card right), reused on inner pages."""
+    cr = ('<div class="crumbs">' + " / ".join(f'<a href="{u}">{e(t)}</a>' if u else e(t) for t, u in crumbs) + '</div>') if crumbs else ""
+    return f'''
+<!-- Hero: copy left, quote form right -->
+<section class="bs-hero">
+  <img class="bs-hero-bg" src="{img}" alt="">
+  <div class="wrap bs-hero-grid">
+    <div class="bs-hero-copy">
+      {cr}<span class="eyebrow light">{eyebrow}</span>
+      <h1 class="display">{h1}</h1>
+      <p class="hero-lead">{lead}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:{TEL}">{PHONE_I} Call {PHONE}</a>
+        <a class="btn btn-ghost" href="services.html">Our Services {ARROW}</a>
+        <a class="g-rating" href="#reviews">{G}<span><b>5.0</b> <i>★★★★★</i><small>Rated excellent on Google</small></span></a>
+      </div>
+      {chips("hero-chips")}
+    </div>
+    <div class="qf-card" id="quote">
+      <div class="qf-head">
+        <span class="qf-ico">{BOLT}</span>
+        <div><h2>Get a free quote</h2><p>Detailed, transparent quotes. No hidden charges.</p></div>
+      </div>
+      <form class="qf">
+        <fieldset class="qf-svc"><legend>What do you need help with?</legend>
+          {"".join(f'<label><input type="radio" name="svc"{" checked" if i == svc else ""}><span>{e(x["nav"])}</span></label>' for i, x in enumerate(SERVICES))}
+        </fieldset>
+        <div class="qf-grid">
+          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></i><input type="text" placeholder="Full name" required></label>
+          <label class="qf-f"><i>{PHONE_I}</i><input type="tel" placeholder="Phone" required></label>
+          <label class="qf-f"><i>{MAIL}</i><input type="email" placeholder="Email" required></label>
+          <label class="qf-f"><i>{PIN}</i><input type="text" placeholder="Suburb of works"></label>
+          <label class="qf-f full"><textarea placeholder="Tell us a little about the job…" rows="3"></textarea></label>
+        </div>
+        <button class="btn btn-primary qf-btn" type="submit">Request My Free Quote {ARROW}</button>
+      </form>
+      <a class="qf-sos" href="tel:{TEL}"><span class="live"></span>Electrical emergency? Call 24/7 <b>{PHONE}</b></a>
+    </div>
+  </div>
+</section>
+''' + ticker()
+
+
+def panels_section():
     panels = "".join(f'''
     <a class="panel" href="{s["slug"]}.html">
       <img loading="lazy" src="{s["panel"]}" alt="">
@@ -380,6 +424,26 @@ def index_page():
         <span class="go">Explore →</span></div>
     </a>''' for i, s in enumerate(SERVICES))
 
+    return f'''
+<!-- Services: image panels -->
+<section class="sectors v2" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow reveal">What we can do for you</span>
+        <h2 class="h2 reveal">Reliable, affordable electrical services for <em>homes and businesses</em>.</h2>
+      </div>
+      <p class="lead reveal" style="color:rgba(255,255,255,.72)">One licensed local team for electrical and data work, so you never have to juggle trades.</p>
+    </div>
+  </div>
+  <div class="panels">{panels}
+  </div>
+</section>
+
+'''
+
+
+def stack_section():
     steps = [
         ("Residential", "New builds &amp; renovations", "Full house wiring, switchboards, lighting and power design, NBN and data, and smoke alarm compliance, delivered with homeowners, builders and developers.", W + "2026/08/Left-image-9.jpg", "residential-electrician.html"),
         ("Commercial", "Commercial fit-outs", "Offices, shops, cafés, restaurants and schools. Safe, compliant electrical solutions that slot into your overall fit-out plan.", W + "2026/08/Commercial-Electrical-Fit-Outs-image.jpg", "commercial-electrician.html"),
@@ -399,64 +463,7 @@ def index_page():
         </div>
         <div class="sc-img"><img loading="lazy" src="{img}" alt=""></div>
       </article>''' for i, (k, t, p, img, h) in enumerate(steps))
-    ig = "".join(f'<figure><img loading="lazy" src="{IG}{f}" alt="Recent electrical work by Bright Sparks"></figure>' for f in INSTAGRAM_POSTS)
-
-    body = (head("Sunshine Coast Electricians, Electrical & Data Services", "Licensed Sunshine Coast electricians for homes and businesses: residential, commercial, installations, maintenance, data and fibre, and 24/7 emergency call-outs.")
-            + header("home") + f'''
-<!-- Hero: copy left, quote form right -->
-<section class="bs-hero">
-  <img class="bs-hero-bg" src="{W}2026/08/homepage-banner-img-2a.webp" alt="">
-  <div class="wrap bs-hero-grid">
-    <div class="bs-hero-copy">
-      <span class="eyebrow light">Sunshine Coast electrical &amp; data specialists</span>
-      <h1 class="display">Safe, quality electrical work, <em>done right</em>.</h1>
-      <p class="hero-lead">Electrical and data solutions for your home and business that meet the highest safety and quality standards, from trusted local electricians.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="tel:{TEL}">{PHONE_I} Call {PHONE}</a>
-        <a class="btn btn-ghost" href="services.html">Our Services {ARROW}</a>
-        <a class="g-rating" href="#reviews">{G}<span><b>5.0</b> <i>★★★★★</i><small>Rated excellent on Google</small></span></a>
-      </div>
-      {chips("hero-chips")}
-    </div>
-    <div class="qf-card" id="quote">
-      <div class="qf-head">
-        <span class="qf-ico">{BOLT}</span>
-        <div><h2>Get a free quote</h2><p>Detailed, transparent quotes. No hidden charges.</p></div>
-      </div>
-      <form class="qf">
-        <fieldset class="qf-svc"><legend>What do you need help with?</legend>
-          {"".join(f'<label><input type="radio" name="svc"{" checked" if i == 0 else ""}><span>{e(x["nav"])}</span></label>' for i, x in enumerate(SERVICES))}
-        </fieldset>
-        <div class="qf-grid">
-          <label class="qf-f"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></i><input type="text" placeholder="Full name" required></label>
-          <label class="qf-f"><i>{PHONE_I}</i><input type="tel" placeholder="Phone" required></label>
-          <label class="qf-f"><i>{MAIL}</i><input type="email" placeholder="Email" required></label>
-          <label class="qf-f"><i>{PIN}</i><input type="text" placeholder="Suburb of works"></label>
-          <label class="qf-f full"><textarea placeholder="Tell us a little about the job…" rows="3"></textarea></label>
-        </div>
-        <button class="btn btn-primary qf-btn" type="submit">Request My Free Quote {ARROW}</button>
-      </form>
-      <a class="qf-sos" href="tel:{TEL}"><span class="live"></span>Electrical emergency? Call 24/7 <b>{PHONE}</b></a>
-    </div>
-  </div>
-</section>
-''' + ticker() + f'''
-''' + reviews_section() + f'''
-<!-- Services: image panels -->
-<section class="sectors v2" id="services">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow reveal">What we can do for you</span>
-        <h2 class="h2 reveal">Reliable, affordable electrical services for <em>homes and businesses</em>.</h2>
-      </div>
-      <p class="lead reveal" style="color:rgba(255,255,255,.72)">One licensed local team for electrical and data work, so you never have to juggle trades.</p>
-    </div>
-  </div>
-  <div class="panels">{panels}
-  </div>
-</section>
-
+    return f'''
 <!-- What we do best: cards that stack as you scroll -->
 <section class="stack-sec" id="work">
   <div class="wrap">
@@ -470,6 +477,13 @@ def index_page():
   </div>
 </section>
 
+'''
+
+
+def recent_section():
+    ig = "".join(f'<figure><img loading="lazy" src="{IG}{f}" alt="Recent electrical work by Bright Sparks"></figure>' for f in INSTAGRAM_POSTS)
+
+    return f'''
 <!-- Recent work (Instagram) -->
 <section class="showcase recent">
   <div class="wrap showcase-head">
@@ -484,6 +498,40 @@ def index_page():
   </div>
   <div class="strip">{ig}</div>
 </section>
+'''
+
+
+def quote_section():
+    return f'''
+<!-- CTA / quote -->
+<section class="cta" id="contact">
+  <img loading="lazy" src="{W}2026/08/Hero-Banner.jpg" alt="">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow light">Get in touch</span>
+      <h2 class="h2">Detailed, transparent quotes. <em>No hidden charges.</em></h2>
+      <p class="lead" style="color:rgba(255,255,255,.75)">Tell us what you need and we’ll come back to you promptly.</p>
+      <div class="contact-lines">
+        <a href="tel:{TEL}"><small>Call, 24/7</small>{PHONE}</a>
+        <a href="mailto:{EMAIL}"><small>Email</small>{EMAIL}</a>
+      </div>
+      <div class="cta-map reveal">
+        <iframe title="Bright Sparks service area, Sunshine Coast, on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Sunshine%20Coast%20QLD&z=10&output=embed"></iframe>
+        <span class="cta-map-tag">{PIN} Servicing Noosa to Caloundra</span>
+      </div>
+    </div>
+    {quote_form()}
+  </div>
+</section>
+'''
+
+
+def index_page():
+    body = (head("Sunshine Coast Electricians, Electrical & Data Services", "Licensed Sunshine Coast electricians for homes and businesses: residential, commercial, installations, maintenance, data and fibre, and 24/7 emergency call-outs.")
+            + header("home") + f'''
+''' + hero_section(W + "2026/08/homepage-banner-img-2a.webp", "Sunshine Coast electrical &amp; data specialists", "Safe, quality electrical work, <em>done right</em>.", "Electrical and data solutions for your home and business that meet the highest safety and quality standards, from trusted local electricians.") + f'''
+''' + reviews_section() + f'''
+''' + panels_section() + stack_section() + recent_section() + f'''
 ''' + why_section() + f'''
 <!-- Who we are -->
 <section class="about-intro home-about">
@@ -510,26 +558,7 @@ def index_page():
   </div>
 </section>
 ''' + faq_section(FAQ_ALL, lead="Everything Sunshine Coast homeowners and business owners usually ask before booking an electrician.") + f'''
-<!-- CTA / quote -->
-<section class="cta" id="contact">
-  <img loading="lazy" src="{W}2026/08/Hero-Banner.jpg" alt="">
-  <div class="wrap">
-    <div>
-      <span class="eyebrow light">Get in touch</span>
-      <h2 class="h2">Detailed, transparent quotes. <em>No hidden charges.</em></h2>
-      <p class="lead" style="color:rgba(255,255,255,.75)">Tell us what you need and we’ll come back to you promptly.</p>
-      <div class="contact-lines">
-        <a href="tel:{TEL}"><small>Call, 24/7</small>{PHONE}</a>
-        <a href="mailto:{EMAIL}"><small>Email</small>{EMAIL}</a>
-      </div>
-      <div class="cta-map reveal">
-        <iframe title="Bright Sparks service area, Sunshine Coast, on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Sunshine%20Coast%20QLD&z=10&output=embed"></iframe>
-        <span class="cta-map-tag">{PIN} Servicing Noosa to Caloundra</span>
-      </div>
-    </div>
-    {quote_form()}
-  </div>
-</section>
+''' + quote_section() + f'''
 ''' + areas_section() + footer() + tail())
     write("index.html", body)
 
@@ -593,7 +622,7 @@ def service_page(d):
 </section>
 '''
     body = (head(d["title"], d["lead"]) + header("emergency" if d["key"] == "emergency" else "services")
-            + page_hero(d["banner"], d["eyebrow"], d["h1"], d["lead"], crumbs=(("Home", "index.html"), ("Services", "services.html"), (d["nav"], "")))
+            + hero_section(d["banner"], e(d["eyebrow"]), d["h1"], e(d["lead"]), crumbs=(("Home", "index.html"), ("Services", "services.html"), (d["nav"], "")), svc=SERVICES.index(d))
             + f'''
 <section class="ind-intro">
   <div class="wrap ind-intro-grid">
@@ -623,7 +652,7 @@ def service_page(d):
   </div>
 </section>
 ''' + blocks + prices + why_section("Why choose <em>Bright Sparks</em>?")
-            + cta_band(h2=d["closing_h2"], p=d["closing"], img=d["banner"])
+            + recent_section() + reviews_section() + quote_section() + areas_section()
             + other_services(d["slug"]) + footer() + tail())
     write(f'{d["slug"]}.html', body)
 
@@ -636,7 +665,8 @@ def services_page():
         <div class="body"><span class="num">{i+1:02d}</span><h3>{e(d["nav"])}</h3><p>{e(d["card_text"])}</p><span class="go">Explore {ARROW}</span></div>
       </a>''' for i, d in enumerate(SERVICES))
     body = (head("Electrical & Data Services", "Residential, commercial, installation, maintenance and repairs, data and fibre, and 24/7 emergency electricians on the Sunshine Coast.") + header("services")
-            + page_hero(W + "2026/08/homepage-banner-img-3a-1.webp", "Services", "Electrical services for homes <em>and businesses</em>", "Reliable and affordable electrician services Sunshine Coast homes and businesses know they can trust.", crumbs=(("Home", "index.html"), ("Services", "")))
+            + hero_section(W + "2026/08/homepage-banner-img-3a-1.webp", "Services", "Electrical services for homes <em>and businesses</em>", "Reliable and affordable electrician services Sunshine Coast homes and businesses know they can trust.", crumbs=(("Home", "index.html"), ("Services", "")))
+            + panels_section()
             + f'''
 <section class="ind-overview">
   <div class="wrap">
@@ -679,7 +709,7 @@ def services_page():
     </div>
   </div>
 </section>
-''' + cta_band() + footer() + tail())
+''' + stack_section() + reviews_section() + quote_section() + areas_section() + footer() + tail())
     write("services.html", body)
 
 
@@ -688,7 +718,7 @@ def about_page():
     svc = ["Residential electrical, from lighting to full fit-outs", "Commercial installations, fit-outs and test and tag", "Electrical installations of all types, makes and models", "Maintenance, troubleshooting and repairs", "Data points, network and fibre-optic cabling", "24/7 emergency call-outs"]
     lst = "".join(f'<li class="reveal"><span class="n">{i+1:02d}</span>{e(x)}</li>' for i, x in enumerate(svc))
     body = (head("About Bright Sparks, Sunshine Coast Electricians", "Local electricians Sunshine Coast home and business owners have trusted for over 20 years.") + header("about")
-            + page_hero(W + "2025/10/About-banner.jpg", "About us", "Local electricians the Sunshine Coast has trusted for <em>20+ years</em>", "Electrical and data installation, repair and maintenance for homes and businesses.", crumbs=(("Home", "index.html"), ("About", "")))
+            + hero_section(W + "2025/10/About-banner.jpg", "About us", "Local electricians the Sunshine Coast has trusted for <em>20+ years</em>", "Electrical and data installation, repair and maintenance for homes and businesses.", crumbs=(("Home", "index.html"), ("About", "")))
             + f'''
 <section class="about-intro">
   <div class="wrap">
@@ -741,7 +771,7 @@ def about_page():
 </section>
 ''' + why_section() + reviews_section("What our customers <em>say</em>.")
             + faq_section(FAQ_ALL, h2="Questions, <em>answered</em>.", lead="Everything Sunshine Coast homeowners and business owners usually ask before booking an electrician.")
-            + cta_band() + footer() + tail())
+            + recent_section() + quote_section() + areas_section() + footer() + tail())
     write("about.html", body)
 
 
@@ -772,7 +802,7 @@ def faq_page():
     </div>
   </div>
 </section>
-''' + cta_band() + footer() + tail())
+''' + quote_section() + footer() + tail())
     write("faq.html", body)
 
 
