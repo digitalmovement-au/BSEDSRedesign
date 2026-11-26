@@ -13,6 +13,10 @@
 <body>
 
 <header class="site-header">
+  <div class="topbar"><div class="wrap">
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg>Licensed Sunshine Coast electricians · 20+ years · Servicing Noosa to Caloundra</span>
+    <span class="tb-r"><a href="tel:0433909889">24/7 Emergency <b>0433 909 889</b></a><a href="mailto:josh@bseds.com.au">josh@bseds.com.au</a></span>
+  </div></div>
   <div class="wrap">
     <a class="logo" href="index.html" aria-label="Bright Sparks home">
       <img src="https://www.bseds.com.au/wp-content/uploads/2026/08/cropped-Logo.png" alt="Bright Sparks Electrical &amp; Data Services">
@@ -44,33 +48,45 @@
   </div>
 </header>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-media">
-    <img class="hero-poster kb" src="https://www.bseds.com.au/wp-content/uploads/2026/08/homepage-banner-img-2a.webp" alt="">
-  </div>
-  <div class="hero-content">
-    <div class="wrap">
-      <div>
-        <span class="eyebrow light">Sunshine Coast electrical &amp; data specialists</span>
-        <h1 class="display">Safe, Quality Electrical Work, <em>Done Right</em>.</h1>
-        <p class="hero-lead">Electrical and data solutions for your home and business that meet the highest safety and quality standards.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="contact.html">Get A Free Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn-ghost" href="services.html">Our Services</a>
+<!-- Hero: copy left, quote form right -->
+<section class="bs-hero">
+  <img class="bs-hero-bg" src="https://www.bseds.com.au/wp-content/uploads/2026/08/homepage-banner-img-2a.webp" alt="">
+  <div class="wrap bs-hero-grid">
+    <div class="bs-hero-copy">
+      <span class="eyebrow light">Sunshine Coast electrical &amp; data specialists</span>
+      <h1 class="display">Safe, Quality Electrical Work, <em>Done Right</em>.</h1>
+      <p class="hero-lead">Electrical and data solutions for your home and business that meet the highest safety and quality standards, from trusted local electricians.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:0433909889"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg> Call 0433 909 889</a>
+        <a class="btn btn-ghost" href="services.html">Our Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <ul class="hero-chips"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Fully licensed &amp; insured</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>24/7 emergency call-outs</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>5.0 rating on Google</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ACMA-approved NBN contractor</li></ul>
+      <a class="g-rating" href="#reviews"><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.9 6.2C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg><span><b>5.0</b> <i>★★★★★</i><small>Rated excellent on Google</small></span></a>
+    </div>
+    <div class="bs-hero-form" id="quote">
+      <div class="hf-head">
+        <span class="hf-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg> Free quote</span>
+        <h2>Get in Touch with Bright Sparks</h2>
+        <p>Detailed, transparent quotes. No hidden charges.</p>
+      </div>
+      <form class="quote light">
+        <label>Name<input type="text" placeholder="Your full name" required></label>
+        <label>Phone<input type="tel" placeholder="0400 000 000" required></label>
+        <label>Email<input type="email" placeholder="you@example.com" required></label>
+        <label>Suburb of works<input type="text" placeholder="Maroochydore"></label>
+        <div class="field full"><span class="flabel">Service</span>
+          <select><option>Residential</option><option>Commercial</option><option>Installation</option><option>Maintenance &amp; Repairs</option><option>Data &amp; Fibre</option><option>24/7 Emergency</option><option>Something else</option></select>
         </div>
-      </div>
-      <div class="hero-side">
-        <a class="play-film sos" href="tel:0433909889">
-          <span class="ring"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></span>
-          <span class="lbl"><small>24/7 Emergency</small>0433 909 889</span>
-        </a>
-        <ul class="hero-chips"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Fully licensed &amp; insured</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>24/7 emergency call-outs</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>5.0 rating on Google</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ACMA-approved NBN contractor</li></ul>
-      </div>
+        <label class="full">Tell us what you need<textarea placeholder="A few details about the job…"></textarea></label>
+        <button class="btn btn-primary" type="submit">Request A Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+      <a class="hf-sos" href="tel:0433909889"><span class="live"></span>Emergency? Call 24/7 <b>0433 909 889</b></a>
     </div>
   </div>
-  <div class="scroll-cue" aria-hidden="true"></div>
 </section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Residential</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Commercial</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Electrical Installations</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Maintenance &amp; Repairs</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Data &amp; Fibre</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>24/7 Emergency</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Licensed &amp; Insured</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>ACMA-Approved NBN Contractor</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Noosa to Caloundra</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Residential</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Commercial</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Electrical Installations</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Maintenance &amp; Repairs</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Data &amp; Fibre</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>24/7 Emergency</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Licensed &amp; Insured</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>ACMA-Approved NBN Contractor</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i><span>Noosa to Caloundra</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 2 4.5 13.4h6.1L9.8 22l8.7-11.4h-6.1L13.2 2z"/></svg></i></div></div>
+
 
 <section class="greviews" id="reviews">
   <div class="wrap greviews-top">
@@ -210,44 +226,38 @@
       <p class="lead reveal" style="color:rgba(255,255,255,.72)">One licensed local team for electrical and data work, so you never have to juggle trades.</p>
     </div>
   </div>
-  <div class="panels">
-    <a class="panel" href="residential-electrician.html">
+  <div class="wrap"><div class="bento-grid">
+    <a class="bento b-big reveal" href="residential-electrician.html">
       <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/homepage-banner-img-2a.webp" alt="">
-      <div class="inner"><span class="num">01</span><h3>Residential</h3>
-        <p>Lighting, smoke alarms, security cameras, switchboard and hot water upgrades, through to complete fit-outs.</p>
-        <span class="go">Explore →</span></div>
+      <span class="b-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="b-body"><span class="num">01</span><h3>Residential</h3><p>Lighting, smoke alarms, security cameras, switchboard and hot water upgrades, through to complete fit-outs.</p></div>
     </a>
-    <a class="panel" href="commercial-electrician.html">
+    <a class="bento b-wide reveal" href="commercial-electrician.html">
       <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/homepage-banner-img-3a-1.webp" alt="">
-      <div class="inner"><span class="num">02</span><h3>Commercial</h3>
-        <p>Installations, troubleshooting, repairs, maintenance, test and tag and full commercial fit-outs.</p>
-        <span class="go">Explore →</span></div>
+      <span class="b-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="b-body"><span class="num">02</span><h3>Commercial</h3><p>Installations, troubleshooting, repairs, maintenance, test and tag and full commercial fit-outs.</p></div>
     </a>
-    <a class="panel" href="electrical-installations.html">
+    <a class="bento  reveal" href="electrical-installations.html">
       <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Electrical-Fit-Outs-image.jpg" alt="">
-      <div class="inner"><span class="num">03</span><h3>Installation</h3>
-        <p>All types, makes and models of electrical components and systems, for homes and businesses.</p>
-        <span class="go">Explore →</span></div>
+      <span class="b-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="b-body"><span class="num">03</span><h3>Installation</h3><p>All types, makes and models of electrical components and systems, for homes and businesses.</p></div>
     </a>
-    <a class="panel" href="maintenance-repairs.html">
+    <a class="bento  reveal" href="maintenance-repairs.html">
       <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Electrical-Repairs-image.jpg" alt="">
-      <div class="inner"><span class="num">04</span><h3>Maintenance &amp; Repairs</h3>
-        <p>Accurate troubleshooting, timely repairs and cost-effective maintenance of all electrical systems.</p>
-        <span class="go">Explore →</span></div>
+      <span class="b-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="b-body"><span class="num">04</span><h3>Maintenance &amp; Repairs</h3><p>Accurate troubleshooting, timely repairs and cost-effective maintenance of all electrical systems.</p></div>
     </a>
-    <a class="panel" href="data-fibre.html">
+    <a class="bento b-wide reveal" href="data-fibre.html">
       <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/Data-Fibre-image-1.jpg" alt="">
-      <div class="inner"><span class="num">05</span><h3>Data &amp; Fibre</h3>
-        <p>Data points, network and fibre-optic cabling, and phone wiring for homes and businesses.</p>
-        <span class="go">Explore →</span></div>
+      <span class="b-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="b-body"><span class="num">05</span><h3>Data &amp; Fibre</h3><p>Data points, network and fibre-optic cabling, and phone wiring for homes and businesses.</p></div>
     </a>
-    <a class="panel" href="emergency-electrician.html">
+    <a class="bento b-wide b-sos reveal" href="emergency-electrician.html">
       <img loading="lazy" src="https://www.bseds.com.au/wp-content/uploads/2026/08/emergency-elex-img-1.png" alt="">
-      <div class="inner"><span class="num">06</span><h3>24/7 Emergency</h3>
-        <p>On call 24 hours a day, 7 days a week, with fast and effective fixes for homes and businesses.</p>
-        <span class="go">Explore →</span></div>
+      <span class="b-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="b-body"><span class="num">06</span><h3>24/7 Emergency</h3><p>On call 24 hours a day, 7 days a week, with fast and effective fixes for homes and businesses.</p><span class="b-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg> 0433 909 889</span></div>
     </a>
-  </div>
+  </div></div>
 </section>
 
 <!-- What we do best: split screen -->

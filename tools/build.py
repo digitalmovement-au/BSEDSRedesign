@@ -73,6 +73,10 @@ def nav(active=""):
 def header(active="", solid=False):
     return f'''
 <header class="site-header{' solid' if solid else ''}">
+  <div class="topbar"><div class="wrap">
+    <span>{BOLT}Licensed Sunshine Coast electricians · 20+ years · Servicing Noosa to Caloundra</span>
+    <span class="tb-r"><a href="tel:{TEL}">24/7 Emergency <b>{PHONE}</b></a><a href="mailto:{EMAIL}">{EMAIL}</a></span>
+  </div></div>
   <div class="wrap">
     <a class="logo" href="index.html" aria-label="Bright Sparks home">
       <img src="{LOGO}" alt="Bright Sparks Electrical &amp; Data Services">
@@ -131,6 +135,14 @@ def tail():
 '''
 
 
+def ticker():
+    items = ["Residential", "Commercial", "Electrical Installations", "Maintenance &amp; Repairs", "Data &amp; Fibre", "24/7 Emergency", "Licensed &amp; Insured", "ACMA-Approved NBN Contractor", "Noosa to Caloundra"]
+    row = "".join(f"<span>{t}</span><i>{BOLT}</i>" for t in items)
+    return f'''
+<div class="ticker" aria-hidden="true"><div class="ticker-track">{row}{row}</div></div>
+'''
+
+
 def chips(cls="ph-chips"):
     return f'<ul class="{cls}">' + "".join(f"<li>{CHECK}{t}</li>" for t in TRUST) + "</ul>"
 
@@ -153,7 +165,7 @@ def page_hero(img, eyebrow, h1, lead="", crumbs=(), buttons=True, short=False):
     {f'<p class="page-lead">{e(lead)}</p>' if lead else ''}{btns}
   </div>
 </section>
-'''
+''' + ticker()
 
 
 def faq_items(faqs, cats=None):
@@ -346,13 +358,13 @@ def write(name, body):
 
 # ------------------------------------------------------------------ homepage
 def index_page():
-    panels = "".join(f'''
-    <a class="panel" href="{s["slug"]}.html">
-      <img loading="lazy" src="{s["panel"]}" alt="">
-      <div class="inner"><span class="num">{i+1:02d}</span><h3>{e(s["nav"])}</h3>
-        <p>{e(s["card_text"])}</p>
-        <span class="go">Explore →</span></div>
-    </a>''' for i, s in enumerate(SERVICES))
+    big = {0: "b-big", 1: "b-wide", 4: "b-wide", 5: "b-wide b-sos"}
+    bento = "".join(f'''
+    <a class="bento {big.get(i, "")} reveal" href="{d["slug"]}.html">
+      <img loading="lazy" src="{d["panel"]}" alt="">
+      <span class="b-go">{ARROW}</span>
+      <div class="b-body"><span class="num">{i+1:02d}</span><h3>{e(d["nav"])}</h3><p>{e(d["card_text"])}</p>{f'<span class="b-call">{PHONE_I} {PHONE}</span>' if d["key"] == "emergency" else ""}</div>
+    </a>''' for i, d in enumerate(SERVICES))
 
     steps = [
         ("Residential", "New builds &amp; renovations", "Full house wiring, switchboards, lighting and power design, NBN and data, and smoke alarm compliance, delivered with homeowners, builders and developers.", W + "2026/08/Left-image-9.jpg", "residential-electrician.html"),
@@ -367,33 +379,33 @@ def index_page():
 
     body = (head("Sunshine Coast Electricians, Electrical & Data Services", "Licensed Sunshine Coast electricians for homes and businesses: residential, commercial, installations, maintenance, data and fibre, and 24/7 emergency call-outs.")
             + header("home") + f'''
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-media">
-    <img class="hero-poster kb" src="{W}2026/08/homepage-banner-img-2a.webp" alt="">
-  </div>
-  <div class="hero-content">
-    <div class="wrap">
-      <div>
-        <span class="eyebrow light">Sunshine Coast electrical &amp; data specialists</span>
-        <h1 class="display">Safe, quality electrical work, <em>done right</em>.</h1>
-        <p class="hero-lead">Electrical and data solutions for your home and business that meet the highest safety and quality standards.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="contact.html">Get A Free Quote {ARROW}</a>
-          <a class="btn btn-ghost" href="services.html">Our Services</a>
-        </div>
+<!-- Hero: copy left, quote form right -->
+<section class="bs-hero">
+  <img class="bs-hero-bg" src="{W}2026/08/homepage-banner-img-2a.webp" alt="">
+  <div class="wrap bs-hero-grid">
+    <div class="bs-hero-copy">
+      <span class="eyebrow light">Sunshine Coast electrical &amp; data specialists</span>
+      <h1 class="display">Safe, quality electrical work, <em>done right</em>.</h1>
+      <p class="hero-lead">Electrical and data solutions for your home and business that meet the highest safety and quality standards, from trusted local electricians.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:{TEL}">{PHONE_I} Call {PHONE}</a>
+        <a class="btn btn-ghost" href="services.html">Our Services {ARROW}</a>
       </div>
-      <div class="hero-side">
-        <a class="play-film sos" href="tel:{TEL}">
-          <span class="ring">{BOLT}</span>
-          <span class="lbl"><small>24/7 Emergency</small>{PHONE}</span>
-        </a>
-        {chips("hero-chips")}
+      {chips("hero-chips")}
+      <a class="g-rating" href="#reviews">{G}<span><b>5.0</b> <i>★★★★★</i><small>Rated excellent on Google</small></span></a>
+    </div>
+    <div class="bs-hero-form" id="quote">
+      <div class="hf-head">
+        <span class="hf-badge">{BOLT} Free quote</span>
+        <h2>Get in touch with Bright Sparks</h2>
+        <p>Detailed, transparent quotes. No hidden charges.</p>
       </div>
+      {quote_form("quote light", "btn-primary")}
+      <a class="hf-sos" href="tel:{TEL}"><span class="live"></span>Emergency? Call 24/7 <b>{PHONE}</b></a>
     </div>
   </div>
-  <div class="scroll-cue" aria-hidden="true"></div>
 </section>
+''' + ticker() + f'''
 ''' + reviews_section() + f'''
 <!-- Services: image panels -->
 <section class="sectors v2" id="services">
@@ -406,8 +418,8 @@ def index_page():
       <p class="lead reveal" style="color:rgba(255,255,255,.72)">One licensed local team for electrical and data work, so you never have to juggle trades.</p>
     </div>
   </div>
-  <div class="panels">{panels}
-  </div>
+  <div class="wrap"><div class="bento-grid">{bento}
+  </div></div>
 </section>
 
 <!-- What we do best: split screen -->

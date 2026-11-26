@@ -1,11 +1,11 @@
 # Bright Sparks Electrical & Data Services — website redesign concept
 
-Static prototype of the redesigned **bseds.com.au**, built on the same design system as the BuildMarque redesign (editorial, image-led layouts, sticky split screens, expanding image panels, Google review rows, FAQ accordions) and re-skinned for Bright Sparks: charcoal + spark yellow, Archivo headings, Manrope body.
+Static prototype of the redesigned **bseds.com.au**, built on the same design system as the BuildMarque redesign (editorial, image-led layouts, sticky split screens, expanding image panels, Google review rows, FAQ accordions) and re-skinned for Bright Sparks: charcoal + spark yellow, Archivo headings, Manrope body. Its own touches: yellow top bar, squared buttons, hero quote form, scrolling yellow ticker, blueprint-grid dark sections, bento services grid.
 
 Open `index.html` in a browser to review. Images, the logo and Instagram photos load directly from the live site's media library.
 
 ## Pages
-- `index.html` — homepage: full-screen hero with a 24/7 emergency call button and trust chips, Google reviews + proof figures, six service panels that expand on hover, "What we do best" sticky split screen, recent work strip (Instagram photos, drag to scroll), why choose us, who we are, FAQs, quote form, service areas.
+- `index.html` — homepage: hero with copy on the left and a quote form on the right, yellow services ticker, Google reviews + yellow proof figures, services bento grid (yellow 24/7 emergency tile), "What we do best" sticky split screen, recent work strip (Instagram photos, drag to scroll), why choose us, who we are, FAQs, quote form, service areas.
 - `services.html` — services overview.
 - Six service pages: `residential-electrician`, `commercial-electrician`, `electrical-installations`, `maintenance-repairs`, `data-fibre`, `emergency-electrician`. Each has an overview, sub-service cards, a "what's included" list, detail sections, a price guide (where the live page gives one), why choose us, FAQs and a call to action.
 - `about.html`, `faq.html` (filter by topic), `contact.html` (quote form, service area map).
