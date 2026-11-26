@@ -2618,3 +2618,7 @@ form.quote.light ::placeholder { color: rgba(17,20,24,.38); }
   .bulb-swing svg { top: 124px; width: 44px; height: 66px; } .bulb-glow { top: 162px; }
 }
 .why2-media img { object-position: 88% 50%; }
+/* Yellow buttons: clean hover with readable text everywhere */
+.btn.btn-primary:hover, footer .btn.btn-primary:hover, .cta .btn.btn-primary:hover { background: #ffe45c; border-color: #ffe45c; color: var(--ink) !important; box-shadow: 0 10px 22px rgba(255,200,0,.22); }
+.btn.btn-primary:hover svg { color: var(--ink); }
+.btn::after { background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.35) 50%, transparent 65%); }
